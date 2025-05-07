@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+python-multipart
+PyMuPDF
+PyPDF2
+redis
