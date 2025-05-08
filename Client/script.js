@@ -2,12 +2,14 @@ const dropZone = document.getElementById('dropZone');
 const submitBtn1 = document.getElementById('submitBtn1');
 const submitBtn2 = document.getElementById('submitBtn2');
 const submitBtn3 = document.getElementById('submitBtn3');
-const downloadBtn = document.getElementById('downloadBtn');
 
 function switchsite(page) {
     for (let i = 1; i <= 3; i++) {
       const tmp = document.getElementById('page' + i);
       tmp.style.display = (i === page) ? 'block' : 'none';
+      if(i == 3){
+        document.getElementById("submitBtn3").click();
+      }
     }
 }
 
@@ -104,57 +106,107 @@ document.querySelectorAll('.drop-zone').forEach((dropZone) => {
   
 
   submitBtn3.addEventListener('click', () => {
-  
-    const element = document.querySelector("#myBar");
-    const bar = document.querySelector("#myProgress");
-  
+    submitBtn3.style.display = "none";
+
+    const table = document.getElementById("page3table");
     let interval = setInterval(() => {
-    fetch("http://localhost:8000/api/status")
-        .then(response => response.json())
-        .then(data => {
-            if(data.status === "bereit"){
-                if (downloadBtn) {
-                    downloadBtn.disabled = 0;
+        fetch("http://localhost:8000/api/status")
+            .then(response => response.json())
+            .then(data => {
+                if (!Array.isArray(data)) return;
+
+                let done = 0;
+
+                data.forEach(job => {
+                    let row = document.getElementById(`row${job.id}`);
+                    
+                    if (!row) {
+                        row = document.createElement("tr");
+                        row.id = `row${job.id}`;
+
+                        const cell3 = document.createElement("td");
+                        cell3.textContent = job.response_file;
+
+                        const cell1 = document.createElement("td");
+                        cell1.innerHTML = `
+                            <div id="myProgress${job.id}" class="myProgress">
+                                <div id="myBar${job.id}" class="myBar">0%</div>
+                            </div>
+                        `;
+
+                        const cell2 = document.createElement("td");
+                        cell2.innerHTML = `
+                            <button id="downloadBtn${job.id}" class="downloadBtn" disabled>Ergebnis herunterladen</button>
+                        `;
+
+                        row.appendChild(cell3);
+                        row.appendChild(cell1);
+                        row.appendChild(cell2);
+                        table.appendChild(row);
+                        table.style.display = "block";
+                    }
+
+                    const prozent = Math.round((job.verarbeitet / job.gesamt) * 100);
+                    const element = document.querySelector(`#myBar${job.id}`);
+                    const bar = document.querySelector(`#myProgress${job.id}`);
+                    const btn = document.querySelector(`#downloadBtn${job.id}`);
+
+                    if (element) {
+                        element.style.width = prozent + "%";
+                        element.textContent = prozent + "%";
+                    }
+
+                    if (bar) {
+                        bar.style.display = "block";
+                    }
+
+                    if (btn && job.status === "bereit") {
+                        btn.disabled = false;
+                        btn.onclick = () => downloadFile(job.id, btn);
+                        done++;
+                    }
+                });
+
+                if (done === data.length && data.length > 0) {
+                    clearInterval(interval);
                 }
-                clearInterval(interval);
-            }
-            const prozent = Math.round((data.verarbeitet / data.gesamt) * 100);
-            element.style.width = prozent + "%";
-            element.innerHTML = prozent + "%";
-            bar.style.display = "block";
-        })
-        .catch(error => console.error("Status-Abfrage fehlgeschlagen:", error));
+            })
+            .catch(error => console.error("Status-Abfrage fehlgeschlagen:", error));
     }, 1000);
-  });
+});
 
-  downloadBtn.addEventListener('click', () => {
-  
-    const bar = document.querySelector("#myProgress");
-
-    fetch(`http://localhost:8000/api/download`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Download fehlgeschlagen.");
-        }
-        return response.blob();
-      })
-      .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "ergebnis_pdfs.zip";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        window.URL.revokeObjectURL(url);
-        downloadBtn.disabled = 1;
-        bar.style.display = "none";
-      })
-      .catch(error => {
-        console.error("Fehler beim Download:", error);
+function downloadFile(jobid, buttonElement){
+  const bar = document.querySelector(`#row${jobid}`);
+  fetch(`http://localhost:8000/api/download/${jobid}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Download fehlgeschlagen.");
+      }
+      return response.blob();
+    })
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "ergebnis_pdfs.zip";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+      buttonElement.disabled = true;
+      if (bar) bar.remove();
+    })
+    .catch(error => {
+      if (error.status === 404) {
+        alert("Die Datei ist nicht mehr vorhanden.");
+        if (bar) bar.remove();
+      } else {
         alert("Datei konnte nicht heruntergeladen werden.");
-      });
-  });
+      }
+    });
+}
+
+
 
   submitBtn2.addEventListener('click', () => {
     const file = document.querySelector("#page2 .drop-zone").file;

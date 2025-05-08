@@ -13,7 +13,7 @@
   </header>
   <div id="buttonrow">
     <button onclick="switchsite(1)">PDF beschreiben</button>
-    <button onclick="switchsite(3)">Status abfragen/ Herunterladen</button>
+    <button onclick="switchsite(3)">Verarbeitungsstatus prüfen / Datei herunterladen</button>
     <button onclick="switchsite(2)">Metadaten anzeigen</button>
   </div>
   <div id="page1">
@@ -22,7 +22,7 @@
         <p>
           Mit diesem Tool kannst du für beliebig viele PDF-Dateien automatisch Inhaltsbeschreibungen erstellen.
           Dabei werden auch die wichtigsten Bilder des Dokuments erkannt und in Textform beschrieben.
-          Ziehe dazu einfach einen ZIP-Ordner mit beliebig vielen PDFs in das Drag-and-Drop-Feld und klicke anschließend auf „Submit“.
+          Ziehe dazu einfach einen ZIP-Ordner mit beliebig vielen PDFs in das Drag-and-Drop-Feld und klicke anschließend auf „Absenden“.
           Alles Weitere wird dir im nächsten Schritt erklärt.
         </p>
 
@@ -38,16 +38,15 @@
   <div id="page3" style="display: none;">
     <main>
       <div class="content">
-        <p>Verarbeitungsstatus abrufen</p>
-  
-        <div id="myProgress" style="display: none;">
-          <div id="myBar">0%</div>
-        </div>
-  
-        <div>
-          <button id="submitBtn3">Status prüfen</button>
-          <button id="downloadBtn" disabled>Ergebnis herunterladen</button>
-        </div>
+        <p>Hier kannst du den Verarbeitungsstatus deiner Dateien einsehen. Sobald die Verarbeitung abgeschlossen ist, kannst du die Datei herunterladen. Achtung: Nach dem Herunterladen wird die Datei vom Server gelöscht und steht nicht erneut zum Download bereit.</p>
+        <button id="submitBtn3">Status prüfen</button>
+        <table id="page3table" style="display: none;">
+          <tr>
+            <th style="width: 25%;">Datei</th>
+            <th style="width: 60%;">Fortschritt</th>
+            <th style="width: 15%;"></th>
+          </tr>
+        </table>
       </div>
     </main>
   </div>

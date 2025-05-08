@@ -1,6 +1,10 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException, BackgroundTasks
+from fastapi import FastAPI, File, UploadFile, HTTPException, BackgroundTasks, Depends
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+from database import SessionLocal, engine, Base
+from models import Job
+
 import os
 import zipfile
 import io
@@ -8,16 +12,12 @@ from PyPDF2 import PdfReader, PdfWriter
 import fitz
 import shutil
 import tempfile
-from typing import Optional
 import time
-import redis
 import traceback
 
-app = FastAPI()
+Base.metadata.create_all(bind=engine)
 
-redis_host = os.getenv("REDIS_HOST", "localhost")
-r = redis.Redis(host=redis_host, port=6379, db=0)
-r.set(f"job:status", "bereit")
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
@@ -27,7 +27,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-def write_metadata(pdf_bytes, name, output_dir):
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+        
+def write_metadata(pdf_bytes, name, output_io):
     reader = PdfReader(io.BytesIO(pdf_bytes))
     text = ""
     for page in reader.pages:
@@ -41,91 +48,107 @@ def write_metadata(pdf_bytes, name, output_dir):
     for page in reader.pages:
         writer.add_page(page)
 
-    writer.add_metadata({
-        "/Subject": text
-    })
-
-    output_path = os.path.join(output_dir, f"{name}.pdf")
-    with open(output_path, "wb") as f:
-        writer.write(f)
+    writer.add_metadata({"/Subject": text})
+    writer.write(output_io)
 
 @app.post("/api/process-zip")
-async def process_zip(file: UploadFile = File(...), background_tasks: BackgroundTasks = BackgroundTasks()):
-
-    if r.get("job:status") and r.get("job:status").decode() == "in_bearbeitung":
-        raise HTTPException(status_code=429, detail="Die Verarbeitung ist derzeit ausgelastet. Bitte versuche es später erneut.")
-    
+async def process_zip(
+    file: UploadFile = File(...),
+    background_tasks: BackgroundTasks = BackgroundTasks(),
+    db: Session = Depends(get_db)
+):
     if not file.filename.endswith(".zip"):
         raise HTTPException(status_code=400, detail="Bitte eine ZIP-Datei hochladen.")
 
+    in_progress_count = db.query(Job).filter(Job.job_status == "in_bearbeitung").count()
+
+    if in_progress_count >= 3:
+        raise HTTPException(status_code=429, detail="Die Verarbeitung ist derzeit ausgelastet.")
+
     zip_bytes = await file.read()
 
-    r.set(f"job:status", "in_bearbeitung")
-    print("n" + r.get("job:status").decode())
-    background_tasks.add_task(process_zip_task, zip_bytes)
+    job = Job(verarbeitet=0, gesamt=0, job_status="in_bearbeitung", response_file=file.filename)
+    db.add(job)
+    db.commit()
+    db.refresh(job)
 
-    return JSONResponse(
-        status_code=202,
-        content={"detail": "Datei wird verarbeitet"}
-    )
+    background_tasks.add_task(process_zip_task, zip_bytes, job.id)
 
-def process_zip_task(zip_bytes):
+    return JSONResponse(status_code=202, content={"detail": "Datei wird verarbeitet", "job_id": job.id})
+
+def process_zip_task(zip_bytes, job_id):
+    db = SessionLocal()
     try:
+        job = db.query(Job).get(job_id)
         temp_dir = tempfile.mkdtemp()
-        output_dir = os.path.join(temp_dir, "output")
-        os.makedirs(output_dir, exist_ok=True)
+
+        output_zip_path = os.path.join(temp_dir, f"result{job.id}.zip")
+        zip_out = zipfile.ZipFile(output_zip_path, "w")
 
         zip_io = io.BytesIO(zip_bytes)
         with zipfile.ZipFile(zip_io, "r") as zip_ref:
             pdf_dateien = [f for f in zip_ref.namelist() if f.lower().endswith(".pdf")]
-            r.set(f"job:gesamt", len(pdf_dateien))
+            job.gesamt = len(pdf_dateien)
+            db.commit()
+
             for index, pdf_name in enumerate(pdf_dateien):
                 with zip_ref.open(pdf_name) as pdf_file:
                     pdf_bytes = pdf_file.read()
                     safe_name = pdf_name.replace("/", "_").replace(".pdf", "")
-                    write_metadata(pdf_bytes, safe_name, output_dir)
-                    r.set(f"job:verarbeitet", index + 1)
+                    
+                    output_pdf_io = io.BytesIO()
+                    write_metadata(pdf_bytes, safe_name, output_pdf_io)
+
+                    output_pdf_io.seek(0)
+                    zip_out.writestr(f"{safe_name}.pdf", output_pdf_io.read())
+
+                    job.verarbeitet = index + 1
+                    db.commit()
                     time.sleep(5)
 
-        output_zip_path = os.path.join(temp_dir, "result.zip")
-        with zipfile.ZipFile(output_zip_path, "w") as zip_out:
-            for file_name in os.listdir(output_dir):
-                full_path = os.path.join(output_dir, file_name)
-                zip_out.write(full_path, arcname=file_name)
-
-        r.set(f"job:path", output_zip_path)
-        r.set(f"job:status", "bereit")
+        zip_out.close()
+        job.job_status = "bereit"
+        job.result_path = output_zip_path
+        db.commit()
     except Exception as e:
-        r.set(f"job:status", f"fehlgeschlagen: {str(e)}")
+        job.job_status = f"fehlgeschlagen: {str(e)}"
+        db.commit()
+    finally:
+        db.close()
+
 
 @app.get("/api/status")
-def get_status():
-    verarbeitet = int(r.get(f"job:verarbeitet") or 0)
-    gesamt = int(r.get(f"job:gesamt") or 0)
-    status = r.get(f"job:status")
-    file_path = r.get(f"job:path")
+def get_all_statuses(db: Session = Depends(get_db)):
+    jobs = db.query(Job).all()
+    if not jobs:
+        return []
 
-    return {
-        "verarbeitet": verarbeitet,
-        "gesamt": gesamt,
-        "status": status.decode() if status else "unbekannt"
-    }
+    return [
+        {
+            "id": job.id,
+            "verarbeitet": job.verarbeitet,
+            "gesamt": job.gesamt,
+            "status": job.job_status,
+            "response_file": job.response_file
+        }
+        for job in jobs
+    ]
 
-@app.get("/api/download")
-def download_zip(background_tasks: BackgroundTasks):
-    file_path = r.get(f"job:path")
-    if not file_path:
+@app.get("/api/download/{job_id}")
+def download_zip(job_id: int, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
+    job = db.query(Job).get(job_id)
+    if not job or not job.result_path:
         raise HTTPException(status_code=404, detail="Keine Datei gefunden")
 
-    file_path = file_path.decode()
-
-    if not os.path.exists(file_path):
+    if not os.path.exists(job.result_path):
         raise HTTPException(status_code=404, detail="Datei nicht mehr vorhanden")
-
-    background_tasks.add_task(os.remove, file_path)
-
+    
+    db.delete(job)
+    db.commit()
+    background_tasks.add_task(os.remove, job.result_path)
+    print(job.result_path)
     return FileResponse(
-        path=file_path,
+        path=job.result_path,
         media_type="application/zip",
         filename="ergebnis_pdfs.zip",
         background=background_tasks
