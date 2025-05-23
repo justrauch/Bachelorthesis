@@ -12,5 +12,7 @@ pymupdf
 dropbox
 requests
 openai
+opencv-python-headless
 typing-extensions
 psycopg2-binary
+python-dotenv

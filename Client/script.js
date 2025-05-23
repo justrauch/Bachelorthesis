@@ -208,22 +208,26 @@ function downloadFile(job, buttonElement) {
             a.remove();
             window.URL.revokeObjectURL(url);
             buttonElement.disabled = true;
-            if (bar) bar.remove();
-
-            const table = document.getElementById("page3table");
-            const rowCount = table.children.length;
-            if (rowCount === 1) {
-                table.style.display = "none";
-            }
+            remove_bar(bar);
         })
         .catch(error => {
             if (error.status === 404) {
                 alert("Die Datei ist nicht mehr vorhanden.");
-                if (bar) bar.remove();
             } else {
                 alert("Datei konnte nicht heruntergeladen werden.");
             }
+            remove_bar(bar);
         });
+}
+
+function remove_bar(bar){
+    if (bar) bar.remove();
+
+    const table = document.getElementById("page3table");
+    const rowCount = table.children.length;
+    if (rowCount === 1) {
+        table.style.display = "none";
+    }
 }
 
 function stopJob(jobid, buttonElement) {

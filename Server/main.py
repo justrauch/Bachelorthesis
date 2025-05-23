@@ -1,40 +1,35 @@
+import os, io, re, time, json, tempfile, zipfile, traceback
+
 from fastapi import FastAPI, File, UploadFile, HTTPException, BackgroundTasks, Depends
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+
 from sqlalchemy.orm import Session
 from database import SessionLocal, engine, Base
 from models import Job
 
-import os
-import zipfile
-import io
-import tempfile
-import time
-import json
-import requests
-import dropbox
-import traceback
-
-import fitz  # PyMuPDF
+from PyPDF2 import PdfReader, PdfWriter
 import pymupdf
+
 import cv2
 import numpy as np
 from PIL import Image
-from PyPDF2 import PdfReader, PdfWriter
-from openai import OpenAI
-from typing_extensions import final
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+
+import requests
+import base64
+from io import BytesIO
 
 # === INIT ===
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-DROPBOX_TOKEN = ""
-
-dbx = dropbox.Dropbox(DROPBOX_TOKEN)
-
-openrouter_token = ""
+API_KEY = ''
+API_URL_IMAGE_SELECTOR = "https://api.runpod.ai/v2/gya7rpmqp97v58"
+API_URL_DESCRIPTION = "https://api.runpod.ai/v2/jh3t3ciq9y5su6"
+API_URL_EMBEDDINGS = "https://api.runpod.ai/v2/22vlo1l1fn5xqc"
 
 app.add_middleware(
     CORSMiddleware,
@@ -52,137 +47,281 @@ def get_db():
     finally:
         db.close()
 
-def sanitize_metadata(text: str) -> str:
-    return text.replace("\\n", " ").replace("\n", " ").strip()
+# --- Hilfsfunktionen zur Textextraktion und -strukturierung ---
+def extract_text_sections(text):
+    matches = list(re.finditer(r'(Ziel:|Thema \d+:)', text))
+    sections = [text[matches[i].start():matches[i+1].start() if i+1 < len(matches) else len(text)].strip()
+                for i in range(len(matches))]
+    return sections
 
-# === AI + METADATA ===
-def get_description(pdf_bytes):
-    reader = PdfReader(io.BytesIO(pdf_bytes))
-    text = "".join(page.extract_text() or "" for page in reader.pages)
+def extract_raw_text_from_pdf(pdf_bytes):
+    with io.BytesIO(pdf_bytes) as buffer:
+        reader = PdfReader(buffer)
+        return "".join(page.extract_text() or "" for page in reader.pages)
 
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=openrouter_token,
-    )
-    completion = client.chat.completions.create(
-        model="mistralai/mistral-7b-instruct:free",
-        messages=[{
-            "role": "user",
-            "content": f"<s>[INST] Bitte beschreibe in wenigen Sätzen, worum es in folgendem Text geht. Gib an, zu welchem Thema der Text gehört und was das Ziel des Textes ist: {text} [/INST]"
-        }],
-        temperature=0.3,
-        top_p=0.65,
-        frequency_penalty=0.35,
-        presence_penalty=0.35
-    )
-    print(completion)
-    return completion.choices[0].message.content
+def extract_text_pages_from_pdf(pdf_bytes):
+    with io.BytesIO(pdf_bytes) as buffer:
+        reader = PdfReader(buffer)
+        return [page.extract_text() or "" for page in reader.pages]
 
-def cossim(page_text, description):
-    vectorizer = TfidfVectorizer()
-    tfidf_matrix = vectorizer.fit_transform([description, page_text])
-    similarity = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])
-    return similarity[0][0]
+# --- Ähnlichkeitsbewertung ---
+def runpod_request_with_polling_embedding(payload):
+    headers = {
+        "Authorization": f"Bearer {API_KEY}", 
+        "Content-Type": "application/json"
+    }
 
-# === IMAGE HANDLING ===
-def analyze_image(image_bytes):
-    try:
-        with Image.open(io.BytesIO(image_bytes)) as img:
-            if img.width < 100 or img.height < 100:
-                return False
-    except Exception:
-        return False
+    response = requests.post(f"{API_URL_EMBEDDINGS}/runsync", headers=headers, json=payload)
+    response_json = response.json()
 
-    img_array = np.frombuffer(image_bytes, np.uint8)
-    img_cv = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    if img_cv is None:
-        return False
+    if response_json.get("status") in ["IN_PROGRESS", "IN_QUEUE"]:
+        job_id = response_json["id"]
+        while True:
+            status_url = f"{API_URL_EMBEDDINGS}/status/{job_id}"
+            status_response = requests.get(status_url, headers=headers)
+            status_response.raise_for_status()
+            response_json = status_response.json()
+            print(response_json)
+            if response_json["status"] == "COMPLETED":
+                break
+            time.sleep(5)
+
+    return response_json["output"]["data"]
+
+def find_most_relevant_pages_with_embeddings(docs, query, doc_embeddings, top_k=5):
+    query_embedding = runpod_request_with_polling_embedding({"input": {"input": f"query: {query}"}})[0]["embedding"]
+    similarities = cosine_similarity([query_embedding], doc_embeddings)[0]
+    ranked = sorted([(idx, score, docs[idx]) for idx, score in enumerate(similarities)], key=lambda x: x[1], reverse=True)
+    
+    return ranked[:top_k]
+
+# --- Bildverarbeitung und -filterung ---
+def is_valid_image(image_bytes):
+    with Image.open(io.BytesIO(image_bytes)) as img:
+        width, height = img.size
+        if width < 50 or height < 50:
+            return False
+        img_cv = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
 
     img_hsv = cv2.cvtColor(img_cv, cv2.COLOR_BGR2HSV)
-    hist = cv2.calcHist([img_hsv], [0], None, [256], [0, 256])
     avg_saturation = np.mean(img_hsv[:, :, 1])
-    if np.count_nonzero(hist) < 10 and avg_saturation > 20:
+    if np.count_nonzero(cv2.calcHist([img_hsv], [0], None, [256], [0, 256])) < 5 and avg_saturation > 40:
         return False
 
-    lap_var = cv2.Laplacian(cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY), cv2.CV_64F).var()
-    return lap_var >= 100
+    gray = cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY)
+    if cv2.Laplacian(gray, cv2.CV_64F).var() < 50:
+        return False
 
-def upload_image_and_get_url(image_bytes, dropbox_path):
-    dbx.files_upload(image_bytes, dropbox_path, mode=dropbox.files.WriteMode.overwrite)
-    try:
-        shared = dbx.sharing_create_shared_link_with_settings(dropbox_path)
-    except dropbox.exceptions.ApiError as e:
-        if e.error.is_shared_link_already_exists():
-            shared = dbx.sharing_list_shared_links(path=dropbox_path, direct_only=True).links[0]
-        else:
-            raise e
-    return shared.url.replace("?dl=0", "?raw=1")
+    return True
 
-def delete_dropbox_file(path):
-    dbx.files_delete_v2(path)
-
-def image_choises(image_urls, description):
-    image_blocks = [{"type": "image_url", "image_url": {"url": url}} for _, url in image_urls]
-    count = 3 if len(image_urls) >= 3 else max(len(image_urls) - 1, 1)
-    response = requests.post(
-        url="https://openrouter.ai/api/v1/chat/completions",
-        headers={
-            "Authorization": f"Bearer {openrouter_token}",
-            "Content-Type": "application/json",
-        },
-        data=json.dumps({
-            "model": "meta-llama/llama-4-scout:free",
-            "messages": [{
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": f"Gib mir eine Beschreibung für {count} der folgenden Bilder, die inhaltlich am besten zu diesem Text passen: {description} Schreibe die Beschreibungen hintereinander weg getrennt mit Absätzen und füge keinen weiteren Text ein."}
-                ] + image_blocks
-            }]
-        })
-    )
-    print(response)
-    return response.json()["choices"][0]["message"]["content"]
-
-def extract_and_analyze_images(doc, top10):
-    urls, delete_paths = [], []
-    for i, page in enumerate(doc):
-        if i + 1 not in [idx for idx, _ in top10]:
-            continue
-        if len(urls) >= 5:
+def extract_valid_images(pdf_bytes, page_numbers):
+    doc = pymupdf.open(stream=pdf_bytes, filetype="pdf")
+    valid_images = []
+    total_images = 0
+    for page_number in page_numbers:
+        images = doc[page_number].get_images(full=True)
+        if total_images > 3:
             break
-        for j, img in enumerate(page.get_images(full=True)):
-            xref = img[0]
-            base = doc.extract_image(xref)
-            if not base:
-                continue
-            image_bytes = base["image"]
-            ext = base.get("ext", "png")
-            filename = f"page{i+1}_img{j}.{ext}"
-            if analyze_image(image_bytes):
-                path = f"/{filename}"
-                delete_paths.append(path)
-                url = upload_image_and_get_url(image_bytes, path)
-                urls.append((i + 1, url))
-                break
-    return delete_paths, urls
+        total_images += len(images)
+        for i, img in enumerate(images):
+            try:
+                image_data = doc.extract_image(img[0]).get("image")
+                if image_data and is_valid_image(image_data):
+                    valid_images.append(image_data)
+            except Exception as e:
+                print(f"Fehler beim Extrahieren von Bild (XREF {img[0]}): {e}")
+    return valid_images
 
-def get_image_description(pdf_bytes, description):
-    reader = PdfReader(io.BytesIO(pdf_bytes))
-    scores = [(i + 1, cossim(p.extract_text() or "", description)) for i, p in enumerate(reader.pages)]
-    top10 = sorted(scores, key=lambda x: x[1], reverse=True)[:10]
-    doc = fitz.open(stream=pdf_bytes, filetype="pdf")
-    delete_paths, urls = extract_and_analyze_images(doc, top10)
-    result = image_choises(urls, description)
-    for path in delete_paths:
-        delete_dropbox_file(path)
-    return result
+# --- Hilfsfunktionen für API-Requests ---
+def encode_image_to_data_uri(image_bytes):
+    try:
+        buffer = BytesIO()
+        Image.open(BytesIO(image_bytes)).convert("RGB").save(buffer, format="JPEG")
+        return f"data:image/jpeg;base64,{base64.b64encode(buffer.getvalue()).decode('utf-8')}"
+    except Exception as e:
+        print(f"Fehler beim Kodieren des Bildes: {e}")
+        return None
+
+def post_request(url, payload):
+    headers = {
+        "Authorization": f"Bearer {API_KEY}", 
+        "Content-Type": "application/json"
+    }
+    response = requests.post(url, headers=headers, json=payload)
+    response.raise_for_status()
+    return response.json()
+
+def wait_for_completion(url_base, job_id):
+    headers = {
+        "Authorization": f"Bearer {API_KEY}"
+    }
+    while True:
+        response = requests.get(f"{url_base}/status/{job_id}", headers=headers)
+        response.raise_for_status()
+        status_json = response.json()
+        if status_json.get("status") == "COMPLETED":
+            return status_json
+        time.sleep(5)
+
+def request_image_selection_and_caption(images, section_text):
+    encoded_images = [encode_image_to_data_uri(img) for img in images if img]
+    if not encoded_images:
+        return ""
+
+    selection_prompt = (
+        f"Lies den folgenden Text:\n{section_text}\n\n"
+        "Dir werden mehrere Bilder gezeigt.\n"
+        "Analysiere alle Bilder sorgfältig.\n"
+        "Welches Bild passt inhaltlich am besten zum Text?\n"
+        "Gib nur die Nummer des passenden Bildes an – z. B. 1, 2, 3.\n"
+        "Wenn keines passt, gib 0 an. Keine Beschreibung. Keine Erklärung. Nur eine einzige Zahl."
+    )
+
+    selection_payload = {"input": {"images": encoded_images, "prompt": selection_prompt}}
+    selection_response = post_request(f"{API_URL_IMAGE_SELECTOR}/runsync", selection_payload)
+    if selection_response.get("status") in ["IN_PROGRESS", "IN_QUEUE"]:
+        selection_response = wait_for_completion(API_URL_IMAGE_SELECTOR, selection_response["id"])
+
+    try:
+        selected_index = int(selection_response.get("output", {}).get("caption", "-1"))
+    except ValueError:
+        return ""
+
+    if selected_index == 0:
+        print("Keines der Bilder wurde als passend zum Text bewertet.")
+        return ""
+
+    if selected_index > len(encoded_images) or selected_index < 0:
+        print("Ausgewählter Bildindex liegt außerhalb des gültigen Bereichs.")
+        return ""
+
+    caption_prompt = (
+        "Beschreibe das angegebene Bild.\n"
+        "Gib ausschließlich eine Beschreibung des Bildes aus.\n"
+        "Keine Erklärungen, keine weiteren Informationen.\n"
+        "Nur die Bildbeschreibung."
+    )
+
+    caption_payload = {
+        "input": {"images": [encoded_images[selected_index - 1]], 
+                  "prompt": caption_prompt}
+    }
+    caption_response = post_request(f"{API_URL_IMAGE_SELECTOR}/runsync", caption_payload)
+    if caption_response.get("status") in ["IN_PROGRESS", "IN_QUEUE"]:
+        caption_response = wait_for_completion(API_URL_IMAGE_SELECTOR, caption_response["id"])
+
+    return f"\nWird dargestellt durch: {caption_response.get('output', {}).get('caption', '')}\n"
+
+# --- Beschreibungsgenerierung aus PDF-Inhalt ---
+def runpod_request_with_polling_summary(payload):
+    headers = {
+        "Authorization": f"Bearer {API_KEY}", 
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(f"{API_URL_DESCRIPTION}/runsync", headers=headers, json=payload)
+    response_json = response.json()
+
+    if response_json.get("status") in ["IN_PROGRESS", "IN_QUEUE"]:
+        job_id = response_json["id"]
+        while True:
+            status_response = requests.get(f"{API_URL_DESCRIPTION}/status/{job_id}", headers=headers)
+            status_response.raise_for_status()
+            response_json = status_response.json()
+            print(response_json)
+            if response_json["status"] == "COMPLETED":
+                break
+            time.sleep(5)
+
+    return response_json["output"][0]["choices"][0]["tokens"][0]
+
+def get_pdf_description(pdf_bytes):
+    raw_text = extract_raw_text_from_pdf(pdf_bytes)
+    max_length = 80000
+    text_chunks = [raw_text[i:i + max_length] for i in range(0, len(raw_text), max_length)]
+    summaries = []
+
+    for text in text_chunks:
+        prompt = (
+            f"<s>[INST] Lies den folgenden Text:\n{text}\n\n"
+            "Gib zunächst das Ziel des Textes an und beginne mit 'Ziel:'. "
+            "Nenne anschließend die zentralen Themen des Textes. "
+            "Leite jedes Thema mit einer eigenen Überschrift ein, beginnend mit 'Thema 1:', 'Thema 2:', 'Thema 3:' usw. "
+            "Beschreibe jedes Thema jeweils in ein bis zwei klaren, vollständigen Sätzen. "
+            "Verwende ausschließlich Informationen aus dem Text. "
+            "Füge keinerlei eigene Inhalte hinzu.[/INST]"
+        )
+
+        payload = {
+            "input": {
+                "prompt": prompt,
+                "sampling_params": {
+                    "min_tokens": 25,
+                    "max_tokens": 500,
+                    "temperature": 0.15,
+                    "top_k": 25,
+                    "top_p": 0.95,
+                    "repetition_penalty": 1.3,
+                }
+            }
+        }
+
+        summary = runpod_request_with_polling_summary(payload)
+        summaries.append(summary)
+
+    summary_block = "\n\n".join([f"Summary {i+1}:\n{txt}" for i, txt in enumerate(summaries)])
+    print(summary_block)
+    merge_prompt = (
+        f"<s>[INST] Die folgenden Abschnitte enthalten mehrere thematische Zusammenfassungen:\n{summary_block}\n\n"
+        "Fasse sie alle zu einer einzigen, gemeinsamen Zusammenfassung zusammen.\n"
+        "Formuliere ein gemeinsames, übergreifendes Ziel und beginne mit 'Ziel:'.\n"
+        "Fasse anschließend alle Themen knapp und klar zusammen, in nummerierter Reihenfolge beginnend mit 'Thema 1:'.\n"
+        "Fasse verwandte Themen sinnvoll zusammen, lasse aber keine relevanten Inhalte weg.\n"
+        "Verwende ausschließlich Informationen aus den vorliegenden Zusammenfassungen.\n"
+        "Keine eigenen Interpretationen. Keine Erfindungen.[/INST]"
+    )
+
+    merge_payload = {
+        "input": {
+            "prompt": merge_prompt,
+            "sampling_params": {
+                "min_tokens": 50,
+                "max_tokens": 700,
+                "temperature": 0.15,
+                "top_k": 25,
+                "top_p": 0.95,
+                "repetition_penalty": 1.3,
+            }
+        }
+    }
+
+    final_summary = runpod_request_with_polling_summary(merge_payload)
+    return final_summary
 
 def write_metadata(pdf_bytes, name, output_io):
-    description = "die beschreibung"
-    #get_description(pdf_bytes)
-    images = "die bilder"
-    #sanitize_metadata(get_image_description(pdf_bytes, description))
-    meta = f"{description} Folgende Bilder sind zu erwähnen: {images}"
+    description = get_pdf_description(pdf_bytes)
+    sections = extract_text_sections(description)
+    
+    output_text = ""
+
+    docs = extract_text_pages_from_pdf(pdf_bytes)
+    doc_inputs = [f"passage: {doc}" for doc in docs]
+    doc_embeddings = [item["embedding"] for item in runpod_request_with_polling_embedding({"input": {"input": doc_inputs}})]
+    
+    for section_index, section in enumerate(sections, 1):
+        output_text += f"\n{section}\n"
+        if section_index == 1:
+            continue
+        top_pages = find_most_relevant_pages_with_embeddings(docs, section, doc_embeddings, top_k=5)
+        relevant_page_indices = [page_num for page_num, score, _ in top_pages]
+        images = extract_valid_images(pdf_bytes, relevant_page_indices)
+        image_result = request_image_selection_and_caption(images, section)
+        print(image_result)
+        output_text += image_result or ""
+
+    print(f"response: {output_text}")
+
+    meta = f"{output_text}"
     reader = PdfReader(io.BytesIO(pdf_bytes))
     writer = PdfWriter()
     for page in reader.pages:
@@ -258,10 +397,10 @@ def get_all_statuses(db: Session = Depends(get_db)):
 def download_zip(job_id: int, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     job = db.query(Job).get(job_id)
     if not job or not job.result_path or not os.path.exists(job.result_path):
+        db.delete(job)
+        db.commit()
+        background_tasks.add_task(os.remove, job.result_path)
         raise HTTPException(status_code=404, detail="Keine Datei gefunden")
-    db.delete(job)
-    db.commit()
-    background_tasks.add_task(os.remove, job.result_path)
     return FileResponse(
         path=job.result_path, 
         media_type="application/zip", 
