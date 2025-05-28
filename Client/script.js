@@ -185,7 +185,7 @@ submitBtn3.addEventListener('click', () => {
                 }
             })
             .catch(error => console.error("Status-Abfrage fehlgeschlagen:", error));
-    }, 1000);
+    }, 3000);
 });
 
 function downloadFile(job, buttonElement) {
@@ -264,7 +264,7 @@ submitBtn2.addEventListener('click', () => {
         .then(data => {
             const element = document.querySelector("#page2result");
             element.style.display = "block";
-            element.textContent = `Metadaten der Datei "${file.name}" (${file.type || 'Unbekannter Typ'}):\n\n${JSON.stringify(data, null, 2)}`;
+            element.innerHTML = `Metadaten der Datei "${file.name}" (${file.type || 'Unbekannter Typ'}):\n\n${JSON.stringify(data, null, 2).replace(/\n/g, "<br>")}`;
         })
         .catch(error => {
             console.error("Upload fehlgeschlagen:", error);

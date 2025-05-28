@@ -27,9 +27,9 @@
 - Choose a GPU with at least 80 GB RAM
 - Max Workers = 1, Execution Timeout = 10000
 - Add Environment Variables:
-  HF_TOKEN = <your Huggingface token>
-  MODEL_ID = google/gemma-3-12b-it
-  CAPTION_PROMPT = Describe the content of the image in one sentence.
+  HF_TOKEN = <your Huggingface token>, 
+  MODEL_ID = google/gemma-3-12b-it, 
+  CAPTION_PROMPT = "Describe the content of the image in one sentence."
 - Save endpoint
 - You’ll find the request URL under "Requests"
 - Monitor build status under "Builds"

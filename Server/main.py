@@ -81,9 +81,11 @@ def runpod_request_with_polling_embedding(payload):
             status_response = requests.get(status_url, headers=headers)
             status_response.raise_for_status()
             response_json = status_response.json()
-            print(response_json)
+            #print(response_json)
             if response_json["status"] == "COMPLETED":
                 break
+            if status in ["FAILED", "CANCELLED"]:
+                raise Exception(f"Job not successful. Status: {status}")
             time.sleep(5)
 
     return response_json["output"]["data"]
@@ -114,13 +116,13 @@ def is_valid_image(image_bytes):
 
     return True
 
-def extract_valid_images(pdf_bytes, page_numbers):
+def extract_valid_images(pdf_bytes, page):
     doc = pymupdf.open(stream=pdf_bytes, filetype="pdf")
     valid_images = []
     total_images = 0
-    for page_number in page_numbers:
+    for idx, (page_number, page_score) in enumerate(page):
         images = doc[page_number].get_images(full=True)
-        if total_images > 3:
+        if not (total_images == 0 or (idx <= 2 and total_images + len(images) <= 10 and page_score/page[0][1] >= 0.95)):
             break
         total_images += len(images)
         for i, img in enumerate(images):
@@ -161,56 +163,96 @@ def wait_for_completion(url_base, job_id):
         status_json = response.json()
         if status_json.get("status") == "COMPLETED":
             return status_json
+        if status in ["FAILED", "CANCELLED"]:
+            raise Exception(f"Job not successful. Status: {status}")
         time.sleep(5)
+
+def split_in_three(liste):
+    return [liste[i:i+3] for i in range(0, len(liste), 3)]
+
+def send_batch_request(encoded_images, section_text):
+    selection_prompt = (
+        f"Lies den folgenden Text:\n{section_text}\n\n"
+        "Dir werden mehrere Bilder gezeigt.\n"
+        "Analysiere alle Bilder sorgfältig.\n"
+        "Welches Bild passt inhaltlich am besten zum Text?\n"
+        "Antworte nur mit der Nummer des passenden Bildes – zum Beispiel: 1, 2, 3 usw.\n"
+        "Wenn keines der Bilder zum Text passt, antworte mit 0.\n"
+        "Keine Beschreibung. Keine Erklärung. Nur eine einzige Zahl."
+    )
+
+    payload = {
+        "input": {
+            "images": encoded_images,
+            "prompt": selection_prompt
+        }
+    }
+
+    selection_response = post_request(f"{API_URL_IMAGE_SELECTOR}/runsync", payload)
+
+    if selection_response.get("status") in ["IN_PROGRESS", "IN_QUEUE"]:
+        selection_response = wait_for_completion(API_URL_IMAGE_SELECTOR, selection_response["id"])
+
+    try:
+        output = int(selection_response.get("output", {}).get("caption", "-1"))
+    except ValueError:
+        print("Ungültige Ausgabe – kein gültiger Integer.")
+        return -1
+
+    print("\nGewähltes Bild:")
+    print(output)
+    return output
+
 
 def request_image_selection_and_caption(images, section_text):
     encoded_images = [encode_image_to_data_uri(img) for img in images if img]
     if not encoded_images:
         return ""
 
-    selection_prompt = (
-        f"Lies den folgenden Text:\n{section_text}\n\n"
-        "Dir werden mehrere Bilder gezeigt.\n"
-        "Analysiere alle Bilder sorgfältig.\n"
-        "Welches Bild passt inhaltlich am besten zum Text?\n"
-        "Gib nur die Nummer des passenden Bildes an – z. B. 1, 2, 3.\n"
-        "Wenn keines passt, gib 0 an. Keine Beschreibung. Keine Erklärung. Nur eine einzige Zahl."
-    )
+    batches = split_in_three(encoded_images)
+    selected_images = []
 
-    selection_payload = {"input": {"images": encoded_images, "prompt": selection_prompt}}
-    selection_response = post_request(f"{API_URL_IMAGE_SELECTOR}/runsync", selection_payload)
-    if selection_response.get("status") in ["IN_PROGRESS", "IN_QUEUE"]:
-        selection_response = wait_for_completion(API_URL_IMAGE_SELECTOR, selection_response["id"])
+    for batch in batches:
+        if len(batch) >= 1:
+            index = send_batch_request(batch, section_text)
+            if index > 0 and index <= len(batch):
+                selected_images.append(batch[index - 1])
 
-    try:
-        selected_index = int(selection_response.get("output", {}).get("caption", "-1"))
-    except ValueError:
+    if not selected_images:
+        print("Kein Bild wurde vom Modell ausgewählt.")
         return ""
+
+    selected_index = send_batch_request(selected_images, section_text)
 
     if selected_index == 0:
         print("Keines der Bilder wurde als passend zum Text bewertet.")
         return ""
 
-    if selected_index > len(encoded_images) or selected_index < 0:
+    if selected_index > len(selected_images) or selected_index < 0:
         print("Ausgewählter Bildindex liegt außerhalb des gültigen Bereichs.")
         return ""
 
     caption_prompt = (
         "Beschreibe das angegebene Bild.\n"
         "Gib ausschließlich eine Beschreibung des Bildes aus.\n"
-        "Keine Erklärungen, keine weiteren Informationen.\n"
-        "Nur die Bildbeschreibung."
+        "Keine Erklärungen, keine zusätzlichen Informationen.\n"
+        "Nur die Bildbeschreibung als Antwort.\n"
+        "Nutze maximal einen Satz."
     )
 
     caption_payload = {
-        "input": {"images": [encoded_images[selected_index - 1]], 
-                  "prompt": caption_prompt}
+        "input": {
+            "images": [selected_images[selected_index - 1]],
+            "prompt": caption_prompt
+        }
     }
+
     caption_response = post_request(f"{API_URL_IMAGE_SELECTOR}/runsync", caption_payload)
     if caption_response.get("status") in ["IN_PROGRESS", "IN_QUEUE"]:
         caption_response = wait_for_completion(API_URL_IMAGE_SELECTOR, caption_response["id"])
 
-    return f"\nWird dargestellt durch: {caption_response.get('output', {}).get('caption', '')}\n"
+    return f"\nDargestellt durch: {caption_response.get('output', {}).get('caption', '')}\n"
+
 
 # --- Beschreibungsgenerierung aus PDF-Inhalt ---
 def runpod_request_with_polling_summary(payload):
@@ -231,6 +273,8 @@ def runpod_request_with_polling_summary(payload):
             print(response_json)
             if response_json["status"] == "COMPLETED":
                 break
+            if status in ["FAILED", "CANCELLED"]:
+                raise Exception(f"Job not successful. Status: {status}")
             time.sleep(5)
 
     return response_json["output"][0]["choices"][0]["tokens"][0]
@@ -240,17 +284,43 @@ def get_pdf_description(pdf_bytes):
     max_length = 80000
     text_chunks = [raw_text[i:i + max_length] for i in range(0, len(raw_text), max_length)]
     summaries = []
+    output_format = (
+        "Ziel: <Ein einziger klar formulierter Satz, der den Hauptzweck des Textes zusammenfasst. "
+        "Es darf ausschließlich einen Ziel-Abschnitt geben – keine mehrfachen 'Ziel:'-Einträge.>\n\n"
+        
+        "Liste anschließend maximal 5 Hauptthemen in folgendem Format auf:\n"
+        "Thema 1: <Kurzer Titel>\n"
+        "- <Kurze und sachliche Beschreibung>\n\n"
+        "Thema 2: <Kurzer Titel>\n"
+        "- <Beschreibung>\n\n"
+        "(Fahre mit Thema 3, 4 und 5 fort, falls zutreffend)\n\n"
+        
+        "**Strenge Formatierungsregeln:**\n"
+        "- Genau ein Zielabschnitt erlaubt – keine mehrfachen 'Ziel:'-Abschnitte.\n"
+        "- Verwende für die Themenstruktur immer das Format 'Thema X:' (z. B. Thema 1:, Thema 2:) – keine Nummerierungen wie '1.', '2.', usw.\n"
+        "- Nutze ausschließlich Informationen aus dem Originaltext – keine Erfindungen oder Ergänzungen.\n"
+        "- Halte alle Beschreibungen kurz, sachlich und klar.\n"
+        "- Keine Markdown-Formatierungen, Anführungszeichen oder einleitende Formulierungen verwenden.\n\n"
+        
+        "**Beispielausgabe:**\n\n"
+        "Ziel: Schülerinnen und Schüler über Menschenaffen aufklären und für deren Schutz sensibilisieren.\n\n"
+        "Thema 1: Evolution und Merkmale\n"
+        "- Beschreibt körperliche Merkmale und genetische Ähnlichkeiten zwischen Menschen und Menschenaffen.\n\n"
+        "Thema 2: Lebensraum und Verbreitung\n"
+        "- Erklärt, wo verschiedene Arten von Menschenaffen in Afrika und Südostasien leben.\n\n"
+        "Thema 3: Hauptbedrohungen\n"
+        "- Behandelt Lebensraumverlust, Wilderei und Krankheitsübertragung als zentrale Gefahren.\n\n"
+        "Thema 4: Schutzmaßnahmen\n"
+        "- Hebt Maßnahmen des WWF und anderer Organisationen zum Schutz der Menschenaffen hervor.\n\n"
+        "Thema 5: Bildungsprogramme\n"
+        "- Beschreibt Initiativen wie das Young Panda Programm für junge Lernende.[/INST]"
+    )
 
     for text in text_chunks:
         prompt = (
             f"<s>[INST] Lies den folgenden Text:\n{text}\n\n"
-            "Gib zunächst das Ziel des Textes an und beginne mit 'Ziel:'. "
-            "Nenne anschließend die zentralen Themen des Textes. "
-            "Leite jedes Thema mit einer eigenen Überschrift ein, beginnend mit 'Thema 1:', 'Thema 2:', 'Thema 3:' usw. "
-            "Beschreibe jedes Thema jeweils in ein bis zwei klaren, vollständigen Sätzen. "
-            "Verwende ausschließlich Informationen aus dem Text. "
-            "Füge keinerlei eigene Inhalte hinzu.[/INST]"
-        )
+            "Fasse den Inhalt mit dem **genauen Format** unten zusammen:\n\n"
+        ) + output_format
 
         payload = {
             "input": {
@@ -271,31 +341,39 @@ def get_pdf_description(pdf_bytes):
 
     summary_block = "\n\n".join([f"Summary {i+1}:\n{txt}" for i, txt in enumerate(summaries)])
     print(summary_block)
-    merge_prompt = (
-        f"<s>[INST] Die folgenden Abschnitte enthalten mehrere thematische Zusammenfassungen:\n{summary_block}\n\n"
-        "Fasse sie alle zu einer einzigen, gemeinsamen Zusammenfassung zusammen.\n"
-        "Formuliere ein gemeinsames, übergreifendes Ziel und beginne mit 'Ziel:'.\n"
-        "Fasse anschließend alle Themen knapp und klar zusammen, in nummerierter Reihenfolge beginnend mit 'Thema 1:'.\n"
-        "Fasse verwandte Themen sinnvoll zusammen, lasse aber keine relevanten Inhalte weg.\n"
-        "Verwende ausschließlich Informationen aus den vorliegenden Zusammenfassungen.\n"
-        "Keine eigenen Interpretationen. Keine Erfindungen.[/INST]"
-    )
+    if len(summaries) > 1:
+        merge_prompt = (
+            f"<s>[INST] Die folgenden Abschnitte enthalten mehrere thematische Zusammenfassungen:\n{summary_block}\n\n"
+                "Erstelle daraus eine einzige, einheitliche Zusammenfassung.\n\n"
+                "**Anforderungen:**\n"
+                "- Formuliere ein einziges gemeinsames **Ziel**, das den übergreifenden Zweck aller vorhandenen Zusammenfassungen vereint.\n"
+                "- Wähle aus jeder einzelnen Zusammenfassung **ein bis zwei Themen**, die deren Hauptinhalte repräsentieren.\n"
+                "- Insgesamt dürfen **nicht mehr als 5 Themen** in der finalen Zusammenfassung enthalten sein.\n"
+                "- Kombiniere verwandte Themen aus verschiedenen Zusammenfassungen zu einem **gemeinsamen Thema**, wenn sie denselben Aspekt behandeln.\n"
+                "- Die endgültige Zusammenfassung soll **alle thematischen Inhalte der Ursprungsfassungen abdecken**, aber **ohne inhaltliche Wiederholungen**.\n"
+                "- Verwende **nur Informationen aus den vorliegenden Texten** – keine eigenen Ergänzungen oder Erfindungen.\n\n"
+                "**Halte dich exakt an dieses Format:**\n\n"
+        ) + output_format
 
-    merge_payload = {
-        "input": {
-            "prompt": merge_prompt,
-            "sampling_params": {
-                "min_tokens": 50,
-                "max_tokens": 700,
-                "temperature": 0.15,
-                "top_k": 25,
-                "top_p": 0.95,
-                "repetition_penalty": 1.3,
+        merge_payload = {
+            "input": {
+                "prompt": merge_prompt,
+                "sampling_params": {
+                    "min_tokens": 50,
+                    "max_tokens": 700,
+                    "temperature": 0.15,
+                    "top_k": 25,
+                    "top_p": 0.95,
+                    "repetition_penalty": 1.3,
+                }
             }
         }
-    }
 
-    final_summary = runpod_request_with_polling_summary(merge_payload)
+        final_summary = runpod_request_with_polling_summary(merge_payload)
+    elif len(summaries) == 1: 
+      final_summary = summaries[0]
+    else:
+      final_summary = "Kein Ergebnis"
     return final_summary
 
 def write_metadata(pdf_bytes, name, output_io):
@@ -313,7 +391,7 @@ def write_metadata(pdf_bytes, name, output_io):
         if section_index == 1:
             continue
         top_pages = find_most_relevant_pages_with_embeddings(docs, section, doc_embeddings, top_k=5)
-        relevant_page_indices = [page_num for page_num, score, _ in top_pages]
+        relevant_page_indices = [(page_num, score) for page_num, score, _ in top_pages]
         images = extract_valid_images(pdf_bytes, relevant_page_indices)
         image_result = request_image_selection_and_caption(images, section)
         print(image_result)
@@ -421,4 +499,4 @@ async def get_metadata(file: UploadFile = File(...)):
     contents = await file.read()
     reader = PdfReader(io.BytesIO(contents))
     metadata = reader.metadata
-    return metadata.get("/Subject", "Kein Betreff gefunden")
+    return metadata.get("/Subject", "Kein Betreff gefunden").replace("\n","<br>")
