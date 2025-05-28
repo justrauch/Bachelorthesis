@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 from streamlit_image_select import image_select
 
 if "seite" not in st.session_state:
