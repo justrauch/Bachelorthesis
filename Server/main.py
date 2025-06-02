@@ -26,7 +26,7 @@ from io import BytesIO
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-API_KEY = ''
+API_KEY = ""
 API_URL_IMAGE_SELECTOR = "https://api.runpod.ai/v2/gya7rpmqp97v58"
 API_URL_DESCRIPTION = "https://api.runpod.ai/v2/jh3t3ciq9y5su6"
 API_URL_EMBEDDINGS = "https://api.runpod.ai/v2/22vlo1l1fn5xqc"
@@ -84,8 +84,8 @@ def runpod_request_with_polling_embedding(payload):
             #print(response_json)
             if response_json["status"] == "COMPLETED":
                 break
-            if status in ["FAILED", "CANCELLED"]:
-                raise Exception(f"Job not successful. Status: {status}")
+            if response_json["status"] in ["FAILED", "CANCELLED"]:
+                raise Exception(f"Job not successful.")
             time.sleep(5)
 
     return response_json["output"]["data"]
@@ -122,7 +122,7 @@ def extract_valid_images(pdf_bytes, page):
     total_images = 0
     for idx, (page_number, page_score) in enumerate(page):
         images = doc[page_number].get_images(full=True)
-        if not (total_images == 0 or (idx <= 2 and total_images + len(images) <= 10 and page_score/page[0][1] >= 0.95)):
+        if not (total_images == 0 or (idx <= 4 and total_images + len(images) <= 12 and page_score/page[0][1] >= 0.90)):
             break
         total_images += len(images)
         for i, img in enumerate(images):
@@ -163,7 +163,7 @@ def wait_for_completion(url_base, job_id):
         status_json = response.json()
         if status_json.get("status") == "COMPLETED":
             return status_json
-        if status in ["FAILED", "CANCELLED"]:
+        if status_json.get("status") in ["FAILED", "CANCELLED"]:
             raise Exception(f"Job not successful. Status: {status}")
         time.sleep(5)
 
@@ -238,6 +238,7 @@ def request_image_selection_and_caption(images, section_text):
         "Keine Erklärungen, keine zusätzlichen Informationen.\n"
         "Nur die Bildbeschreibung als Antwort.\n"
         "Nutze maximal einen Satz."
+        "Die Bildbeschreibung muss auf Deutsch erfolgen.\n"
     )
 
     caption_payload = {
@@ -273,7 +274,7 @@ def runpod_request_with_polling_summary(payload):
             print(response_json)
             if response_json["status"] == "COMPLETED":
                 break
-            if status in ["FAILED", "CANCELLED"]:
+            if response_json["status"] in ["FAILED", "CANCELLED"]:
                 raise Exception(f"Job not successful. Status: {status}")
             time.sleep(5)
 
@@ -296,6 +297,7 @@ def get_pdf_description(pdf_bytes):
         "(Fahre mit Thema 3, 4 und 5 fort, falls zutreffend)\n\n"
         
         "**Strenge Formatierungsregeln:**\n"
+        "- Der gesamte Output muss auf Deutsch erfolgen.\n"
         "- Genau ein Zielabschnitt erlaubt – keine mehrfachen 'Ziel:'-Abschnitte.\n"
         "- Verwende für die Themenstruktur immer das Format 'Thema X:' (z. B. Thema 1:, Thema 2:) – keine Nummerierungen wie '1.', '2.', usw.\n"
         "- Nutze ausschließlich Informationen aus dem Originaltext – keine Erfindungen oder Ergänzungen.\n"
@@ -376,26 +378,52 @@ def get_pdf_description(pdf_bytes):
       final_summary = "Kein Ergebnis"
     return final_summary
 
+def make_unique_directory(base_path):
+    counter = 1
+    path = base_path
+
+    while os.path.exists(path):
+        path = f"{base_path}_({counter})"
+        counter += 1
+
+    os.makedirs(path)
+    return path
+
 def write_metadata(pdf_bytes, name, output_io):
+    print("Start with description")
     description = get_pdf_description(pdf_bytes)
     sections = extract_text_sections(description)
     
     output_text = ""
 
+    print("Start with Embeddings")
     docs = extract_text_pages_from_pdf(pdf_bytes)
     doc_inputs = [f"passage: {doc}" for doc in docs]
     doc_embeddings = [item["embedding"] for item in runpod_request_with_polling_embedding({"input": {"input": doc_inputs}})]
     
-    for section_index, section in enumerate(sections, 1):
-        output_text += f"\n{section}\n"
-        if section_index == 1:
-            continue
-        top_pages = find_most_relevant_pages_with_embeddings(docs, section, doc_embeddings, top_k=5)
-        relevant_page_indices = [(page_num, score) for page_num, score, _ in top_pages]
-        images = extract_valid_images(pdf_bytes, relevant_page_indices)
-        image_result = request_image_selection_and_caption(images, section)
-        print(image_result)
-        output_text += image_result or ""
+    print("Start with images")
+    pfad = "./images"
+    verzeichnis = make_unique_directory(f"./images/{name}")
+    if os.path.exists(pfad) and os.path.isdir(pfad):
+
+        for section_index, section in enumerate(sections, 1):
+            output_text += f"\n{section}\n"
+            if section_index == 1:
+                continue
+            top_pages = find_most_relevant_pages_with_embeddings(docs, section, doc_embeddings, top_k=5)
+            relevant_page_indices = [(page_num, score) for page_num, score, _ in top_pages]
+            images = extract_valid_images(pdf_bytes, relevant_page_indices)
+
+            for index, img in enumerate(images):
+
+                pfad = f"{verzeichnis}/Section{section_index - 1}_Bild{index}.png"
+
+                with open(pfad, "wb") as f:
+                    f.write(img)
+
+            image_result = request_image_selection_and_caption(images, section)
+            print(image_result)
+            output_text += image_result or ""
 
     print(f"response: {output_text}")
 
@@ -406,6 +434,11 @@ def write_metadata(pdf_bytes, name, output_io):
         writer.add_page(page)
     writer.add_metadata({"/Subject": meta})
     writer.write(output_io)
+
+    pdf_with_metadata_bytes = output_io.getvalue()
+    pfad = f"{verzeichnis}/{name}.pdf"
+    with open(pfad, "wb") as f:
+        f.write(pdf_with_metadata_bytes)
 
 # === API ROUTES ===
 @app.post("/api/process-zip")
@@ -427,7 +460,12 @@ def process_zip_task(zip_bytes, job_id):
     db = SessionLocal()
     try:
         job = db.query(Job).get(job_id)
-        temp_dir = tempfile.mkdtemp()
+
+        pfad = "./zip_folders"
+        if os.path.exists(pfad) and os.path.isdir(pfad):
+            temp_dir = "./zip_folders"
+        else:
+            temp_dir = tempfile.mkdtemp()
         out_path = os.path.join(temp_dir, f"result{job.id}.zip")
         job.result_path = out_path
         db.commit()
