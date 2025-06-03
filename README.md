@@ -1,111 +1,172 @@
-#### Setup Guide for bachelorthesis/Bachelorthesis/Server/
 
-### This guide describes how to set up the RunPod endpoints and the local server environment using Docker.
+### Setup Guide for `bachelorthesis/Bachelorthesis/Server/`
 
-## Prerequisites
-- Docker is installed and running.
-- You have a RunPod account with at least $5 in credits.
-- You have a Hugging Face account with a valid HF_TOKEN.
-- You have access to https://github.com/justrauch/gemma-captioner-images or a fork of it.
+#### This guide describes how to set up the RunPod endpoints and the local server environment using Docker.
 
-## RunPod Setup
+---
 
-1. Create RunPod Account & Add Credits
-- Sign up at https://runpod.io
-- Add at least $5 in credits
+### Prerequisites
 
-2. Connect GitHub
-- Go to Settings > Connections > Edit Connections
-- Authorize access to your GitHub account
+- Docker is installed and running  
+- You have a RunPod account with at least $5 in credits  
+- You have a Hugging Face account with a valid `HF_TOKEN`  
+- You have access to [`justrauch/gemma-captioner-images`](https://github.com/justrauch/gemma-captioner-images) or a fork of it  
 
-## Create Serverless Endpoints
+---
 
-1. Image Captioning with gemma-3
-- Go to Serverless > New Endpoint
-- Select GitHub Repo → Next
-- Enter: https://github.com/justrauch/gemma-captioner-images (or your fork) → Next
-- Choose a GPU with at least 80 GB RAM
-- Max Workers = 1, Execution Timeout = 10000
-- Add Environment Variables:
-  HF_TOKEN = <your Huggingface token>, 
-  MODEL_ID = google/gemma-3-12b-it, 
-  CAPTION_PROMPT = "Describe the content of the image in one sentence."
-- Save endpoint
-- You’ll find the request URL under "Requests"
-- Monitor build status under "Builds"
-- Pushes to the repo will trigger a rebuild
-- To switch Gemma model versions, change MODEL_ID to 1B, 4B, 12B, or 24B (only gemma-3 models supported)
+### RunPod Setup
 
-More info: https://blog.runpod.io/automated-image-captioning-with-gemma-3-on-runpod-serverless/
+#### 1. Create RunPod Account & Add Credits
+- Sign up at [https://runpod.io](https://runpod.io)  
+- Add at least $5 in credits  
 
-2. Serverless LLMs & Embeddings
+#### 2. Connect GitHub
+- Go to **Settings > Connections > Edit Connections**  
+- Authorize GitHub access  
 
-a) Mistral LLM (mistralai/Mistral-7B-Instruct-v0.3)
-- Go to Serverless > New Endpoint > Preset Models > Text
-- Set model: mistralai/Mistral-7B-Instruct-v0.3
-- RAM: min 48 GB
-- Max Workers: 1
+---
 
-Tip: Each endpoint starts with 3 workers. Reduce to 1 before creating another. Max total: 5.
+### Create Serverless Endpoints
 
-b) Embedding Model (intfloat/multilingual-e5-large)
-- Go to Preset Models > Embedding
-- Set model: intfloat/multilingual-e5-large
-- RAM: min 16 GB
-- Max Workers: 1
+#### Image Captioning with Gemma-3
 
-3. API Key Setup
-- Go to Settings > API Key > Create API Key
-- Name: e.g. BachelorProject
-- Type: Restricted
-- Permissions:
-  api.runpod.ai – read/write
-  All 3 Endpoints – read/write
-- Copy the API key
+1. Go to **Serverless > New Endpoint**  
+2. Select **GitHub Repo → Next**  
+3. Enter:  
+   ```
+   https://github.com/justrauch/gemma-captioner-images
+   ```
+   *(or your fork)*  
+4. Choose a GPU with **min. 80 GB RAM**  
+5. Set:
+   - Max Workers: `1`
+   - Execution Timeout: `10000`
+6. Add environment variables:
+   ```
+   HF_TOKEN=<your Huggingface token>
+   MODEL_ID=google/gemma-3-12b-it
+   CAPTION_PROMPT="Describe the content of the image in one sentence."
+   ```
+7. Save and wait for the build (see **Builds** tab)  
+8. Copy the **Request URL** under **Requests**  
 
-## main.py Configuration
-Set these variables in bachelorthesis/Bachelorthesis/Server/main.py:
+> To change Gemma model versions, update `MODEL_ID` to:  
+> `google/gemma-3-1.1b-it`, `4b`, `12b`, or `24b`  
+> *(Only Gemma-3 models are supported)*
 
+📖 More info:  
+[Automated Image Captioning on RunPod](https://blog.runpod.io/automated-image-captioning-with-gemma-3-on-runpod-serverless/)
+
+---
+
+#### LLM & Embeddings
+
+##### a) Mistral LLM (Text)
+- Go to: **Serverless > New Endpoint > Preset Models > Text**  
+- Select: `mistralai/Mistral-7B-Instruct-v0.3`  
+- RAM: min. `48 GB`  
+- Max Workers: `1`
+
+##### b) Embeddings
+- Go to: **Preset Models > Embedding**  
+- Select: `intfloat/multilingual-e5-large`  
+- RAM: min. `16 GB`  
+- Max Workers: `1`
+
+**RunPod Limit**: Max 5 workers total. Set workers = 1 per endpoint to avoid exceeding the limit.
+
+---
+
+### API Key Setup
+
+1. Go to **Settings > API Key > Create API Key**  
+2. Set:
+   - Name: e.g. `BachelorProject`
+   - Type: **Restricted**
+   - Permissions:
+     ```
+     api.runpod.ai – read/write
+     All 3 Endpoints – read/write
+     ```
+3. Copy the key and **store it securely**
+
+---
+
+### `main.py` Configuration
+
+In `bachelorthesis/Bachelorthesis/Server/main.py`, add:
+
+```python
 API_KEY = "<your RunPod API Key>"
 API_URL_IMAGE_SELECTOR = "<RunPod URL for gemma-3>"
 API_URL_DESCRIPTION = "<RunPod URL for mistralai>"
 API_URL_EMBEDDINGS = "<RunPod URL for intfloat>"
-
-Also, add the following entry to your .env file located at bachelorthesis/Bachelorthesis/.env:
-
-API_KEY = <your RunPod API Key>
-Note: The API key may be temporary. Please make sure it is still valid before using it.
-
-## Start Local Server with Docker
-```bash
-cd bachelorthesis/Bachelorthesis/Server/
-sudo service docker start       # or start Docker Desktop manually
-docker compose up --build       # Stop with Ctrl + C
 ```
 
-Remove Local Database and Stored Files
+Also in `.env` file (`bachelorthesis/Bachelorthesis/.env`):
+
+```
+API_KEY=<your RunPod API Key>
+```
+
+> **Note:** This key may be temporary. Please ensure it's still valid before use.
+
+---
+
+### Start Local Server with Docker
+
+```bash
+cd bachelorthesis/Bachelorthesis/Server/
+sudo service docker start      # or start Docker Desktop manually
+docker compose up --build      # Stop with Ctrl + C
+```
+
+To remove all local data:
+
+```bash
 docker compose down -v
+```
 
-## Use the Web App
-Open bachelorthesis/Bachelorthesis/Client/index.html in a browser.
-Disable built-in browser antivirus temporarily to avoid issues with \n or long metadata strings during downloads.
+---
 
-## Test PDFs
-Sample PDFs for testing are in:
+### Use the Web App
+
+Open the following file in your browser:
+
+```
+bachelorthesis/Bachelorthesis/Client/index.html
+```
+
+> 🛡️ Disable built-in browser antivirus temporarily if there are issues with newline characters or metadata in downloads.
+
+---
+
+### Test PDFs
+
+Use test files from:
+
+```
 bachelorthesis/Bachelorthesis/Bsp.zip
+```
 
-## Volumes in Server/docker-compose.yml
+---
 
+### Docker Volumes in `Server/docker-compose.yml`
+
+```yaml
 volumes:
   - ./images:/app/images
   - ./zip_folders:/app/zip_folders
   - appdata:/app/data
+```
 
-Explanation:
-- './images': Stores all extracted images on the host system,
-             grouped into folders named after the processed files.
-- './zip_folders': Stores generated ZIPs similarly on the host.
-- 'appdata': Internal persistent volume for additional application data.
+**Explanation:**
+
+- `./images`: stores extracted images per PDF file
+- `./zip_folders`: stores ZIP archives per PDF
+- `appdata`: internal Docker volume for app-specific data
+
+To avoid saving data on the host, comment out the bind mounts:
 
 ```yaml
 volumes:
@@ -114,70 +175,59 @@ volumes:
   - appdata:/app/data
 ```
 
-Explanation:
-- Comment out './images' and './zip_folders' if you do NOT want
-  images and ZIP files to be stored on your host system.
-- 'appdata' remains enabled as the internal persistent volume.
+To delete image & ZIP folders permanently:
 
-To permanently delete the folders and all their contents, run the following commands:
-
+```bash
 cd /bachelorthesis/Bachelorthesis/Server
 sudo rm -rf images/
 sudo rm -rf zip_folders/
+```
 
-Warning:
-These commands will irreversibly delete the folders and everything inside them.
-Make sure you back up any important data before proceeding.
-
-### Streamlit App Instructions
-
-## Dropbox Setup
-
-To use your own Dropbox account for storing images, follow these steps:
-
-1. **Create a Dropbox App**  
-   - Visit: [https://www.dropbox.com/developers/apps](https://www.dropbox.com/developers/apps)  
-   - Click **"Create app"**  
-   - Choose:
-     - **Scoped Access**
-     - **Full Dropbox**
-     - Give your app a unique name (e.g., `pdf-image-app`)  
-   - Click **"Create app"**
-
-2. **Configure Permissions**  
-   - Under the **"Permissions"** tab, enable:
-     - `files.content.write`
-     - `files.content.read`
-     - `sharing.write`  
-   - Click **"Submit"**
-
-3. **Generate an Access Token**  
-   - Go to the **"OAuth 2"** section  
-   - Click **"Generate access token"**  
-   - Copy the generated token
-
-4. **Update Your Script**  
-   - Open the file:  
-     `/bachelorthesis/Bachelorthesis/.env`  
-   - Set the variable:  
-      ACCESS_TOKEN=<your Dropbox Access Token>
-      Note: This token may be temporary — please ensure it is still valid before use.
+> These commands will irreversibly delete the contents. Backup first.
 
 ---
 
-## Starting the App
+## Streamlit App Instructions
 
-1. Make sure the folder `\bachelorthesis\Bachelorthesis\Server\images` exists.  
-   (It is defined as a volume in `Server/docker-compose.yml`.)
+### Dropbox Setup
 
-2. Add one or more subfolders inside the `images` folder.  
-   Each subfolder should contain images and a corresponding PDF file.
+1. **Create a Dropbox App**  
+   - Go to: [Dropbox Developer Apps](https://www.dropbox.com/developers/apps)  
+   - Click **"Create app"**
+   - Choose:
+     - Scoped Access  
+     - Full Dropbox  
+     - App Name: `pdf-image-app` (or similar)
 
-3. Open a terminal and run the following commands:
+2. **Configure Permissions**  
+   Enable:
+   - `files.content.write`
+   - `files.content.read`
+   - `sharing.write`
+
+3. **Generate an Access Token**  
+   - Go to **OAuth 2**  
+   - Click **Generate access token**  
+   - Copy the token
+
+4. **Add to `.env` File**  
+   Edit `.env` in `bachelorthesis/Bachelorthesis/`:
+
+   ```
+   ACCESS_TOKEN=<your Dropbox access token>
+   ```
+
+> Note: Dropbox tokens may be temporary. Re-generate if expired.
+
+---
+
+### Start the App
 
 ```bash
 cd /bachelorthesis/Bachelorthesis/streamlit
-pip install dropbox requests PyPDF2 streamlit streamlit-image-select streamlit-scroll-to-top streamlit-js-eval
-python3 help.py        # This generates the app.py file
-streamlit run app.py   # Starts the app
-# Press Ctrl+C to stop the app
+pip install -r requirements.txt  # or install manually
+python3 help.py                  # Generates the final app
+streamlit run app.py            # Launches the app
+```
+
+> Use `Ctrl + C` to stop the Streamlit server
