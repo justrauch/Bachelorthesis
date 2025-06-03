@@ -77,10 +77,11 @@ API_KEY = <your RunPod API Key>
 Note: The API key may be temporary. Please make sure it is still valid before using it.
 
 ## Start Local Server with Docker
-
+```bash
 cd bachelorthesis/Bachelorthesis/Server/
 sudo service docker start       # or start Docker Desktop manually
 docker compose up --build       # Stop with Ctrl + C
+```
 
 Remove Local Database and Stored Files
 docker compose down -v

@@ -1346,8 +1346,6 @@ if st.session_state.seite == "page10":
     st.write(f"Du hast Bild Nr. {img105} ausgewählt.")
     st.session_state.auswahl["Frage 10 Thema 5"] = img105
 
-    st.button("(Nachfolgende) Frage 11", on_click=lambda: wechsel_zu("page11"))
-
     with st.container():
         cols = st.columns([2] * 6)
         fragen = [1, 2, 3, 4, 5, 6]
