@@ -71,6 +71,11 @@ API_URL_IMAGE_SELECTOR = "<RunPod URL for gemma-3>"
 API_URL_DESCRIPTION = "<RunPod URL for mistralai>"
 API_URL_EMBEDDINGS = "<RunPod URL for intfloat>"
 
+Also, add the following entry to your .env file located at bachelorthesis/Bachelorthesis/.env:
+
+API_KEY = <your RunPod API Key>
+Note: The API key may be temporary. Please make sure it is still valid before using it.
+
 ## Start Local Server with Docker
 
 cd bachelorthesis/Bachelorthesis/Server/
@@ -152,12 +157,10 @@ To use your own Dropbox account for storing images, follow these steps:
 
 4. **Update Your Script**  
    - Open the file:  
-     `/bachelorthesis/Bachelorthesis/streamlit/help.py`  
-   - Replace the line:  
-     ```python
-     ACCESS_TOKEN = "PASTE_YOUR_ACCESS_TOKEN_HERE"
-     ```  
-     with your actual access token
+     `/bachelorthesis/Bachelorthesis/.env`  
+   - Set the variable:  
+      ACCESS_TOKEN=<your Dropbox Access Token>
+      Note: This token may be temporary — please ensure it is still valid before use.
 
 ---
 
@@ -173,6 +176,7 @@ To use your own Dropbox account for storing images, follow these steps:
 
 ```bash
 cd /bachelorthesis/Bachelorthesis/streamlit
+pip install dropbox requests PyPDF2 streamlit streamlit-image-select streamlit-scroll-to-top streamlit-js-eval
 python3 help.py        # This generates the app.py file
 streamlit run app.py   # Starts the app
 # Press Ctrl+C to stop the app

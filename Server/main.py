@@ -22,11 +22,15 @@ import requests
 import base64
 from io import BytesIO
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # === INIT ===
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-API_KEY = ""
+API_KEY = os.getenv("API_KEY")
 API_URL_IMAGE_SELECTOR = "https://api.runpod.ai/v2/gya7rpmqp97v58"
 API_URL_DESCRIPTION = "https://api.runpod.ai/v2/jh3t3ciq9y5su6"
 API_URL_EMBEDDINGS = "https://api.runpod.ai/v2/22vlo1l1fn5xqc"

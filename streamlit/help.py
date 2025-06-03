@@ -4,8 +4,12 @@ import re
 import requests
 import io
 from PyPDF2 import PdfReader
+from dotenv import load_dotenv
+import os
 
-ACCESS_TOKEN = ""
+load_dotenv()
+
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 
 dropbox_upload = False
 
@@ -78,31 +82,52 @@ if dropbox_upload:
     upload_folder(local_folder, dropbox_path)
 
 no_select_entry = list_dropbox_folder("/no_select_image")
-image_link = get_shared_link(no_select_entry[0]["path_display"])
+link1 = get_shared_link(no_select_entry[0]["path_display"])
+link2 = get_shared_link(no_select_entry[1]["path_display"])
+image_link = link1 if "bad-sets-komponenten-keine-auswahl" in link1 else link2
+placeholder_link = link2 if "bad-sets-komponenten-keine-auswahl" in link1 else link1
 
 intro_codezeilen = [
-    'import streamlit as st',
-    'from streamlit_image_select import image_select',
-    'import urllib.parse',
-    '',
-    'if "seite" not in st.session_state:',
-    '    st.session_state.seite = "page1"',
-    '',
-    'if "auswahl" not in st.session_state:',
-    '   st.session_state.auswahl = {}',
-    '',
-    'def wechsel_zu(seite):',
-    '    st.session_state.seite = seite',
-    '',
-    'text = (',
-    '    "Nachfolgend werden verschiedene Beschreibungen von PDFs angezeigt. "',
-    '    "Jede Beschreibung besteht aus mehreren Themen. "',
-    '    "Zu jedem Thema werden mehrere Bilder angezeigt. "',
-    '    "Wähle das Bild aus, das deiner Meinung nach am besten zum jeweiligen Thema passt, "',
-    '    "indem du es anklickst. "',
-    '    "Falls keines der Bilder passt, wähle das erste Bild (Bild 0) als Platzhalter."',
-    ')',
-    '',
+    "import streamlit as st",
+    "from streamlit_image_select import image_select",
+    "from streamlit_scroll_to_top import scroll_to_here",
+    "import urllib.parse",
+    "import uuid",
+    "",
+    "if \"email_count\" not in st.session_state:",
+    "    st.session_state.email_count = 0",
+    "",
+    "st.session_state._back_to = \"page1\"",
+    "if \"seite\" not in st.session_state:",
+    "    st.session_state.seite = \"page1\"",
+    "",
+    "if \"auswahl\" not in st.session_state:",
+    "   st.session_state.auswahl = {}",
+    "",
+    "def wechsel_zu(seite):",
+    "    st.session_state.seite = seite",
+    "",
+    "if \"reload_counter\" not in st.session_state:",
+    "    st.session_state.reload_counter = 0",
+    "",
+    "if 'scroll_to_top' not in st.session_state:",
+    "    st.session_state.scroll_to_top = False",
+    "",
+    "if st.session_state.scroll_to_top:",
+    "    scroll_to_here(0, key='top')",
+    "    st.session_state.scroll_to_top = False",
+    "",
+    "def scroll():",
+    "    st.session_state.scroll_to_top = True",
+    "",
+    "text = (",
+    "    \"Nachfolgend werden verschiedene Beschreibungen von PDFs angezeigt. \"",
+    "    \"Jede Beschreibung besteht aus mehreren Themen. \"",
+    "    \"Zu jedem Thema werden mehrere Bilder angezeigt. \"",
+    "    \"Wähle das Bild aus, das deiner Meinung nach am besten zum jeweiligen Thema passt, \"",
+    "    \"indem du es anklickst. \"",
+    "    \"Falls keines der Bilder passt, wähle das erste Bild (Bild 0) als Platzhalter.\"",
+    ")"
 ]
 
 with open("app.py", "w", encoding="utf-8") as f:
@@ -148,6 +173,11 @@ with open("app.py", "w", encoding="utf-8") as f:
         print('    st.text(text)', file=f)
         print("", file=f)
         print(f'    pdf_url = "{pdf_link.replace("dl=1", "dl=0")}"', file=f)
+        print('    st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."', file=f)
+        print('        "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")', file=f)
+        print("    if st.button(\"Neuladen\"):", file=f)
+        print("        st.session_state.reload_counter += 1", file=f)
+        print("        st.rerun()", file=f)
         print('    st.markdown(f\'<a href="{pdf_url}" target="_blank">PDF anzeigen</a>\', unsafe_allow_html=True)', file=f)
         print(f'    st.text({repr(subjects[0].split("Dargestellt durch:")[0])})', file=f)
         print("", file=f)
@@ -159,47 +189,78 @@ with open("app.py", "w", encoding="utf-8") as f:
             print('        "Label",', file=f)
             print('        [', file=f)
             print(f'            "{image_link}",', file=f)
+            count = 0
             for link in ret:
                 if f"Section{i}" in link:
+                    count += 1
                     print(f'            "{link}",', file=f)
+            
+            fill = (4 - (count + 1) % 4) % 4
+            for idx in range(fill):
+                print(f'            "{placeholder_link}",', file=f)
+
             print('        ],', file=f)
             print('        return_value="index",', file=f)
-            print('        index=0,', file=f)
-            print(f'        key="frage{index}{i}"', file=f)
+            print(f'        index=st.session_state.auswahl.get("Frage {index} Thema {i}", 0),', file=f)
+            print(f'        key=f"frage{index}{i}_{{st.session_state.reload_counter}}"', file=f)
             print('    )', file=f)
             print(f'    st.write(f"Du hast Bild Nr. {{img{index}{i}}} ausgewählt.")', file=f)
             print(f'    st.session_state.auswahl["Frage {index} Thema {i}"] = img{index}{i}', file=f)
             print("", file=f)
 
-        if index == unterordner_anzahl:
-            print(f'    st.button("Auswertung", on_click=lambda: wechsel_zu("auswertung"))', file=f)
-        else:
-            print(f'    st.button("Weiter zu Frage {index + 1}", on_click=lambda: wechsel_zu("page{index + 1}"))', file=f)
+
+        if index <= unterordner_anzahl:
+            print(f'    st.button("(Nachfolgende) Frage {index + 1}", on_click=lambda: wechsel_zu("page{index + 1}"))', file=f)
+            print("", file=f)
+
+        x = index
+        y = index + 1
+        n = unterordner_anzahl
+
+        zahlen = [i for i in range(1, n + 1) if i not in (x, y)]
+
+        gruppen = [zahlen[i:i + 6] for i in range(0, len(zahlen), 6)]
+
+        for gruppe in gruppen:
+                print("    with st.container():", file=f)
+                print("        cols = st.columns([2] * 6)", file=f)
+                print(f"        fragen = {gruppe}", file=f)
+                print("        for i, frage in enumerate(fragen):", file=f)
+                print('            cols[i].button(f"Frage {frage}", on_click=lambda s=f"page{frage}": wechsel_zu(s))', file=f)
+                print("", file=f)
+
+        print(f'    st.button("Auswertung", on_click=lambda: wechsel_zu("auswertung"))', file=f)
         print("", file=f)
 
     auswertung_codezeilen = [
-        'elif st.session_state.seite == "auswertung":',
-        '    st.title("Auswertung")',
-        '    st.write("Du hast diese Bilder gewählt:")',
-        '',
-        '    auswertung_text = ""',
-        '    letzte_frage = ""',
-        '',
-        '    for key, value in sorted(st.session_state.auswahl.items()):',
-        '        frage, thema = key.split(" Thema ")',
-        '        if frage != letzte_frage:',
-        '            auswertung_text += f"\\n{frage}:\\n"',
-        '            letzte_frage = frage',
-        '        auswertung_text += f"  Thema {thema} → Bild {value}\\n"',
-        '',
-        '    st.text(auswertung_text.strip())',
-        '',
-        '    encoded_body = urllib.parse.quote(auswertung_text)',
-        '    mailto_link = f"mailto:jstrauch@pagemachine.de?subject=Bilder-Umfrage&body={encoded_body}"',
-        '',
-        '    st.markdown(f"[Ergebnis per E-Mail senden]({mailto_link})", unsafe_allow_html=True)',
-        '',
-        '    st.button("Ändern", on_click=lambda: wechsel_zu("page1"))',
+        "elif st.session_state.seite == \"auswertung\":",
+        "    st.title(\"Auswertung\")",
+        "    st.write(\"Du hast diese Bilder gewählt:\")",
+        "",
+        "    auswertung_text = \"\"",
+        "    letzte_frage = \"\"",
+        "",
+        "    for key, value in sorted(st.session_state.auswahl.items()):",
+        "        frage, thema = key.split(\" Thema \")",
+        "        if frage != letzte_frage:",
+        "            auswertung_text += f\"\\n{frage}:\\n\"",
+        "            letzte_frage = frage",
+        "        auswertung_text += f\"  Thema {thema} → Bild {value}\\n\"",
+        "",
+        "    st.text(auswertung_text.strip())",
+        "",
+        "    encoded_body = urllib.parse.quote(auswertung_text)",
+        "    mailto_link = f\"mailto:jstrauch@pagemachine.de?subject=Bilder-Umfrage&body={encoded_body}\"",
+        "",
+        "    if st.button(\"Ergebnis per E-Mail senden\"):",
+        "        dummy_id = uuid.uuid4()",
+        "        js_code = f\"\"\"",
+        "        const dummy = \\\"{dummy_id}\\\";",
+        "        window.open(\\\"{mailto_link}\\\");",
+        "        \"\"\"",
+        "        st.components.v1.html(f\"<script>{js_code}</script>\", height=0)",
+        "",
+        "    st.button(\"Ändern\", on_click=lambda: wechsel_zu(\"page1\"))"
     ]
 
     for zeile in auswertung_codezeilen:

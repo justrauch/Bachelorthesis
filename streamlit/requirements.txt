@@ -1,2 +1,3 @@
 streamlit
-streamlit-image-select
+streamlit_image_select
+streamlit_scroll_to_top
