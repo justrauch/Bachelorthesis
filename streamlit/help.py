@@ -199,7 +199,7 @@ intro_codezeilen = [
     '        st.image(bsp1_arr[0 if bsp1_tmp == 1 else 1])',
     "",
     '    st.text('
-    '       "Auswahl Nr. 4 ist sinnvoll, da das Bild die im Text beschriebene Szene, in der mehrere Zebras gemeinsam\n"'
+    '       "Auswahl Nr. 4 ist sinnvoll, da das Bild die im Text beschriebene Szene, in der mehrere Zebras gemeinsam\\n"',
     '       "an einer Wasserstelle trinken, sehr gut visualisiert. Es unterstützt die Darstellung des typischen\\n"',
     '       "Lebensraums der Zebras und verdeutlicht ihr Sozialverhalten beim Trinken.\\n"',
     '       "Bild Nr. 3 passt weniger gut zur beschriebenen Szene, da es Zebras in Bewegung zeigt und nicht beim Trinken.\\n"',

@@ -55,21 +55,20 @@ if st.session_state.seite == "start":
 
     st.text("Beispiel 1")
     st.text(
-        "Thema 3: Was Menschenaffen bedroht\n"
-        "- Identifiziert Lebensraumverlust, Wilderei und Krankheitsübertragung "
-        "als zentrale Gefährdungen für das Überleben der Menschenaffen.\n"
-    )
+        "Thema 4: Lebensraum von Zebras\n"
+        "Zebras leben typischerweise in offenen Savannen und Graslandschaften Afrikas. Ein wichtiger Bestandteil\n"
+        "ihres Lebensraums sind Wasserstellen, die sie regelmäßig in Gruppen aufsuchen. Dabei ist zu beobachten\n"
+        "dass Zebras oft gemeinsam trinken, um sich gegenseitig vor möglichen Raubtieren zu schützen."    )
+
     img63 = image_select(
         "Auswahl:",
         [
-            "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-            "https://www.dropbox.com/scl/fi/bf18fv2si62f8naro66sj/Section3_Bild5.png?rlkey=zutrwmjgin0d0jgo8qtiscte9&dl=1",
-            "https://www.dropbox.com/scl/fi/ob662h63qtnq2egvt2qxl/Section3_Bild1.png?rlkey=s8m19j27xsuzafp7ywd5f9d1v&dl=1",
-            "https://www.dropbox.com/scl/fi/q59p8eewm3baqp5tjv7bg/Section3_Bild0.png?rlkey=35sms7zc1mgb1oa58n986azvq&dl=1",
-            "https://www.dropbox.com/scl/fi/g4fujb7yj006klnxf0r8x/Bsp1_Wahl.png?rlkey=0i9tsshdrngsa05acbish8di7&dl=1",
-            "https://www.dropbox.com/scl/fi/51pjhoeqjxekj9o6529do/Section3_Bild2.png?rlkey=6zamdzg38px5a2d3j8l8aq9fw&dl=1",
-            "https://www.dropbox.com/scl/fi/o0iiha9hc9k0wo5hi5xs7/Section3_Bild3.png?rlkey=8qfalj5szr5ga7mkzn7k261ut&dl=1",
-            "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+            "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+            "https://www.dropbox.com/scl/fi/gnrywvdllfedzqez5wn0j/WahrZebradpa0109-1.jpeg?rlkey=dp1lqmivqju68nxpdi15pwhv5&dl=1",
+            "https://www.dropbox.com/scl/fi/dv00ehp04mgyx1ohlnfb3/image3.jpg?rlkey=bb8dyqbxrxtj0tmgpirgdmltr&dl=1",
+            "https://www.dropbox.com/scl/fi/i04s5qrna96bln329otx6/Bsp1_Wahl.png?rlkey=ubintxzsj28w7bbeje2pegaof&dl=1",
+            "https://www.dropbox.com/scl/fi/jifip30fr6kfwllt8yhi5/file5_page6_image2.jpeg?rlkey=kouzj5k7zdfa4l9pas20k22sr&dl=1",
+            "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
         ],
         return_value="index",
         index=0,
@@ -78,8 +77,8 @@ if st.session_state.seite == "start":
 
     st.text("Gute Wahl:")
     bsp1_arr = [
-        "https://www.dropbox.com/scl/fi/g4fujb7yj006klnxf0r8x/Bsp1_Wahl.png?rlkey=0i9tsshdrngsa05acbish8di7&dl=1",
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
+        "https://www.dropbox.com/scl/fi/i04s5qrna96bln329otx6/Bsp1_Wahl.png?rlkey=ubintxzsj28w7bbeje2pegaof&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
     ]
     bsp1_tmp = st.session_state.reload_counter % 2
     if bsp1_tmp == 0:
@@ -87,41 +86,12 @@ if st.session_state.seite == "start":
     else:
         st.image(bsp1_arr[0 if bsp1_tmp == 1 else 1])
 
-    st.text("Auswahl Nr. 4 ist als Wahl sinnvoll da es denn die im Text beschriebenen Dinge gut visualisiert.")
-
-    st.text("Beispiel 2")
-    st.text(
-        "Thema 6: Astronomische Mediendatenbanken\n"
-        "- Stellt die RPIF als internationales Netzwerk von Bilddatenbanken unter Leitung der NASA vor, "
-        "mit Fokus auf astronomische Bilder, Daten und Dokumentationen.\n"
-    )
-
-    img55 = image_select(
-        "Auswahl:",
-        [
-            "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-            "https://www.dropbox.com/scl/fi/x528mv52jfn69fxx7s254/Bsp2_Wahl.png?rlkey=xnh9bswf81grc9cyh6epvomz1&dl=1",
-            "https://www.dropbox.com/scl/fi/45wvymwziunnfd1zsursw/Section5_Bild1.png?rlkey=xf6arwcz6dp3l051a88u7dmh8&dl=1",
-            "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        ],
-        return_value="index",
-        index=0,
-        key=f"bsp_2_{st.session_state.reload_counter}"
-    )
-
-    st.text("Weniger passende Wahl:")
-    bsp2_arr = [
-       "https://www.dropbox.com/scl/fi/x528mv52jfn69fxx7s254/Bsp2_Wahl.png?rlkey=xnh9bswf81grc9cyh6epvomz1&dl=1",
-       "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-    ]
-    bsp2_tmp = st.session_state.reload_counter % 2
-    if bsp2_tmp == 0:
-        st.image(bsp2_arr[0 if bsp2_tmp == 0 else 1])
-    else:
-        st.image(bsp2_arr[0 if bsp2_tmp == 1 else 1])
-
-    st.text(
-        "Auch wenn das Bild thematisch passt, bietet ein Logo als visuelles Element keinen nennenswerten Mehrwert für die inhaltliche Beschreibung."
+    st.text(       
+        "Auswahl Nr. 4 ist sinnvoll, da das Bild die im Text beschriebene Szene, in der mehrere Zebras gemeinsam"
+        "an einer Wasserstelle trinken, sehr gut visualisiert. Es unterstützt die Darstellung des typischen\n"
+        "Lebensraums der Zebras und verdeutlicht ihr Sozialverhalten beim Trinken.\n"
+        "Bild Nr. 3 passt weniger gut zur beschriebenen Szene, da es Zebras in Bewegung zeigt und nicht beim Trinken.\n"
+        "Wäre Auswahl Nr. 4 nicht vorhanden, wäre die beste Wahl hier, keines der gezeigten Bilder auszuwählen.\n"
     )
 
     st.button(f"Frage 1", on_click=lambda s=f"page1": wechsel_zu(s))
@@ -131,7 +101,7 @@ if st.session_state.seite == "page1":
     st.title("Seite 1")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/b8xnfbn9suybhooe5vhj9/40410000.pdf?rlkey=mewyd9ixhbscneamy9dks31s9&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/z93335bjzo7rm551y2vwd/40410000.pdf?rlkey=3kbzwf7limofb2vg15wuqeitd&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -143,10 +113,10 @@ if st.session_state.seite == "page1":
     st.text("Topic 1: Functions of the Bundestag\n- Outlines the role of the Bundestag as Germany's sole directly elected constitutional organ responsible for making federal laws, electing the chancellor, controlling the government, and participating in appointing various officials.\n\n")
 
     tmp11 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/zfqxjvodiy9zc1okmdjyl/Section1_Bild0.png?rlkey=ojnei2sc1uzrfbbh2w68l0ojp&dl=1",
-        "https://www.dropbox.com/scl/fi/k7oeapd8my6qtwljbqr7q/Section1_Bild2.png?rlkey=v9amfpbtf523or8xom84eyl6j&dl=1",
-        "https://www.dropbox.com/scl/fi/uzfhqmyci9qze2v7i5xqt/Section1_Bild1.png?rlkey=1mdwt8p5wv53n0qkznheaybqq&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/m0351svtaaasburfeqk9i/Section1_Bild0.png?rlkey=lmnmrip5xsjrad6p7ezc0szgh&dl=1",
+        "https://www.dropbox.com/scl/fi/1qe5m4vv31zfhx1iw6n9m/Section1_Bild2.png?rlkey=0i5qy7bv9swk2tqm5ar0btbd2&dl=1",
+        "https://www.dropbox.com/scl/fi/iqzkg3zycu5l0ephq8emh/Section1_Bild1.png?rlkey=g1a07qbj67mxq28v7bwejyn41&dl=1",
     ]
     img11 = image_select(
         "Auswahl:",
@@ -161,14 +131,14 @@ if st.session_state.seite == "page1":
     st.text('Topic 2: Composition of the Bundestag\n- Details how the parliament consists of 734 representatives who are chosen through direct elections every four years, with parties needing at least five percent support nationwide to enter the legislature unless they represent minority groups.\n\n')
 
     tmp12 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/jkyj2h2d65zdujlakv1di/Section2_Bild1.png?rlkey=2hsld6a220hh9pbbv26zm7z4l&dl=1",
-        "https://www.dropbox.com/scl/fi/tasvnlwpjuyapxdajsdlp/Section2_Bild3.png?rlkey=33zgqiprb1oq27k7j9m5y7eof&dl=1",
-        "https://www.dropbox.com/scl/fi/u05nbpdigebourazrwq5x/Section2_Bild0.png?rlkey=w2u9nnufhjpxurdvar4mbh12v&dl=1",
-        "https://www.dropbox.com/scl/fi/7ly5ng5lxrza8o7sqh3fp/Section2_Bild2.png?rlkey=5jhilowov2xs6ame7z3fgvbad&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/t6x2ohvd35xr04sutun1a/Section2_Bild1.png?rlkey=guczg5yk4bp06idh5bgkg9n0s&dl=1",
+        "https://www.dropbox.com/scl/fi/e4zwr7137cms65xqd2o7o/Section2_Bild3.png?rlkey=ng1a8auz5yb4wmzouk6csb4do&dl=1",
+        "https://www.dropbox.com/scl/fi/fr4f03ozbm3cj0msns2ee/Section2_Bild0.png?rlkey=okv4di8gkpctpcfjut2zcwejs&dl=1",
+        "https://www.dropbox.com/scl/fi/o3waiuvbm7fewf5r1lixj/Section2_Bild2.png?rlkey=zexmh1d7tr655btg060a2di8e&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img12 = image_select(
         "Auswahl:",
@@ -183,14 +153,14 @@ if st.session_state.seite == "page1":
     st.text('Topic 3: Key Figures During the 20th Term\n- Introduces the coalition government formed by the Social Democratic Party (SPD), Alliance 90/The Greens, and Free Democrats (FDP), along with notable individuals like Chancellor Olaf Scholz, Vice President Bärbel Bas, and party leaders within each group.\n\n')
 
     tmp13 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/dr0k4cdwav1potf844l1d/Section3_Bild1.png?rlkey=alyp21jg5onxntbv5qwho6etx&dl=1",
-        "https://www.dropbox.com/scl/fi/ny1vpuqlk50csqs6x9iux/Section3_Bild0.png?rlkey=jenmpsliuae1i78usoes0uhga&dl=1",
-        "https://www.dropbox.com/scl/fi/r1sygqo4p17i1u67o6v79/Section3_Bild2.png?rlkey=o1c04qx4z60yaumo1ahz8hmcs&dl=1",
-        "https://www.dropbox.com/scl/fi/fjdk6qbwwom7fwswmv1fr/Section3_Bild3.png?rlkey=z5epguu8g0n9qsdq2y5cc6xtr&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/1y6oixavvxrgr6obscvos/Section3_Bild1.png?rlkey=ullygffwo2frreefpwhzs45ng&dl=1",
+        "https://www.dropbox.com/scl/fi/29d6xuwhnizz42mfefkj9/Section3_Bild0.png?rlkey=3lwv01lo08kupsmt5579x8b9z&dl=1",
+        "https://www.dropbox.com/scl/fi/emq8z05e08evbgiqxuxo3/Section3_Bild2.png?rlkey=a08ctq9pw217qzskvs125e5lm&dl=1",
+        "https://www.dropbox.com/scl/fi/2ykjvmfemsfwoc1343bun/Section3_Bild3.png?rlkey=rb1fw8z382zkc82pnpkm65aw9&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img13 = image_select(
         "Auswahl:",
@@ -205,14 +175,14 @@ if st.session_state.seite == "page1":
     st.text('Topic 4: Important Buildings Used by the Bundestag\n- Overviews several key locations used by the parliament, including the iconic Reichstag building, the Paul-Loebe House, the Marie-Elisabeth-Lueders House, the Jakob-Kaiser House, and the newly constructed Luisenblock West.\n\n')
 
     tmp14 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/h81xdyau83ujmxfo8sglw/Section4_Bild3.png?rlkey=y7b32p7jhcdhd1pj1o7sl5pfb&dl=1",
-        "https://www.dropbox.com/scl/fi/2wv22g5sx6twe0ebq3zoo/Section4_Bild2.png?rlkey=x5lq52px1arcd6h6ltihwieff&dl=1",
-        "https://www.dropbox.com/scl/fi/dxm3ionlfexeo98za1yzy/Section4_Bild0.png?rlkey=klvq8vy7m296h4gsws6dkbrkp&dl=1",
-        "https://www.dropbox.com/scl/fi/2tf8vbrb509aie4t8fcj6/Section4_Bild1.png?rlkey=941q4529zy3ek2krkfue3mvwu&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/ui8eukzyzpcfxuemy7fmv/Section4_Bild3.png?rlkey=7l1ytw5o2j4votrq9n1b7a0do&dl=1",
+        "https://www.dropbox.com/scl/fi/yv3yexhmlsfy3dwao76cu/Section4_Bild2.png?rlkey=w3s7d78fb46q2w87gp2ekl2to&dl=1",
+        "https://www.dropbox.com/scl/fi/o1juy4tfnhm2sh1kddhus/Section4_Bild0.png?rlkey=6qfnyzhjoyv4op9r5253x7leq&dl=1",
+        "https://www.dropbox.com/scl/fi/iindmhappmyc566spdbz5/Section4_Bild1.png?rlkey=q20l3vn229c5e4k2esfxgnjsr&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img14 = image_select(
         "Auswahl:",
@@ -227,14 +197,14 @@ if st.session_state.seite == "page1":
     st.text('Topic 5: Process of Electing Members and Passing Laws\n- Breaks down the steps involved in passing legislation, starting with proposal submission followed by committee review, debate, voting, and final approval before becoming law. Also explains the procedure for choosing the chancellor and other high-level positions.\n\n')
 
     tmp15 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/kp9ol1kjzd68noksyabjd/Section5_Bild0.png?rlkey=6zb3og3bnbpfmnlsjrmz6t8dg&dl=1",
-        "https://www.dropbox.com/scl/fi/xnzfyb1d89i6y24hkki0j/Section5_Bild1.png?rlkey=tj7kzy22nubr0t16nhxt8poo0&dl=1",
-        "https://www.dropbox.com/scl/fi/yozszwensttyxool9hv4q/Section5_Bild2.png?rlkey=cpugxh6yqum9a4b43h1fnb7la&dl=1",
-        "https://www.dropbox.com/scl/fi/lfquwhk2kx1w5mirjdtxr/Section5_Bild3.png?rlkey=so7q9fhrgg28yuyq32psxbr1m&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/8pz9q0senogpg5uoz1ff5/Section5_Bild0.png?rlkey=sp50yagai2fq97fbxk6jtbhf6&dl=1",
+        "https://www.dropbox.com/scl/fi/erwd24m015hgfids1njb1/Section5_Bild1.png?rlkey=k7ljevark1qraqceqlfvy8rlm&dl=1",
+        "https://www.dropbox.com/scl/fi/fswoipcgrv9uzijeuqlxn/Section5_Bild2.png?rlkey=5jb579cjaw5vb08sfhnsld6hq&dl=1",
+        "https://www.dropbox.com/scl/fi/ip57qcispln8mp2f8552h/Section5_Bild3.png?rlkey=m9pmlky2xh0jleh0nnbhbtemp&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img15 = image_select(
         "Auswahl:",
@@ -270,7 +240,7 @@ if st.session_state.seite == "page2":
     st.title("Seite 2")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/owtdmytwjgxtq0bcdcbxv/potenzial_der_windenergie.pdf?rlkey=xkfasmj27usqr5cgkb3pwbf7n&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/uk3rrejhj1ayneahq46z1/potenzial_der_windenergie.pdf?rlkey=itcvbluhbbwf724y69kn2wuob&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -290,10 +260,10 @@ if st.session_state.seite == "page2":
     st.text('Topic 5: Comparison Between Realistic Implementation & Maximum Possible Output\n- Compares the realizable wind energy potential against theoretical estimates highlighting significant discrepancies caused by practical obstacles discussed throughout the report.\n\n')
 
     tmp25 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/t55mee3sfxq4m7lnduvgr/Section5_Bild0.png?rlkey=6mm5ib9my1mplf242m0kyk2no&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/esjpt9kwiad4jau7zszox/Section5_Bild0.png?rlkey=egq4xgqm46pf0772qdy1l59hc&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img25 = image_select(
         "Auswahl:",
@@ -329,7 +299,7 @@ if st.session_state.seite == "page3":
     st.title("Seite 3")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/azcxzjvsose6ojegh548b/Probe345Bd93.pdf?rlkey=7odduh6lqrolhemk8uox7qkm5&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/bi8w9sl7qnq9h18j39715/Probe345Bd93.pdf?rlkey=j4omzxee0cohz3gdzmghixbrz&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -341,14 +311,14 @@ if st.session_state.seite == "page3":
     st.text("Topic 1: History and Origin\n- Discusses when dinosaurs first emerged during Earth's history and how they evolved into various groups like sauropods, theropods, ceratopsians, and others.\n\n")
 
     tmp31 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/f6poki219ikeuis6dviqg/Section1_Bild0.png?rlkey=0c5v26jbu31zv1cjpnp6okw48&dl=1",
-        "https://www.dropbox.com/scl/fi/88teazr6gybdhmkxrbv3c/Section1_Bild6.png?rlkey=ox1ro2q5or0m372lset8t3062&dl=1",
-        "https://www.dropbox.com/scl/fi/lguc2369qc6a6tba2d5tf/Section1_Bild2.png?rlkey=9fo0e5ndg56wjosgrd0xunjfx&dl=1",
-        "https://www.dropbox.com/scl/fi/s3n6panp30neqnqsy4qk5/Section1_Bild5.png?rlkey=7wdbzlr3kak0j9wstg4rgt83x&dl=1",
-        "https://www.dropbox.com/scl/fi/2n2smnr9dj2wncdra7l79/Section1_Bild7.png?rlkey=tvb3xcki53346gqgmyc80dmpf&dl=1",
-        "https://www.dropbox.com/scl/fi/qk0rr2ojv07hi72km5ubf/Section1_Bild8.png?rlkey=2hcd5sqhov20ezacnwjaxz3op&dl=1",
-        "https://www.dropbox.com/scl/fi/65hwd2crflodgp9bmpeec/Section1_Bild1.png?rlkey=xwrsxlj9047khehhm67permqz&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/1admsp4990d1r371o9o3p/Section1_Bild0.png?rlkey=gkozvzpe09cnefgu3t0o519eq&dl=1",
+        "https://www.dropbox.com/scl/fi/r649wlyp1wyq82azm2bxw/Section1_Bild6.png?rlkey=6mjjdq2uw3zru2tqbp72g3l3r&dl=1",
+        "https://www.dropbox.com/scl/fi/jbx93gbix90o7xstxlm4h/Section1_Bild2.png?rlkey=hdult7105pxx89k3kmcinsg7o&dl=1",
+        "https://www.dropbox.com/scl/fi/05xkuttgroai0k5r8v48j/Section1_Bild5.png?rlkey=0e2cu4pyh9s0qdveykwmxr3pd&dl=1",
+        "https://www.dropbox.com/scl/fi/4v6jz0qr1cngqbmw8qqkq/Section1_Bild7.png?rlkey=kznod4rcyi6tvqf5p8rdppdje&dl=1",
+        "https://www.dropbox.com/scl/fi/iz10yoqg1p7vfuzvhfhld/Section1_Bild8.png?rlkey=4iec51u5k11hw8vji8zcbw3xd&dl=1",
+        "https://www.dropbox.com/scl/fi/pdno8e36b6hcpjguld2qj/Section1_Bild1.png?rlkey=az6m16f33zebwwezrquokme1o&dl=1",
     ]
     img31 = image_select(
         "Auswahl:",
@@ -364,10 +334,10 @@ if st.session_state.seite == "page3":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp31 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/mud555cy7cgdec749kylz/Section1_Bild4.png?rlkey=08illts8i8on32ck7sgmzy8nx&dl=1",
-        "https://www.dropbox.com/scl/fi/87a7xfohc544q62x2pepz/Section1_Bild3.png?rlkey=cf3yz9fl7rm0omzu9nz8o7l2t&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/us9bz480prgpvzimwidp3/Section1_Bild4.png?rlkey=5mzuswlol5db8ty6u42pb7n55&dl=1",
+        "https://www.dropbox.com/scl/fi/t6u8g4d7841j298v6niz6/Section1_Bild3.png?rlkey=fjzt5q2cxe26iqk8lr2l2x1ul&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg31 = image_select(
         "Auswahl:",
@@ -383,18 +353,18 @@ if st.session_state.seite == "page3":
     st.text('Topic 2: Physical Features and Adaptations\n- Details the body structure, limbs, skull shape, and specializations found among different types of dinosaurs, such as the development of wings in pterosaurs and feathers in certain therapods.\n\n')
 
     tmp32 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/4ogkxkn958dpw71r4mhs7/Section2_Bild1.png?rlkey=yrbsk6ot133iqg59hs2zc3iwp&dl=1",
-        "https://www.dropbox.com/scl/fi/cqgy8l09dlyy06q1eoiag/Section2_Bild3.png?rlkey=tvepa2r8u2ghncr5gupqttsx0&dl=1",
-        "https://www.dropbox.com/scl/fi/cxmizx1pt855eu1l6efwy/Section2_Bild0.png?rlkey=icca13m7iurs3iluch9n82ir1&dl=1",
-        "https://www.dropbox.com/scl/fi/kiiwgwenu22q4jtjka9hy/Section2_Bild2.png?rlkey=3ozmkktckgcioxd4su1z3j8kr&dl=1",
-        "https://www.dropbox.com/scl/fi/3wr46v0lpp72vf3v4b0di/Section2_Bild8.png?rlkey=txcoow4mru00v2zndykudn17f&dl=1",
-        "https://www.dropbox.com/scl/fi/i9wkcspba8thf1h0cv93h/Section2_Bild6.png?rlkey=6g3mpi1jy436lga50hgr6klp3&dl=1",
-        "https://www.dropbox.com/scl/fi/ypky0137ijo4p5z75u4pi/Section2_Bild4.png?rlkey=ncdzxwh6635zwzowghconc7sn&dl=1",
-        "https://www.dropbox.com/scl/fi/lq9iopmscufepmxcqhdqj/Section2_Bild5.png?rlkey=y05hprbee0195s2q8koq56qsu&dl=1",
-        "https://www.dropbox.com/scl/fi/wx3w4xc75fgm2wicz6kjy/Section2_Bild7.png?rlkey=23kjmwq6oml3anjc0ap23jjy3&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/sj5n3jhftd25anpm0nlhc/Section2_Bild1.png?rlkey=dave8tdvwdnh96t3fsqt53ek9&dl=1",
+        "https://www.dropbox.com/scl/fi/918rlrwy4e8eszbr949nf/Section2_Bild3.png?rlkey=qb8im6idifghvcvk0vy2j68j8&dl=1",
+        "https://www.dropbox.com/scl/fi/v5dpcwfalxbbo6b4ofuap/Section2_Bild0.png?rlkey=8fq3fek233u88d0uyb6xvi7j5&dl=1",
+        "https://www.dropbox.com/scl/fi/xthpxikwojv026mo1cmy4/Section2_Bild2.png?rlkey=1d5gl1t7sx84qld0dp1guevdm&dl=1",
+        "https://www.dropbox.com/scl/fi/idymx53khg3rpb6bei8ty/Section2_Bild8.png?rlkey=nkgh7nje12vclcc3yovr3kslo&dl=1",
+        "https://www.dropbox.com/scl/fi/c038787tgerajblh1olwk/Section2_Bild6.png?rlkey=eflhxaafk0kxxf1lc5r8qmekd&dl=1",
+        "https://www.dropbox.com/scl/fi/w679tlk8v8f1r56v7qytd/Section2_Bild4.png?rlkey=mbz2phukdzu8embrbxol182vz&dl=1",
+        "https://www.dropbox.com/scl/fi/kgwxzcc9gcnzq6fubch28/Section2_Bild5.png?rlkey=e31jwl3kklbgmf72fz5t7nb8g&dl=1",
+        "https://www.dropbox.com/scl/fi/9auj8f9bfiod953ntw3sj/Section2_Bild7.png?rlkey=dpj6imu2sp3p7bmo2xvzr6bul&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img32 = image_select(
         "Auswahl:",
@@ -410,10 +380,10 @@ if st.session_state.seite == "page3":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp32 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/bobsgfsobtbnfffa7wkyc/Section2_Bild10.png?rlkey=64fmf1na0hjhirp2ivwgkltmr&dl=1",
-        "https://www.dropbox.com/scl/fi/uekdjrgymf00z96j5mopw/Section2_Bild9.png?rlkey=bdivw7gigk3ybhdt36rjh1mtm&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/dfia1fkzew81rrzcnn9cl/Section2_Bild10.png?rlkey=qfpfs3pfqyhg3lmzmnyay15wz&dl=1",
+        "https://www.dropbox.com/scl/fi/lj15hl34yrm7kukeir0at/Section2_Bild9.png?rlkey=51tgc140nqzrd2voelfl2zgfx&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg32 = image_select(
         "Auswahl:",
@@ -429,14 +399,14 @@ if st.session_state.seite == "page3":
     st.text('Topic 3: Diet and Food Source\n- Elucidates what dinosaurs ate based on fossil evidence, ranging from plants to meat depending on the specific type of dinosaur.\n\n')
 
     tmp33 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/oxmmdcueeriudwwsb51kz/Section3_Bild5.png?rlkey=uj6sokm6ud8jih3yv3ijf7x9m&dl=1",
-        "https://www.dropbox.com/scl/fi/awa9qxsq4tdaz2ve4a44v/Section3_Bild1.png?rlkey=zgjdapg7l75fuibjv5l52p41x&dl=1",
-        "https://www.dropbox.com/scl/fi/dzmhq92acnx7k64e3j9bz/Section3_Bild0.png?rlkey=l3wudb2z6mwuqcj1257oo0mrj&dl=1",
-        "https://www.dropbox.com/scl/fi/a0mcifv4ebobqa99x4ftg/Section3_Bild4.png?rlkey=iabrii5zt36i8li5i5iwf25k3&dl=1",
-        "https://www.dropbox.com/scl/fi/sc8moizkbqqn4b98flqba/Section3_Bild2.png?rlkey=vyt0wrvton859jbvjze8kesg2&dl=1",
-        "https://www.dropbox.com/scl/fi/1f5yni1fsip0pcf8051m1/Section3_Bild3.png?rlkey=ype0exh7t1k3zofv25eh2ccxr&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/iq7djpgp0bu76yet0o057/Section3_Bild5.png?rlkey=3qsym2xl6jo9pehbks9xs0p8n&dl=1",
+        "https://www.dropbox.com/scl/fi/0o5nchf96g9fq3fjwcxn8/Section3_Bild1.png?rlkey=ww1y3pzzdjxe89u0csaxd953q&dl=1",
+        "https://www.dropbox.com/scl/fi/i4y4gnh79kf4rwszser7y/Section3_Bild0.png?rlkey=y0ypoeakv48owlwcpkptnlfn2&dl=1",
+        "https://www.dropbox.com/scl/fi/2n9wk8kiecj1fllzihm38/Section3_Bild4.png?rlkey=ysnp4o2lsmhfz691bim0vx8mu&dl=1",
+        "https://www.dropbox.com/scl/fi/88itz34vsc9e66rwkobvd/Section3_Bild2.png?rlkey=r4z124zlo7jiwcqv4bb6pubmz&dl=1",
+        "https://www.dropbox.com/scl/fi/irujxcm4niux9x9toayu4/Section3_Bild3.png?rlkey=j5mxgyaryx0ktrwuacxw8mxoe&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img33 = image_select(
         "Auswahl:",
@@ -451,14 +421,14 @@ if st.session_state.seite == "page3":
     st.text('Topic 4: Global Presence and Range\n- Outlines the spread of dinosaurs across continents throughout the Mesozoic Era, including their presence in both tropical regions and near the poles.\n\n')
 
     tmp34 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/3cgyehlmlc7t9nk8c6hff/Section4_Bild3.png?rlkey=j7lmxxhtalf0rky0mduuv8olt&dl=1",
-        "https://www.dropbox.com/scl/fi/db9tky51ac699ozy3rr1f/Section4_Bild2.png?rlkey=l6nxpwl75unyjgxkjjtx4phtq&dl=1",
-        "https://www.dropbox.com/scl/fi/qglfk2dz3o7hip6tf27gx/Section4_Bild0.png?rlkey=i8ytbzlhyjvrks1yvethdfdtk&dl=1",
-        "https://www.dropbox.com/scl/fi/k6n3ttwkj743glnorv459/Section4_Bild4.png?rlkey=346poj5dnwunq9nwvlsvlljh9&dl=1",
-        "https://www.dropbox.com/scl/fi/mh0dxbqgowyr91l1e4j8f/Section4_Bild1.png?rlkey=0jngaob31vkhuab04clqznjxg&dl=1",
-        "https://www.dropbox.com/scl/fi/jggrl6a32h0fftkbq7edz/Section4_Bild5.png?rlkey=5c0i5qyk7th4z4s3xi2fc2tlv&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/ahwu80v5pin9hgxifv50g/Section4_Bild3.png?rlkey=nppxm3fxjpbpins9ys8t1xcya&dl=1",
+        "https://www.dropbox.com/scl/fi/cxne01rezgrqr7jh786qg/Section4_Bild2.png?rlkey=ki48ijor7zpf9r59d07rlfco6&dl=1",
+        "https://www.dropbox.com/scl/fi/mywqxnnl87zzncs8siln4/Section4_Bild0.png?rlkey=50vwgq658lnsk1gd2f9hfm6zy&dl=1",
+        "https://www.dropbox.com/scl/fi/6oh72xedq4qpv06oqhvlx/Section4_Bild4.png?rlkey=0a03e021sxtauy8pehwahtp2k&dl=1",
+        "https://www.dropbox.com/scl/fi/6wufcyqzn1ifqidlidf9i/Section4_Bild1.png?rlkey=ctulqh7u0n5v4wm82l4hva98m&dl=1",
+        "https://www.dropbox.com/scl/fi/5i3hc2bqykjzesiboltz7/Section4_Bild5.png?rlkey=mbatthp4td0h1y2jjx5hfmwg9&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img34 = image_select(
         "Auswahl:",
@@ -473,18 +443,18 @@ if st.session_state.seite == "page3":
     st.text('Topic 5: Decline and Extinction\n- Addresses theories behind why dinosaurs went extinct around 65 million years ago, focusing on potential factors like meteor impacts, volcanic activity, climate change, and competition with early mammals.\n\n')
 
     tmp35 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/7btgbwayg6xwyzpxxf5pa/Section5_Bild5.png?rlkey=kifg02bddrbafqavu2892pjst&dl=1",
-        "https://www.dropbox.com/scl/fi/jmxjw70kub08a54c4bwfj/Section5_Bild8.png?rlkey=n9yzo9fw81rhkhet8ctfzcgra&dl=1",
-        "https://www.dropbox.com/scl/fi/dzfmatz1y54b0dr20y56j/Section5_Bild0.png?rlkey=zw0ujfl25y56peokos8shlmnc&dl=1",
-        "https://www.dropbox.com/scl/fi/8vs38oiqtse8r16taidiw/Section5_Bild1.png?rlkey=eszzw94gcz1teov7nvs6iatpk&dl=1",
-        "https://www.dropbox.com/scl/fi/l205z8pgo6i0j2yh0jhdt/Section5_Bild2.png?rlkey=y7nh3nndb64b14943yyjj4hsm&dl=1",
-        "https://www.dropbox.com/scl/fi/vb5qljvpndndglvxfqqzj/Section5_Bild7.png?rlkey=028srn3m6bl2p8045r5tgvxxl&dl=1",
-        "https://www.dropbox.com/scl/fi/cpfx693cxyf6x7u9xofra/Section5_Bild4.png?rlkey=53kpcgund7nko9y3ebv9sqz4p&dl=1",
-        "https://www.dropbox.com/scl/fi/128kr974kvte9voqh6am7/Section5_Bild6.png?rlkey=f4kkzgkx5mh7zupxy8xiejr7n&dl=1",
-        "https://www.dropbox.com/scl/fi/3g43rl1dlzl0i8u3g7m0v/Section5_Bild3.png?rlkey=negsormlk1hxhmp2e9c2rkvj3&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/211ri032f9jiv405uy2hj/Section5_Bild5.png?rlkey=d8gav5f1zca63a66mm45414hk&dl=1",
+        "https://www.dropbox.com/scl/fi/43lwoxdwpl5huhzowsfwj/Section5_Bild8.png?rlkey=nos979x8xlq4caicpenfvgpv4&dl=1",
+        "https://www.dropbox.com/scl/fi/r5onun8jz68fu0rfntkjd/Section5_Bild0.png?rlkey=4i0hitx2qu4ioi55ju0b6z5kq&dl=1",
+        "https://www.dropbox.com/scl/fi/jc405yotq9x5gax6xjqph/Section5_Bild1.png?rlkey=nilquhsrhum0taquuaxlm9uwn&dl=1",
+        "https://www.dropbox.com/scl/fi/pfco4tn995y6tr0h2sose/Section5_Bild2.png?rlkey=slawea6yo96fclhm4om2dvwdy&dl=1",
+        "https://www.dropbox.com/scl/fi/qh74c3xs75g5gl3d93275/Section5_Bild7.png?rlkey=lmehtduriw92kf9kr43neyi5i&dl=1",
+        "https://www.dropbox.com/scl/fi/rt6jts1yde7ld6avb6u36/Section5_Bild4.png?rlkey=rqc9fo8p1pcc2hlep84rceijw&dl=1",
+        "https://www.dropbox.com/scl/fi/0h6x0iyoxmp39yp0440qr/Section5_Bild6.png?rlkey=w5z2j8piqiu6hyb4n3owys16r&dl=1",
+        "https://www.dropbox.com/scl/fi/7g3m2jxddfdgt1cfna41o/Section5_Bild3.png?rlkey=hxtyel14nja94hs4wzppvymva&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img35 = image_select(
         "Auswahl:",
@@ -520,7 +490,7 @@ if st.session_state.seite == "page4":
     st.title("Seite 4")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/iyv9yl773seq19etmhriv/Zweiter_Weltkrieg_01.pdf?rlkey=2s7gk93ldax54v383aqrxa6bj&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/qbkzfdlu6d4y3k9t27iaw/Zweiter_Weltkrieg_01.pdf?rlkey=2kuwugtc1jclup8m1nfljgow4&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -532,14 +502,14 @@ if st.session_state.seite == "page4":
     st.text('Topic 1: Pre-World War II Era\n- Details the dissolution of the monarchy in Austria-Hungary after World War I, establishment of the First Republic, Treaties of Versailles and Saint Germain assigning blame for World War I to Germany and Austria, economic struggles faced by the new republic in the 1920s.\n\n')
 
     tmp41 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/v1rfw1xx5kp7ftcxxrcca/Section1_Bild0.png?rlkey=cb26u6jua0nzm82y1fbetuzhm&dl=1",
-        "https://www.dropbox.com/scl/fi/i4yxmdgwz8rgbmikq50eb/Section1_Bild2.png?rlkey=m73iq2oih8xnyqkaykyrxx5fi&dl=1",
-        "https://www.dropbox.com/scl/fi/n78aqw6wvivv3hxkiqqjo/Section1_Bild1.png?rlkey=ccci67js2g2peenicfsi3rt21&dl=1",
-        "https://www.dropbox.com/scl/fi/98xts6wyupmcmv26bvc7h/Section1_Bild3.png?rlkey=v7ly910j6912152abzgp4czdd&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/t5gjjica77iraiocj6ptk/Section1_Bild0.png?rlkey=n1ssw0gu9iqgc7fvujx43kkh0&dl=1",
+        "https://www.dropbox.com/scl/fi/y9l4zs7yxt4z2p2k73cmv/Section1_Bild2.png?rlkey=n7sasywlo00tscdi8rj75tt0s&dl=1",
+        "https://www.dropbox.com/scl/fi/9xoaai7qctn5bwsjie9dd/Section1_Bild1.png?rlkey=g2bba4s39vmbjaabwiqamgrz7&dl=1",
+        "https://www.dropbox.com/scl/fi/sbgc05comdcvbmptqhgey/Section1_Bild3.png?rlkey=3mhp12oqysvhej96knrn234eh&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img41 = image_select(
         "Auswahl:",
@@ -554,14 +524,14 @@ if st.session_state.seite == "page4":
     st.text('Topic 2: Authoritarian State and Annexation of Austria\n- Outlines political radicalization leading to the "authoritative state" under Chancellor Engelbert Dollfüss, his assassination followed by continuance of policies under Kurt Schuschnigg; discusses the 1938 annexation ("Anschluss") of Austria into Nazi Germany, popular support among some Austrian citizens.\n\n')
 
     tmp42 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/xn7f8ulfngz68hzxmb539/Section2_Bild1.png?rlkey=82zsbdgoj0inhhif4kqn48d64&dl=1",
-        "https://www.dropbox.com/scl/fi/5omys06pxsgn3zfxt3onr/Section2_Bild3.png?rlkey=4r69wbc7tub7euskz79drxuzw&dl=1",
-        "https://www.dropbox.com/scl/fi/tt0vy10nhy638jlhotaui/Section2_Bild0.png?rlkey=ispdm3gdvi4fu2uce4l8qi7dc&dl=1",
-        "https://www.dropbox.com/scl/fi/u8vhnd81nhuap5r70etgp/Section2_Bild2.png?rlkey=gxa43jpl0l8zilsi6551hwenv&dl=1",
-        "https://www.dropbox.com/scl/fi/zfyq6me7oxuuceczn0p7p/Section2_Bild4.png?rlkey=3lvy1q6astir2rqggum5qpkvv&dl=1",
-        "https://www.dropbox.com/scl/fi/7quiix68dblqyxlnmu357/Section2_Bild5.png?rlkey=9sdwokb3wqp3c6g40sttqlloy&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/amcozivxpm7cu5stpihxg/Section2_Bild1.png?rlkey=qhf3o1p1jd92pt033s22wy4r4&dl=1",
+        "https://www.dropbox.com/scl/fi/xs7xt0j8vf9pksl8r753v/Section2_Bild3.png?rlkey=wap51cxsvkfdwzjlq4ig54qxt&dl=1",
+        "https://www.dropbox.com/scl/fi/zc22xknucmfnb4p2yxf4k/Section2_Bild0.png?rlkey=q0xq9puiw2ma011ctbmk3s7qq&dl=1",
+        "https://www.dropbox.com/scl/fi/ikdc6rqt80120z50dhg0k/Section2_Bild2.png?rlkey=71tjf5ng34zm92mo2h8cyim6s&dl=1",
+        "https://www.dropbox.com/scl/fi/net3h3opfnlgev17mq6hs/Section2_Bild4.png?rlkey=9jhd9v7q50yfuascy2yseayrk&dl=1",
+        "https://www.dropbox.com/scl/fi/dl26hnnye0imzrlimboh7/Section2_Bild5.png?rlkey=havm56gp9uul6sbq8e7h6aqzx&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img42 = image_select(
         "Auswahl:",
@@ -576,14 +546,14 @@ if st.session_state.seite == "page4":
     st.text('Topic 3: Ascendance of Nazism in Germany\n- Chronicles Adolf Hitler joining the precursor party of the Nazi Party early on, initial failed attempts at power seizure, prison term, rebuilding the Nazi Party, rise to leadership, creation of various affiliated groups like the Hitler Youth, gradual increase in popularity through the 1920s, reaching a third of votes cast in German elections in 1932.\n\n')
 
     tmp43 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/055e48igaor3gbfqkx0nc/Section3_Bild5.png?rlkey=mvmmwe6o64ytbapm3yecbh51d&dl=1",
-        "https://www.dropbox.com/scl/fi/3i3tn7xiutqwa7rdo6dje/Section3_Bild1.png?rlkey=xe50ugwoxlxyofknoyfi9itir&dl=1",
-        "https://www.dropbox.com/scl/fi/xp79k15mur7ctu3mu7oym/Section3_Bild4.png?rlkey=eogr7ob1jqrtwh0ncyb6lk1tg&dl=1",
-        "https://www.dropbox.com/scl/fi/xegxjs8mdgvbb8wfz4zw9/Section3_Bild2.png?rlkey=7ifhjye8ywxtidyr1kae2u7am&dl=1",
-        "https://www.dropbox.com/scl/fi/c9plvorg0ebq6bcjk03qk/Section3_Bild3.png?rlkey=n0zto2c4pxy2scclv3cg2kopz&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/z1uhfq8i4xs1u2oywu5di/Section3_Bild5.png?rlkey=1f1ymyfqce16qq3hub4w17o74&dl=1",
+        "https://www.dropbox.com/scl/fi/3zffxhkz1bisgfi58mtid/Section3_Bild1.png?rlkey=wou772rxgk2xmj84to0h0f3w3&dl=1",
+        "https://www.dropbox.com/scl/fi/s290k0rtvu89np7wovn40/Section3_Bild4.png?rlkey=dtoqf7ho1ekjtspw8ofocwcru&dl=1",
+        "https://www.dropbox.com/scl/fi/chqxvo9ljktf2w1zdyz7u/Section3_Bild2.png?rlkey=ue6bcvhdg0ae75q00bjzt6jad&dl=1",
+        "https://www.dropbox.com/scl/fi/nazohzkamfknrb6bbl6gv/Section3_Bild3.png?rlkey=36wisbvupuzskuuap7os99476&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img43 = image_select(
         "Auswahl:",
@@ -599,10 +569,10 @@ if st.session_state.seite == "page4":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp43 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/au88m5skjtlo321f3apwb/Section3_Bild0.png?rlkey=ydemb4v1iywq0gwdxuls4p93s&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/h3zxqh0d0zp2ecqvsmc5x/Section3_Bild0.png?rlkey=y0m2nybp9jgpm34epqg6x0cli&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg43 = image_select(
         "Auswahl:",
@@ -618,14 +588,14 @@ if st.session_state.seite == "page4":
     st.text('Topic 4: Power Takeover by Hitler\n- Recounts appointment of Hitler as chancellor of Germany in January 1933, rapid consolidation of dictatorial powers, persecution and incarceration of opponents, suppression of free press, propaganda dominating media and cultural life, suspension of constitutional rights due to declared military emergency following the Reichstag fire in February 1933.\n\n')
 
     tmp44 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/n15elkxfognkfumk7rtie/Section4_Bild3.png?rlkey=q4va31skhk2a16np3efae3c7n&dl=1",
-        "https://www.dropbox.com/scl/fi/wplz0bm62w8gtmdxezhbd/Section4_Bild2.png?rlkey=3l74dfy2gqb8ha9e7fh17rkjb&dl=1",
-        "https://www.dropbox.com/scl/fi/uqokv4f148pc4svfgc1dn/Section4_Bild0.png?rlkey=zg79208pdi8qags1rdkn032b1&dl=1",
-        "https://www.dropbox.com/scl/fi/jvj7urt3hgas17v7yb4xc/Section4_Bild4.png?rlkey=wl30zsavf5qg4jiyxeqy636p7&dl=1",
-        "https://www.dropbox.com/scl/fi/1hajam5ev9dl0fv1s48ke/Section4_Bild5.png?rlkey=7aqddwjfsb3o3yakogt2qvg3x&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/s48jh2pmc0jtzrpmqjgh4/Section4_Bild3.png?rlkey=6hc5jg0vuyfgks44cjqxhcpc0&dl=1",
+        "https://www.dropbox.com/scl/fi/kajhsnj68wapsdk7kkhk0/Section4_Bild2.png?rlkey=bnsmcgvbomd0q032e26zjoufr&dl=1",
+        "https://www.dropbox.com/scl/fi/prlr9yg1g3ji7ggdgz2ko/Section4_Bild0.png?rlkey=cidlrq9bomyh3ijz6m37g8ok7&dl=1",
+        "https://www.dropbox.com/scl/fi/vjw6y1bsud27g7bssi154/Section4_Bild4.png?rlkey=up617rp4sns5vu07jjg8pc5lp&dl=1",
+        "https://www.dropbox.com/scl/fi/y0uh5l1zjaccsi7502ymj/Section4_Bild5.png?rlkey=gdmtrnza9o72j82gyi1tmw4bq&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img44 = image_select(
         "Auswahl:",
@@ -641,10 +611,10 @@ if st.session_state.seite == "page4":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp44 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/v977us0q9kyz2hd06a1qn/Section4_Bild1.png?rlkey=dw208gkx5gj8a8kght6e26w92&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/3gjfiiaac5wiuqveo5vgj/Section4_Bild1.png?rlkey=hmlu5x43q3c70p3q16nq7v674&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg44 = image_select(
         "Auswahl:",
@@ -660,10 +630,10 @@ if st.session_state.seite == "page4":
     st.text('Topic 5: Persecution of Jewish Population\n- Documents anti-Semitic measures initiated immediately upon taking office, including boycotting businesses owned by Jews, passage of discriminatory laws known as the "Nuremberg Race Laws," violent attacks against Jews culminating in the November 1938 Kristallnacht pogroms resulting in widespread destruction of property and deaths, forced expulsion and theft of assets from Jews throughout Europe.\n\n')
 
     tmp45 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/s3h1whx3xk3xid47ju0xo/Section5_Bild0.png?rlkey=695yx88qamo0kpxb4z75bywuw&dl=1",
-        "https://www.dropbox.com/scl/fi/ktxwszv5d9inf8o80o3zg/Section5_Bild2.png?rlkey=1rzxp5vskk33lxzkm42bxkvnu&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/0hljhenkp3hbzmelkzi6q/Section5_Bild0.png?rlkey=mp5a868nkdgn4qq8g6hvuezd9&dl=1",
+        "https://www.dropbox.com/scl/fi/2ig3dtse07wphxeacf0rd/Section5_Bild2.png?rlkey=g3st5vm7vhx5yz7ont1zhfo95&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img45 = image_select(
         "Auswahl:",
@@ -679,10 +649,10 @@ if st.session_state.seite == "page4":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp45 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/qzplm7ua4pimiboe9li05/Section5_Bild1.png?rlkey=ihb9fuvbs741pu219bq5bp924&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/u8t3j7fe3ltht4db1f3h0/Section5_Bild1.png?rlkey=i2rzhj6aod0dpyf61mhizqduu&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg45 = image_select(
         "Auswahl:",
@@ -719,7 +689,7 @@ if st.session_state.seite == "page5":
     st.title("Seite 5")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/tj9118fh20k79cwwv3tf8/Broschuere_2013_hires.pdf?rlkey=z7amkisyqbggjwtsna0svw7ms&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/bujlwfirh477yme1m7to7/Broschuere_2013_hires.pdf?rlkey=6qzae3tv8yea335bavyun66tc&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -731,10 +701,10 @@ if st.session_state.seite == "page5":
     st.text('Topic 1: Our Solar System Overview\n- Presents basic facts about each planet, moon, asteroid, comet, and dwarf planet, including size, composition, distances from the Sun, rotations, and orbits.')
 
     tmp51 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/n8a09wu9gucovku8ffm73/Section1_Bild0.png?rlkey=kpmr38mounnjsr3wm1ql7ac56&dl=1",
-        "https://www.dropbox.com/scl/fi/ur9bs4vhmvortlydtgofw/Section1_Bild2.png?rlkey=4y3iimrurd1yki3ev7veog7uc&dl=1",
-        "https://www.dropbox.com/scl/fi/nu4a3618nxoke5avpdffg/Section1_Bild1.png?rlkey=3kv4xv463iwr2yh334qd68ua1&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/60b3q58cbxvlfwv3lidz7/Section1_Bild0.png?rlkey=m6wgoxw4pnzrhjifq7d34thcs&dl=1",
+        "https://www.dropbox.com/scl/fi/fjq37pb9mf2sam50umrvd/Section1_Bild2.png?rlkey=fe5070u4xncf66abm7babuuwt&dl=1",
+        "https://www.dropbox.com/scl/fi/a6eex0vjaerj9vv0phygd/Section1_Bild1.png?rlkey=6bxyunefqcinzevhqcqu5szzv&dl=1",
     ]
     img51 = image_select(
         "Auswahl:",
@@ -749,10 +719,10 @@ if st.session_state.seite == "page5":
     st.text('Topic 2: Major Celestial Bodies - Detailed Analysis\n- Delves deeper into specific aspects of Mars, covering general information, surface features, historical climate change, and exploration mission details.')
 
     tmp52 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/vvicd2rc8pwbzeg5vvkh4/Section2_Bild1.png?rlkey=i125jdq9tlt3wrbob837zpyzy&dl=1",
-        "https://www.dropbox.com/scl/fi/7mojc5vqfnlatz8q9lpsl/Section2_Bild0.png?rlkey=83rh47kdcbql0pq08a4qi4cxj&dl=1",
-        "https://www.dropbox.com/scl/fi/aka484nq9wms21xjt1n1d/Section2_Bild2.png?rlkey=a6xruuu1vv4q0r9zegb09ttoz&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/i5qssjw2aio69kjrhv2pg/Section2_Bild1.png?rlkey=qt23ackca865iyp5ye76j3lrz&dl=1",
+        "https://www.dropbox.com/scl/fi/pron02mxpk6f4qewvf32h/Section2_Bild0.png?rlkey=k0y5qcoaz5m1rsiiltklawzxr&dl=1",
+        "https://www.dropbox.com/scl/fi/d5bozc9dnbgrf8lg94x11/Section2_Bild2.png?rlkey=hxzaych20jzmqel2e5pi25bnd&dl=1",
     ]
     img52 = image_select(
         "Auswahl:",
@@ -767,10 +737,10 @@ if st.session_state.seite == "page5":
     st.text('Topic 3: Resources and Repositories\n- Introduces the Regional Planetary Image Facility (RPIF), part of an international network storing images, spectral data, and related materials collected by various missions.\n\n')
 
     tmp53 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/db2be56g54x1w9dpcqyve/Section3_Bild1.png?rlkey=ctkz2p9i5ljkgcbo5elts37xl&dl=1",
-        "https://www.dropbox.com/scl/fi/ybba0cuz42w1oc5ck9078/Section3_Bild2.png?rlkey=vtzg8yw2gfuwr0n7uo32tkgz2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/q8x3mqj1gthgkukxrerh7/Section3_Bild1.png?rlkey=vzyryg9ccuvns8wibco3idpfx&dl=1",
+        "https://www.dropbox.com/scl/fi/gt2t7auo8q67nwq6gj3v1/Section3_Bild2.png?rlkey=4tray16o22vjlzld95204ebk6&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img53 = image_select(
         "Auswahl:",
@@ -786,10 +756,10 @@ if st.session_state.seite == "page5":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp53 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/d390j648toc8m0z4sfk97/Section3_Bild0.png?rlkey=ro01512l9zyxu1l1a68x3b9sp&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/ygpfpu3ozbtk1totkklu8/Section3_Bild0.png?rlkey=wvefw4cxcf7jei34v0lid0yv8&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg53 = image_select(
         "Auswahl:",
@@ -805,10 +775,10 @@ if st.session_state.seite == "page5":
     st.text('Topic 4: Utilizing RPIF Data\n- Describes uses of RPIF data for scientific research, educational outreach activities, and planning future space missions.\n\n')
 
     tmp54 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/03i88mj2pypqmqst7k53n/Section4_Bild2.png?rlkey=uefwfpev13c2989vuryxw8fmg&dl=1",
-        "https://www.dropbox.com/scl/fi/yhz82i0xli2yuut4cl35a/Section4_Bild1.png?rlkey=ozpoukchgupej2fk73ddkdzys&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/k9g4l6gavi4l38m5cg2qe/Section4_Bild2.png?rlkey=94jqe9rwnw9jjfwd2q15571et&dl=1",
+        "https://www.dropbox.com/scl/fi/4q1shl98fvzv79tge267f/Section4_Bild1.png?rlkey=1uquobhxg3miz7dicrjghewa2&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img54 = image_select(
         "Auswahl:",
@@ -824,10 +794,10 @@ if st.session_state.seite == "page5":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp54 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/cjm033rg7mhldq54qwrca/Section4_Bild3.png?rlkey=udq9oygibpbe28q9qa1vbnkns&dl=1",
-        "https://www.dropbox.com/scl/fi/wfe9r06x7hhot9r8f5d04/Section4_Bild0.png?rlkey=hc5hbwbmjbjxok61y7udlic0k&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/rg4kkqxkq48csc833y1fe/Section4_Bild3.png?rlkey=20yavikixjxfs3dfsec0hpvl8&dl=1",
+        "https://www.dropbox.com/scl/fi/z7bt98cx9w00glz32zrib/Section4_Bild0.png?rlkey=ogyy0aal119pjesgy0veo45qs&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg54 = image_select(
         "Auswahl:",
@@ -843,10 +813,10 @@ if st.session_state.seite == "page5":
     st.text('Topic 5: Ongoing and Upcoming Projects\n- Outlines current exploration efforts across our solar system and future plans involving Mars Sample Return, Human Exploration Campaign, and continued research towards understanding extraterrestrial environments.\n\n')
 
     tmp55 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/lefp3anaz4qll4et89akd/Section5_Bild0.png?rlkey=m1zyw95df6y7fr3hp1cspnw5p&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/nwii81fh924inmyxxfkmw/Section5_Bild0.png?rlkey=sb0ycywmin960yt4he3ycf9c9&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img55 = image_select(
         "Auswahl:",
@@ -862,10 +832,10 @@ if st.session_state.seite == "page5":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp55 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/r2m5z3nfa7izugo1fbc0x/Section5_Bild1.png?rlkey=z3nzkpjsh6vafjqz7179sb01x&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/yzu8xx2uvt6z6r53ssxp3/Section5_Bild1.png?rlkey=pu8zliwnwowmnccfuc533wcwh&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg55 = image_select(
         "Auswahl:",
@@ -902,7 +872,7 @@ if st.session_state.seite == "page6":
     st.title("Seite 6")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/zl5hgxuq23jq5jsaqjful/Menschenaffen_Unterrichtsmaterial.pdf?rlkey=r5b2314utj0d46ztiftcug8xi&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/rn4pxirkg2j35bk4g9u8g/Menschenaffen_Unterrichtsmaterial.pdf?rlkey=gb67me3de18g4uylvnzd8yq78&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -914,14 +884,14 @@ if st.session_state.seite == "page6":
     st.text('Topic 1: Introduction\n- Presents background information about the WWF organization and its focus on protecting endangered wildlife.\n\n')
 
     tmp61 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/4zzyvawi50jfo8jf9tcko/Section1_Bild6.png?rlkey=xds22ywx1ibiviy3m1tj5hg9m&dl=1",
-        "https://www.dropbox.com/scl/fi/e2h8fhtqyi8pxdlre030c/Section1_Bild2.png?rlkey=ez7g8gxlddfrr94t30sp7delx&dl=1",
-        "https://www.dropbox.com/scl/fi/whj266hs9tgjah2ube4po/Section1_Bild4.png?rlkey=izfce1sc6f1u5kgy129bocfai&dl=1",
-        "https://www.dropbox.com/scl/fi/dim0pjuojri5uqcgfrocu/Section1_Bild10.png?rlkey=zbydm41h769iqx00jbqmao6wy&dl=1",
-        "https://www.dropbox.com/scl/fi/9qbtuztqvnmcuo635hufx/Section1_Bild8.png?rlkey=4ofrw57o3qv3c0r8da384szqd&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/nkvgrkaq8ihjq6umc2297/Section1_Bild6.png?rlkey=b393qstgtxmr5ajbkcnbwiavz&dl=1",
+        "https://www.dropbox.com/scl/fi/rg3nopfzd4rha38ofq5wz/Section1_Bild2.png?rlkey=if6xmt43biyav9zmi7fvca92v&dl=1",
+        "https://www.dropbox.com/scl/fi/54fzap1uwxtqw9j8oqwv4/Section1_Bild4.png?rlkey=m12czlbqfjfs2u7mufukq35kg&dl=1",
+        "https://www.dropbox.com/scl/fi/lzzivzrwr6oyy4g71ges5/Section1_Bild10.png?rlkey=duw87akgu11srtrzermn1d2cp&dl=1",
+        "https://www.dropbox.com/scl/fi/31jx71vr9064hpsoc683v/Section1_Bild8.png?rlkey=iwisclk91mmgzhfg451kmgu0m&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img61 = image_select(
         "Auswahl:",
@@ -937,14 +907,14 @@ if st.session_state.seite == "page6":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp61 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/gx2c74tcyg19n3ngsps8x/Section1_Bild0.png?rlkey=uso8shuxjrhn04013f8wu08ac&dl=1",
-        "https://www.dropbox.com/scl/fi/xwq8kwrlaoyqrzem8was2/Section1_Bild9.png?rlkey=g97jc1dpkp461p17844oy3iqk&dl=1",
-        "https://www.dropbox.com/scl/fi/t29rsohwzaym1zyaauqg6/Section1_Bild5.png?rlkey=4cbwof1hw36z9p4ljao3pm7pa&dl=1",
-        "https://www.dropbox.com/scl/fi/00u167iyxbb8ry4aesq31/Section1_Bild7.png?rlkey=n65odybszve8mx8c7poca7jg3&dl=1",
-        "https://www.dropbox.com/scl/fi/wx09blodgcsjfd2oteyf3/Section1_Bild11.png?rlkey=b35vbdmwgiaoc3p6hih702uri&dl=1",
-        "https://www.dropbox.com/scl/fi/op8p9msy92hx7okqh83vw/Section1_Bild1.png?rlkey=xnhvqiz189h1yzev861u4tyzd&dl=1",
-        "https://www.dropbox.com/scl/fi/4v3u153h6x8ufnhhxnb7p/Section1_Bild3.png?rlkey=b41pr61wu6ost4cv3vvy7fmtw&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/6xm30wutbpdhp1ous0soe/Section1_Bild0.png?rlkey=7rc087li7dfnj3mrw8l5162ux&dl=1",
+        "https://www.dropbox.com/scl/fi/cugmz5ucj8jcxz7wvjkfa/Section1_Bild9.png?rlkey=ydyj75gsivd8ennusfi8lricm&dl=1",
+        "https://www.dropbox.com/scl/fi/q1lzc5d0prtnkfo95ztck/Section1_Bild5.png?rlkey=l8ev7hna4s4zbp5plq9384ah5&dl=1",
+        "https://www.dropbox.com/scl/fi/vljm3kqum5g86xc8q0n5f/Section1_Bild7.png?rlkey=6a4e0d2ajk9mnq985zhlnuux1&dl=1",
+        "https://www.dropbox.com/scl/fi/a09hprzbaiiualffogae1/Section1_Bild11.png?rlkey=eh13m7iweghx9pn5erqn15zw1&dl=1",
+        "https://www.dropbox.com/scl/fi/gsk2td1bnrpdwquflhoo1/Section1_Bild1.png?rlkey=amc2api7gfrwj08o9pz0f4r62&dl=1",
+        "https://www.dropbox.com/scl/fi/v8rbg578blp77ogv24itw/Section1_Bild3.png?rlkey=jymsz69dtljr012ux4c7jctgs&dl=1",
     ]
     nvimg61 = image_select(
         "Auswahl:",
@@ -960,10 +930,10 @@ if st.session_state.seite == "page6":
     st.text('Topic 2: Overview of Great Apes\n- Discusses four types of great apes: orangutans, gorillas, chimpanzees, and bonobos, including evolutionary history, characteristics, and unique features.\n\n')
 
     tmp62 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/z8gvb34u3rqh46kp790af/Section2_Bild8.png?rlkey=l7ub2feuvqtwu50061lffozym&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/v6z3yfjg48q5ptiqep11j/Section2_Bild8.png?rlkey=4re8rsbukl1tcv7nusklne6tb&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img62 = image_select(
         "Auswahl:",
@@ -979,18 +949,18 @@ if st.session_state.seite == "page6":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp62 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/lwd31wumizn3ver4uek7u/Section2_Bild1.png?rlkey=cln4r4ltkwzz0i60qgrfjoja8&dl=1",
-        "https://www.dropbox.com/scl/fi/70cu9007cpfrkbgzzqhn0/Section2_Bild3.png?rlkey=0pd7m1eqdame1dadl7piala7k&dl=1",
-        "https://www.dropbox.com/scl/fi/pm433k702d6q88pfbh32o/Section2_Bild0.png?rlkey=qdcbznzblnqzmijpfi7hhoavv&dl=1",
-        "https://www.dropbox.com/scl/fi/cvkyu9usci18fibs84mh9/Section2_Bild2.png?rlkey=u7djhfk249ntw516dt1zprig4&dl=1",
-        "https://www.dropbox.com/scl/fi/1g4rgajkajup737qut8i2/Section2_Bild6.png?rlkey=r516dgjrnkgbe900tyo9kxqp3&dl=1",
-        "https://www.dropbox.com/scl/fi/oples2ko4ctf6bbznt4iy/Section2_Bild4.png?rlkey=lwjeb5p2juet5gwe1gdit4x51&dl=1",
-        "https://www.dropbox.com/scl/fi/7cg45ymaz88qzmtthypuc/Section2_Bild5.png?rlkey=iirwn5s3bqc3h0xuixhyts2v7&dl=1",
-        "https://www.dropbox.com/scl/fi/qyaan8g67rfgn3avevedv/Section2_Bild7.png?rlkey=tiw41o9eqkoscuoplzbb5hua3&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/nvagfqmoqrdlrujyyugxg/Section2_Bild1.png?rlkey=pscm41nl6vklxl2s5yg929p40&dl=1",
+        "https://www.dropbox.com/scl/fi/z1pacwbkpe00cym004bex/Section2_Bild3.png?rlkey=8m2ryocpit6ec8mfhcz8afys7&dl=1",
+        "https://www.dropbox.com/scl/fi/k6l4m4j1e73agd7f9hi8w/Section2_Bild0.png?rlkey=0c447ukxqirg9t8523db4snym&dl=1",
+        "https://www.dropbox.com/scl/fi/zeboajkuxxdxwv3gjfidp/Section2_Bild2.png?rlkey=u35lqj4nt8xz7yitlk6f79b4y&dl=1",
+        "https://www.dropbox.com/scl/fi/0g6xchkjk8vq3l9m3ifm7/Section2_Bild6.png?rlkey=59j9qrup30m6z0b1aqtuhxjv1&dl=1",
+        "https://www.dropbox.com/scl/fi/6a5e80173hkbe7dyleskh/Section2_Bild4.png?rlkey=ihltun01tbxecxhlxld9lo09h&dl=1",
+        "https://www.dropbox.com/scl/fi/26mi17mun6u2fl7sshxms/Section2_Bild5.png?rlkey=i7jb860o78heta3ur2yr7h6gc&dl=1",
+        "https://www.dropbox.com/scl/fi/t6iyrq2dxc3fn3l5jchao/Section2_Bild7.png?rlkey=a9xun28o0gt6yqsemx26knfrw&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg62 = image_select(
         "Auswahl:",
@@ -1006,14 +976,14 @@ if st.session_state.seite == "page6":
     st.text('Topic 3: Living Conditions of Great Apes\n- Details how these primates inhabit various regions across Africa and Southeast Asia, discussing their habitats, diet, social structures, and behaviors.\n\n')
 
     tmp63 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/80aaz4j61t8tweu8seack/Section3_Bild0.png?rlkey=5164llg2i7xal9qirqy1fl381&dl=1",
-        "https://www.dropbox.com/scl/fi/xlfl391ghl2bpnwlc8p1u/Section3_Bild4.png?rlkey=9xm1inm3z9d2ectdbqrsizm4l&dl=1",
-        "https://www.dropbox.com/scl/fi/gwi0a1dsia5xafw43s488/Section3_Bild6.png?rlkey=mqi7tuebdtan6tr5oxcer3v18&dl=1",
-        "https://www.dropbox.com/scl/fi/vcrlc0eotrh1pzn5qxmz9/Section3_Bild3.png?rlkey=ysxop35cin0hmln36n8p6czva&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/15gx1joxhyl1qjggvcvaj/Section3_Bild0.png?rlkey=q3pitqjuwwypbqs3wi4hbi7r4&dl=1",
+        "https://www.dropbox.com/scl/fi/xfh9k6yzfa05u98pbgdae/Section3_Bild4.png?rlkey=2fybkbofzzyvoyx8l1m4h0urk&dl=1",
+        "https://www.dropbox.com/scl/fi/n010q3s8e7exsl3nmrijc/Section3_Bild6.png?rlkey=xnj2izmmh61ripsdh1he1dyu0&dl=1",
+        "https://www.dropbox.com/scl/fi/ra6abks5vswhfmxv1v0er/Section3_Bild3.png?rlkey=0nykbtvhw2eq0mrjqvfy05yqx&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img63 = image_select(
         "Auswahl:",
@@ -1029,10 +999,10 @@ if st.session_state.seite == "page6":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp63 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/l4pedoje4ttcxntv7vue8/Section3_Bild5.png?rlkey=ct56b0com903uj1nr01bykqz4&dl=1",
-        "https://www.dropbox.com/scl/fi/iu2i1lr2b8kvmc09bxkag/Section3_Bild1.png?rlkey=bg1a37d5e5yatmptoxnm8ilil&dl=1",
-        "https://www.dropbox.com/scl/fi/oqw8zp8myfu0nfsfmh864/Section3_Bild2.png?rlkey=fwndefnk37k98pcsmlnhvhr81&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/s15cd5shfunbqpf3xelmp/Section3_Bild5.png?rlkey=j8f4n7bgsm1z2ec99rafsxt96&dl=1",
+        "https://www.dropbox.com/scl/fi/uzfnam5k4w6a7imxgrggu/Section3_Bild1.png?rlkey=abucknln19yn27aah9sdmkrrx&dl=1",
+        "https://www.dropbox.com/scl/fi/xac5xtgohdexwwx0jux70/Section3_Bild2.png?rlkey=cgv1x69s1e8z1y57ccix2e10r&dl=1",
     ]
     nvimg63 = image_select(
         "Auswahl:",
@@ -1048,14 +1018,14 @@ if st.session_state.seite == "page6":
     st.text('Topic 4: Challenges Facing Great Apes\n- Addresses threats like habitat destruction, hunting, and diseases transmitted from humans, explaining why they are critical issues for these animals.\n\n')
 
     tmp64 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/e0zomnebi6nyw68dcdtli/Section4_Bild0.png?rlkey=h92nmv07l48zwuir8139ul5xl&dl=1",
-        "https://www.dropbox.com/scl/fi/c6pjjaghbqvz7rflillzb/Section4_Bild4.png?rlkey=e5hyjfyqv4sbqsiwsjq7aoifw&dl=1",
-        "https://www.dropbox.com/scl/fi/95z3euv5crdew2zwndt76/Section4_Bild7.png?rlkey=6309hdlddbcp472a6lvbac5j4&dl=1",
-        "https://www.dropbox.com/scl/fi/prpeyeyvpe7jnyt40b9pq/Section4_Bild5.png?rlkey=7oc82tyoi83rx4w5ez93ybndj&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/xra6v86r22ulmtkx4lll7/Section4_Bild0.png?rlkey=3fm19hn8l3jra9majv0bxkccc&dl=1",
+        "https://www.dropbox.com/scl/fi/3ed6ty4v5o42h7mlpj27m/Section4_Bild4.png?rlkey=i6r3crosx7rq4ry4t2v6o7i7z&dl=1",
+        "https://www.dropbox.com/scl/fi/xwh9f9hozwqjqp1jj8g6h/Section4_Bild7.png?rlkey=7g5t38vj5z2fd3bw5oks17td6&dl=1",
+        "https://www.dropbox.com/scl/fi/up6tt8k9jnc4ebuqgi2pu/Section4_Bild5.png?rlkey=wd3942hmgv67ltgiie1zg6b6s&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img64 = image_select(
         "Auswahl:",
@@ -1071,14 +1041,14 @@ if st.session_state.seite == "page6":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp64 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/zpfy7j4qaarux9q5y2swh/Section4_Bild3.png?rlkey=gg4rl940h714q2pezamuvaocy&dl=1",
-        "https://www.dropbox.com/scl/fi/chaz4fstiebrmf1yrmlqs/Section4_Bild6.png?rlkey=rmsjiulqj1gma22oi4rt5p1mg&dl=1",
-        "https://www.dropbox.com/scl/fi/f3a3kd4kbghf8v2h7gipz/Section4_Bild2.png?rlkey=kskaa2rrrwl4whqt2uqi3f6iu&dl=1",
-        "https://www.dropbox.com/scl/fi/315so60dlpnffmiqvh3de/Section4_Bild8.png?rlkey=5dhqjudwse3y55ocsh1jc4k81&dl=1",
-        "https://www.dropbox.com/scl/fi/ipjsb094zzkuycpctclaw/Section4_Bild1.png?rlkey=9xkcnsof29eoesduuyhkfipz6&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/nqtagq2sq3hywa2hvims9/Section4_Bild3.png?rlkey=ze3fjk4hezw4n3zhf12h0yq96&dl=1",
+        "https://www.dropbox.com/scl/fi/zye8ewzf8i8sinbw1r3bl/Section4_Bild6.png?rlkey=lxul6k9li4neriqgj22m4f9y1&dl=1",
+        "https://www.dropbox.com/scl/fi/t64oh7u45ebgbsksm4r95/Section4_Bild2.png?rlkey=pe79jmlxnmy6gcmixzrauh93w&dl=1",
+        "https://www.dropbox.com/scl/fi/6nul8p5uk1xdii3qkb6wq/Section4_Bild8.png?rlkey=c1rey418601zka6teohugunyj&dl=1",
+        "https://www.dropbox.com/scl/fi/tvpv1x3vyr3lzps8pfne7/Section4_Bild1.png?rlkey=x3pu2nm1yhdv2al8n9lg6xwhb&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg64 = image_select(
         "Auswahl:",
@@ -1094,14 +1064,14 @@ if st.session_state.seite == "page6":
     st.text('Topic 5: Helping Great Apes Survive\n- Outlines ways people can support conservation projects aimed at preserving great ape populations through sustainable practices, education, and advocacy.\n\n')
 
     tmp65 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/o8552wpddexeg9x18fu7f/Section5_Bild5.png?rlkey=uvd2tj2zl8b2vn5jm0c5fxvij&dl=1",
-        "https://www.dropbox.com/scl/fi/kopj1o3am2awbp8w6d605/Section5_Bild0.png?rlkey=1yepooeoqz58bkkvzp873ztke&dl=1",
-        "https://www.dropbox.com/scl/fi/o2183witx6p8tgxu7uwh9/Section5_Bild6.png?rlkey=3giraqwqn7jt258pcctl7nf1v&dl=1",
-        "https://www.dropbox.com/scl/fi/tu79u871urf1v9mpji3on/Section5_Bild10.png?rlkey=t6kqkrbhod2chnitdyeplklox&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/txe3sww2bavnby7kcgljx/Section5_Bild5.png?rlkey=2hjfgrtw8i36g2a1amp6ct43p&dl=1",
+        "https://www.dropbox.com/scl/fi/yfhyhwc7nhu818l4brxp2/Section5_Bild0.png?rlkey=5w2slaf5n4bz16e4w9q36z3hp&dl=1",
+        "https://www.dropbox.com/scl/fi/fql2hfx2rpe2awnlxcpqn/Section5_Bild6.png?rlkey=0jrodq33jurtvxbcp59nwr7cj&dl=1",
+        "https://www.dropbox.com/scl/fi/qq9qe35kxwvzqq7jira57/Section5_Bild10.png?rlkey=qzkaekaef9h8mrf8425gzr1dy&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img65 = image_select(
         "Auswahl:",
@@ -1117,18 +1087,18 @@ if st.session_state.seite == "page6":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp65 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/c9pipy0smdpssn1hhxba4/Section5_Bild11.png?rlkey=6njed18zzjkq3tvlikkst1xrm&dl=1",
-        "https://www.dropbox.com/scl/fi/b3q6cs1mij12w3t388ur4/Section5_Bild9.png?rlkey=akzgidja86fsqasmm1yyp0pmd&dl=1",
-        "https://www.dropbox.com/scl/fi/xlr9hgebpm4xyit1oeebx/Section5_Bild8.png?rlkey=h3e1xl7qhoshqjxhs6ket38tj&dl=1",
-        "https://www.dropbox.com/scl/fi/oztrg1sd2fuss1yu1tcrd/Section5_Bild1.png?rlkey=w9mz0v2cmloqbjw889jjwkqtq&dl=1",
-        "https://www.dropbox.com/scl/fi/grwyqi3ajnw5tpco2q3hx/Section5_Bild2.png?rlkey=balzpkporxjdswv4dciil99o3&dl=1",
-        "https://www.dropbox.com/scl/fi/3scmcphc662f9wxn418gb/Section5_Bild7.png?rlkey=k76ifuccmlimvixvtl96vb3fc&dl=1",
-        "https://www.dropbox.com/scl/fi/jb9twj6abk76c5ga5llgu/Section5_Bild4.png?rlkey=dgcwmchdu4j7r8xmcbt65oufg&dl=1",
-        "https://www.dropbox.com/scl/fi/v0vcdv86cfiu47ih3uvrg/Section5_Bild3.png?rlkey=rajyn2hd92rj5bewkn6ar2rof&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/eih4gba5vjfczu93p2ubc/Section5_Bild11.png?rlkey=1vdquny84lbj7th3rxtr0aend&dl=1",
+        "https://www.dropbox.com/scl/fi/gzmi8imox3xknnphcv8rh/Section5_Bild9.png?rlkey=o6tu8fh8qbzlnlg2z4urz8lrl&dl=1",
+        "https://www.dropbox.com/scl/fi/zhx6wzlqcqo41iqjhv8ai/Section5_Bild8.png?rlkey=cwjqpzloh1onk2o66fkbibipg&dl=1",
+        "https://www.dropbox.com/scl/fi/2lfjcqsiqbz6b424ecrv5/Section5_Bild1.png?rlkey=8g4unxo8azus539oyt05dv3y1&dl=1",
+        "https://www.dropbox.com/scl/fi/n9b907s5hh3i7bqetir0b/Section5_Bild2.png?rlkey=rrb87k2bnggqcufgy23tzpl4m&dl=1",
+        "https://www.dropbox.com/scl/fi/w21tb8g2mht0sutepygqz/Section5_Bild7.png?rlkey=vz6rfih7yx5um4exlyz8e61v0&dl=1",
+        "https://www.dropbox.com/scl/fi/tj775zywxg6bzp9ymauzd/Section5_Bild4.png?rlkey=phvqvezjkfe1q7guvbyz8luhp&dl=1",
+        "https://www.dropbox.com/scl/fi/mc9jrsayv9el6te0sp0xs/Section5_Bild3.png?rlkey=42kcx7zwqrzdza4rdlunck1mg&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg65 = image_select(
         "Auswahl:",
@@ -1144,14 +1114,14 @@ if st.session_state.seite == "page6":
     st.text('Topic 6: Activities for Students\n- Offers suggestions for classroom activities related to each theme covered in the guide, encouraging active engagement among children aged 8-14 years old.\n\n')
 
     tmp66 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/yiua21x2lqpwkbiw4xqid/Section6_Bild0.png?rlkey=hi8bskxxdjytlrc6i2dxd6mna&dl=1",
-        "https://www.dropbox.com/scl/fi/5x5k1i075y620uslnwb6f/Section6_Bild5.png?rlkey=h6s2lwnp4gv91it860yqk0ixo&dl=1",
-        "https://www.dropbox.com/scl/fi/qlpcg2p82iyez5xv1mtqz/Section6_Bild6.png?rlkey=soyrqfyru13ra4wq513sgiuwd&dl=1",
-        "https://www.dropbox.com/scl/fi/7thk9t03r21fsei5opoxk/Section6_Bild3.png?rlkey=k6qij1q97dqj5zwprk8ejnwl3&dl=1",
-        "https://www.dropbox.com/scl/fi/lvbqop8dq4jnxv1lmu445/Section6_Bild4.png?rlkey=pi3v9mbvnpnj8naeet7hgyhit&dl=1",
-        "https://www.dropbox.com/scl/fi/54xk4po3xb4d5j58ip4w8/Section6_Bild9.png?rlkey=0ck69o1acho41kvkf9tywmws8&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/vged1rxrx8dgp9rt5v7us/Section6_Bild0.png?rlkey=k2k28gwzl1gs9ixh1qww5tatm&dl=1",
+        "https://www.dropbox.com/scl/fi/wp6kub1495djcrxg4mvcn/Section6_Bild5.png?rlkey=duy491ms7alhb8brdclv8yjaw&dl=1",
+        "https://www.dropbox.com/scl/fi/6kh9sqy1erm0mo3src9kg/Section6_Bild6.png?rlkey=oxsjofp1cib8wmncpz0bbxih0&dl=1",
+        "https://www.dropbox.com/scl/fi/85pq6cm0wcussx9otrbm8/Section6_Bild3.png?rlkey=tp5k2qnhdkgbu293lb5rljan9&dl=1",
+        "https://www.dropbox.com/scl/fi/ccdimk2606ytf8oeraqmw/Section6_Bild4.png?rlkey=re2m0oqjim0n8eewpgifin52v&dl=1",
+        "https://www.dropbox.com/scl/fi/bngtwmpp1p2pqj5dmsas4/Section6_Bild9.png?rlkey=j691u9k6n1qcjcvv7pe70e539&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img66 = image_select(
         "Auswahl:",
@@ -1167,14 +1137,14 @@ if st.session_state.seite == "page6":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp66 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/fuxsjwp01v8ubqew3lnm5/Section6_Bild8.png?rlkey=s2nzlretenjktao5ck08ugfph&dl=1",
-        "https://www.dropbox.com/scl/fi/lc7w3q3jf7bxa64rkxa4l/Section6_Bild10.png?rlkey=tgcpvhd97giltsvs8eecig4ab&dl=1",
-        "https://www.dropbox.com/scl/fi/oizad7wf741o26xc4tr03/Section6_Bild2.png?rlkey=v433r5kcrlcvnmf5w0mw9x9ju&dl=1",
-        "https://www.dropbox.com/scl/fi/nqqo66nutlyfiocx4wini/Section6_Bild7.png?rlkey=956ycau4ul0i26s4yn431acbg&dl=1",
-        "https://www.dropbox.com/scl/fi/98bbyvg93kb1lnbo12buu/Section6_Bild1.png?rlkey=7z47k8b33kf1g2cepfqlb1844&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/pzuscqygtjoubgevaxbc4/Section6_Bild8.png?rlkey=9j3m9z0zv000xiywuw52idixr&dl=1",
+        "https://www.dropbox.com/scl/fi/w1id53xo1huaklji42v4l/Section6_Bild10.png?rlkey=70ie0a6ye1ove99q21xlqdjae&dl=1",
+        "https://www.dropbox.com/scl/fi/gkjcd4p9x9ds4llfit7sk/Section6_Bild2.png?rlkey=g3qhetmvvuv8961n9go221vm7&dl=1",
+        "https://www.dropbox.com/scl/fi/dsyx0xx1q3spe2xj1c1ji/Section6_Bild7.png?rlkey=ftbeb99r9e99wt3yvhro73yhp&dl=1",
+        "https://www.dropbox.com/scl/fi/y76acvvc4zeuzod2jhixi/Section6_Bild1.png?rlkey=mhhu1qtrivih6cr437ao6uirv&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg66 = image_select(
         "Auswahl:",
@@ -1211,7 +1181,7 @@ if st.session_state.seite == "page7":
     st.title("Seite 7")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/m9trtyj31813xiv3r4r9r/O1A1-GE.pdf?rlkey=vb8b0zyql60uzb38wvcbz6dgr&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/c9nmp5ntxu0ervlkdijx2/O1A1-GE.pdf?rlkey=v7zsg0cq4icvm5jilmjd12t23&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -1223,14 +1193,14 @@ if st.session_state.seite == "page7":
     st.text('Topic 1: Understanding Additive Manufacturing and Its Benefits\n- Presents an overview of Additive Manufacturing, explaining its differences from Rapid Prototyping and conventional manufacturing techniques.')
 
     tmp71 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/7b0iuxkp4fac6b8aj1srk/Section1_Bild6.png?rlkey=3c8ym5rilluh068sn4uy33uz7&dl=1",
-        "https://www.dropbox.com/scl/fi/jxs5nfpkkf7z8sehti7t0/Section1_Bild5.png?rlkey=m5dehhbr1hiob6eefdjrb8qip&dl=1",
-        "https://www.dropbox.com/scl/fi/w2zwa1nkez1qq9sko5jis/Section1_Bild7.png?rlkey=3oge5s5plqlun7scc719c5b2t&dl=1",
-        "https://www.dropbox.com/scl/fi/wf236avdhn62bzb6e70xd/Section1_Bild10.png?rlkey=vf9b81w6eb1pqtjnmjmilaj3e&dl=1",
-        "https://www.dropbox.com/scl/fi/epjah2h49vvf7map9tlry/Section1_Bild8.png?rlkey=kuhdlzlsliiehoeu8v5gdc4lh&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/kmhbojex27bxy4af1vs9l/Section1_Bild6.png?rlkey=fc8bcx9i56tv96verlesr1vbv&dl=1",
+        "https://www.dropbox.com/scl/fi/q6h6ynr6brkjimafj1o5f/Section1_Bild5.png?rlkey=z09ropze2jojezfef54ggknaq&dl=1",
+        "https://www.dropbox.com/scl/fi/33jmqeupyogm4pxj2k0qr/Section1_Bild7.png?rlkey=l1pk7gtvp2iixkyowoi8dfka8&dl=1",
+        "https://www.dropbox.com/scl/fi/gf75chu9m014o6ul25arn/Section1_Bild10.png?rlkey=3vgdbmvq9xkjptdu0vkwn8q1c&dl=1",
+        "https://www.dropbox.com/scl/fi/qdovgcrcja0eql2wnetwk/Section1_Bild8.png?rlkey=a4g6ttcs1u9opixzsbebes6kj&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img71 = image_select(
         "Auswahl:",
@@ -1246,14 +1216,14 @@ if st.session_state.seite == "page7":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp71 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/40on6omklutmen9m161ey/Section1_Bild0.png?rlkey=cn1cd7m5k3l41nqx0vgoivdnp&dl=1",
-        "https://www.dropbox.com/scl/fi/paro2hxdh3fj0q4vbkext/Section1_Bild2.png?rlkey=3sutxzl9lolbgkyydozz036if&dl=1",
-        "https://www.dropbox.com/scl/fi/0i9mdro4z6r3urkxvmbee/Section1_Bild9.png?rlkey=6f2dtc85nk4yj4ebulj4andx4&dl=1",
-        "https://www.dropbox.com/scl/fi/pawdevi83ohm1f449ztv0/Section1_Bild11.png?rlkey=oapakszdr4pbanyg4q0garw0d&dl=1",
-        "https://www.dropbox.com/scl/fi/ft572ro88upjhnqnwxmf9/Section1_Bild4.png?rlkey=8nq5kkzmtjx0zh7fv8ri9y24n&dl=1",
-        "https://www.dropbox.com/scl/fi/it8zb4s0zz976fg4r1yhq/Section1_Bild1.png?rlkey=yd0ytki5n7yl2qcxq8395uq3r&dl=1",
-        "https://www.dropbox.com/scl/fi/ral40ohkqhk8j21tqfsad/Section1_Bild3.png?rlkey=h3fq0yxeh9d0rjidtfvk6m6xu&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/4y8533m4nel9dnih9eucu/Section1_Bild0.png?rlkey=cx2i5vnh6oxwkukyanb9sdlx5&dl=1",
+        "https://www.dropbox.com/scl/fi/pfgvgc4wx1ztxjyeyvy7s/Section1_Bild2.png?rlkey=xnsjkieqrekarg3itl9vnykim&dl=1",
+        "https://www.dropbox.com/scl/fi/ke0fvj9tvc5mvkb1iaubj/Section1_Bild9.png?rlkey=8bhod0jvd75zkjmaa9ehk9vsc&dl=1",
+        "https://www.dropbox.com/scl/fi/ukqjanl0zjf4jxvfdri8t/Section1_Bild11.png?rlkey=uayyayty2w12yo6z6j6cxuldg&dl=1",
+        "https://www.dropbox.com/scl/fi/96jlt8rbjqj684zcgozch/Section1_Bild4.png?rlkey=jehyb46um5vcpjpessadveqxe&dl=1",
+        "https://www.dropbox.com/scl/fi/tvzj6fovmhyxjdony5nc2/Section1_Bild1.png?rlkey=8ygrl68fm4sxwhdb4rhl671w5&dl=1",
+        "https://www.dropbox.com/scl/fi/rqtmwv6xq8ct6kytjlltx/Section1_Bild3.png?rlkey=ei8rmwjmi93i3jygazgrs6ju2&dl=1",
     ]
     nvimg71 = image_select(
         "Auswahl:",
@@ -1269,10 +1239,10 @@ if st.session_state.seite == "page7":
     st.text('Topic 2: Comparative Analysis of Common 3D Print Technologies\n- Evaluates seven widely utilized 3D print technologies according to criteria like speed, material compatibility, complexity level, cost, precision, and support structure needs.')
 
     tmp72 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/m6oa2jwag4wujxwtbtkxp/Section2_Bild7.png?rlkey=za6l2m3itprqjssd9ga2zhg5i&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/3xmd0pmciqis98kcl5gb1/Section2_Bild7.png?rlkey=gpwhsrtazylkereq5p4b7m7ov&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img72 = image_select(
         "Auswahl:",
@@ -1288,18 +1258,18 @@ if st.session_state.seite == "page7":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp72 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/gecjqtvp2kzykptyir7d8/Section2_Bild1.png?rlkey=0c4ztvkflrhbp84528xrlfo5w&dl=1",
-        "https://www.dropbox.com/scl/fi/a2pxvdot40tvg0renafuc/Section2_Bild3.png?rlkey=34in13jj519swb9rvityne23d&dl=1",
-        "https://www.dropbox.com/scl/fi/0rr9x0r324jx7uvy6vfhf/Section2_Bild0.png?rlkey=kttxxwoex1fwiuyzpo3jm6ipb&dl=1",
-        "https://www.dropbox.com/scl/fi/p7tqtkcq09pgoa9vmonbj/Section2_Bild11.png?rlkey=w6hkcgl1osg40zy6xuatnkw0n&dl=1",
-        "https://www.dropbox.com/scl/fi/30yfx6bbp6u3rewpomt5j/Section2_Bild2.png?rlkey=wwn5lbommav3zuoi05on6jecs&dl=1",
-        "https://www.dropbox.com/scl/fi/tui8g51jaetq610wxwgci/Section2_Bild8.png?rlkey=7z1jabk3jc05q03w9e0flqvks&dl=1",
-        "https://www.dropbox.com/scl/fi/r7nt8p773a2by36xbhivl/Section2_Bild6.png?rlkey=dttf4hcczq52glr9irrmkw15n&dl=1",
-        "https://www.dropbox.com/scl/fi/mhvx6zpeamu1eiciak453/Section2_Bild4.png?rlkey=36fqvb7tm3js6phe4a6yr6t38&dl=1",
-        "https://www.dropbox.com/scl/fi/zuxtmw7puovvgfnsv79jb/Section2_Bild10.png?rlkey=1wh224gvgo3dysptt24jo58n8&dl=1",
-        "https://www.dropbox.com/scl/fi/fuxep9h59j1yzr3d0ep3u/Section2_Bild5.png?rlkey=8ql8r54fbtysir58sgu3ag462&dl=1",
-        "https://www.dropbox.com/scl/fi/1wj2t06leavdimz44yez0/Section2_Bild9.png?rlkey=vs9se5gh4jliygzupj2wpcipj&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/44tfporwb08pi5e3pqtma/Section2_Bild1.png?rlkey=uix5nlrwgzl0c3rk2yup78v9r&dl=1",
+        "https://www.dropbox.com/scl/fi/q9ig6oj1rn79r76zjp6mf/Section2_Bild3.png?rlkey=wem06siaw4tgyittukgzapcje&dl=1",
+        "https://www.dropbox.com/scl/fi/w2hpx79455zcbxkr28jyw/Section2_Bild0.png?rlkey=qus8ipe21laur76z2wfmjkgo5&dl=1",
+        "https://www.dropbox.com/scl/fi/8cxuqtmz2gdc7v6zgae7e/Section2_Bild11.png?rlkey=a0w03hqp0x7pnr20v5vwbs44f&dl=1",
+        "https://www.dropbox.com/scl/fi/rxymrjputliy45mxhm47p/Section2_Bild2.png?rlkey=9bsukb086lapqgrhxdbsp653u&dl=1",
+        "https://www.dropbox.com/scl/fi/liykcsroqindntd2tkm6a/Section2_Bild8.png?rlkey=p8jpxgu17nqxkad3eswlfzk1p&dl=1",
+        "https://www.dropbox.com/scl/fi/03afokc6yp9prmv9eatib/Section2_Bild6.png?rlkey=w5eu8dpl0td8okusu3fnaliu2&dl=1",
+        "https://www.dropbox.com/scl/fi/ia8di26bjqq3n0xpabc3x/Section2_Bild4.png?rlkey=eaagj1iwgxeq1wi1om9uxoju5&dl=1",
+        "https://www.dropbox.com/scl/fi/tz3klu5bsgw43ke2bkgdq/Section2_Bild10.png?rlkey=lyg27m40m9exs5tvqw8qdsfk5&dl=1",
+        "https://www.dropbox.com/scl/fi/do0omtyl9we0q5yc61acq/Section2_Bild5.png?rlkey=e1rfyppi6fxae35hzfxp42a9m&dl=1",
+        "https://www.dropbox.com/scl/fi/cgnsf64rn1l7vzayowol7/Section2_Bild9.png?rlkey=jsc3aovqlffwiz3grtybmmml6&dl=1",
     ]
     nvimg72 = image_select(
         "Auswahl:",
@@ -1315,14 +1285,14 @@ if st.session_state.seite == "page7":
     st.text('Topic 3: Recommended Education-Focused 3D Print Technologies\n- Detailed exploration of three preferred 3D print technologies - Fused Deposition Modeling (FDM), Selective Laser Sintering (SLS), and Stereolithography (SLA). This includes discussions on processes, materials, applications, pros, and cons for each method.\n\n')
 
     tmp73 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/hj0tfclvbsjsww12kjaln/Section3_Bild5.png?rlkey=x8mmcqdzwica8nnakeup19mz6&dl=1",
-        "https://www.dropbox.com/scl/fi/0likokj4b40uat9i2raod/Section3_Bild0.png?rlkey=j0xg2p1t1zv4gbeo5qpt2enus&dl=1",
-        "https://www.dropbox.com/scl/fi/7u1ukcg2o73gd4xve4asg/Section3_Bild6.png?rlkey=j15gl384oq2jthqc5sy9uf329&dl=1",
-        "https://www.dropbox.com/scl/fi/kp9qwr4ptxcepxscptlus/Section3_Bild7.png?rlkey=ifbvp897besy0bs63497zgp4i&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/dw5kfxkhbob0phsaqoc7b/Section3_Bild5.png?rlkey=ljhlu9p7ynhc0wgzpl9zdyn4k&dl=1",
+        "https://www.dropbox.com/scl/fi/kmexzn2oda1ql8o1g4g19/Section3_Bild0.png?rlkey=ab6l94atxzevhbxts30j8e5yq&dl=1",
+        "https://www.dropbox.com/scl/fi/tgsy954hxcchml2tevfkl/Section3_Bild6.png?rlkey=4x07pi1gnhlkczts8vhblvjtx&dl=1",
+        "https://www.dropbox.com/scl/fi/gf4kosgd8xx2w3ql0kznu/Section3_Bild7.png?rlkey=a6venkk4prmgld48ns3smj53c&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img73 = image_select(
         "Auswahl:",
@@ -1338,14 +1308,14 @@ if st.session_state.seite == "page7":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp73 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/2ly1zqyt7bsz4aa9znqmh/Section3_Bild9.png?rlkey=8b3n2lmg8181kbecq8o1fll4t&dl=1",
-        "https://www.dropbox.com/scl/fi/2s65br6y0wgtdgf8fesh3/Section3_Bild1.png?rlkey=t5os5k3kx3v8yqb1kkt9j0ni3&dl=1",
-        "https://www.dropbox.com/scl/fi/d6zcrx8fjot9k5v9of43m/Section3_Bild4.png?rlkey=ympnior35wkueqpu43nanv2ph&dl=1",
-        "https://www.dropbox.com/scl/fi/hmfibq5o6gmr3thb35l1i/Section3_Bild2.png?rlkey=2774xh2ie2ky9jwx7lmlveqa0&dl=1",
-        "https://www.dropbox.com/scl/fi/cvzg4nwvoup0b65mj4of2/Section3_Bild8.png?rlkey=u59vg50m8lqi40xqthqqkhyym&dl=1",
-        "https://www.dropbox.com/scl/fi/7jjnn34x22vpw8caidrhv/Section3_Bild3.png?rlkey=9eo1gjpbg29hx3zlci2ofw22v&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/dlb7jah6yvjm0j4araigr/Section3_Bild9.png?rlkey=l41dfqnu9wioc8wyyl2iu0jcl&dl=1",
+        "https://www.dropbox.com/scl/fi/b2dngsbml4tunwjuhl9zi/Section3_Bild1.png?rlkey=o2d2ute1s56v6z6cu3008rk4o&dl=1",
+        "https://www.dropbox.com/scl/fi/3hn0ztrkvd7xmzmerd3kp/Section3_Bild4.png?rlkey=hkrresap2lqabsm8mh9imzcub&dl=1",
+        "https://www.dropbox.com/scl/fi/jj0zpau6ac0b4b0jdmw4f/Section3_Bild2.png?rlkey=ia98yfqhs8g0yu26relg1zoyg&dl=1",
+        "https://www.dropbox.com/scl/fi/aou5e8tonso7242o39doe/Section3_Bild8.png?rlkey=r0pud4x4cfu8smmhdaleh33l9&dl=1",
+        "https://www.dropbox.com/scl/fi/1vtbo6vypgepgnf5dk7as/Section3_Bild3.png?rlkey=1aiqo0bdgfp94fdvh6o118wlb&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg73 = image_select(
         "Auswahl:",
@@ -1361,10 +1331,10 @@ if st.session_state.seite == "page7":
     st.text('Topic 4: Creating a 3D Print Object Workflow\n- Outlines stages involved in developing a 3D printed item, encompassing acquiring the digital model, repairing/preparing the STL file, slicing the model, orientating and adding supports, generating G-Code, and ultimately printing the component.\n\n')
 
     tmp74 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/ig0rpkz2zv8ll48i4ob0y/Section4_Bild7.png?rlkey=o8wp7pe78fsfgvx6h9dp54sb5&dl=1",
-        "https://www.dropbox.com/scl/fi/9ik9ira6bvipel4h4d727/Section4_Bild5.png?rlkey=vpyoedu6u6376kfoly4y3508d&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/o93e7kqb4rgl4452exr5k/Section4_Bild7.png?rlkey=o50yzwuik0b28agyur53ggwmu&dl=1",
+        "https://www.dropbox.com/scl/fi/w2x3bxhimmqpz3gok1r0c/Section4_Bild5.png?rlkey=ectaxep7ohy42r4s7glp5h2y1&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img74 = image_select(
         "Auswahl:",
@@ -1380,18 +1350,18 @@ if st.session_state.seite == "page7":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp74 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/rsx35fnmjl99mm5954rbx/Section4_Bild3.png?rlkey=b8pv5iw40jh797n78cuv0nqqr&dl=1",
-        "https://www.dropbox.com/scl/fi/7d0wqf7j78s9qs5dg5mcs/Section4_Bild6.png?rlkey=7ow2y2n7vpmtxmsg8eiguxqhe&dl=1",
-        "https://www.dropbox.com/scl/fi/bfm0xgij81jad78tsoh1q/Section4_Bild2.png?rlkey=cllbp1qfejooo0sehd7svimku&dl=1",
-        "https://www.dropbox.com/scl/fi/d96ln50csinhoa4f1h0wm/Section4_Bild9.png?rlkey=1ac2dlyfi0edfz04tb3xdy7cv&dl=1",
-        "https://www.dropbox.com/scl/fi/3e1yggwhy9fvhmdr1euge/Section4_Bild8.png?rlkey=ey2ltziqc9cryer5e2h7w64pi&dl=1",
-        "https://www.dropbox.com/scl/fi/fswy0tutrqzdif0kqts7x/Section4_Bild0.png?rlkey=fbj6pgoxezimfb1ga8d7b8ddi&dl=1",
-        "https://www.dropbox.com/scl/fi/8lqkc10ac7j152zpnj0jd/Section4_Bild4.png?rlkey=s9fy6jisoktzopvaj2q8p4ykt&dl=1",
-        "https://www.dropbox.com/scl/fi/xlvwdnpq3qxhpyflu7lrt/Section4_Bild1.png?rlkey=j0v0hwuszwlo2x5ts2uguz97k&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/jqub3zhes18z51m3ur9gb/Section4_Bild3.png?rlkey=t6myq8yygmvjqsz6eja8c12o5&dl=1",
+        "https://www.dropbox.com/scl/fi/2laopmh5m5q4pnvy0gc8l/Section4_Bild6.png?rlkey=4xbdhjyg8rjj6k6y4q27s8emd&dl=1",
+        "https://www.dropbox.com/scl/fi/kz08gs1w9nrjy8p1q3d6y/Section4_Bild2.png?rlkey=fbz1jdg6vp5tl4ju27x9rsmv9&dl=1",
+        "https://www.dropbox.com/scl/fi/hmr85ihztn4jc8kmcdxvl/Section4_Bild9.png?rlkey=t1mupqne0z85vh6ndciqbnne7&dl=1",
+        "https://www.dropbox.com/scl/fi/2jgaogzcur1y9h3yqu4ho/Section4_Bild8.png?rlkey=1manslnwpmupm384vr7kvas86&dl=1",
+        "https://www.dropbox.com/scl/fi/cwdwoigb39zgbkfozjtg8/Section4_Bild0.png?rlkey=nxi4ta33hs8qm1ujsojjwcvkn&dl=1",
+        "https://www.dropbox.com/scl/fi/8071ta2nihz33rxufbfse/Section4_Bild4.png?rlkey=ee5prahdzi6gy29dnr2qdv83o&dl=1",
+        "https://www.dropbox.com/scl/fi/8n3fpffdgehro15wrugrh/Section4_Bild1.png?rlkey=16fqd4396a7jxc0fldme2e4yr&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg74 = image_select(
         "Auswahl:",
@@ -1407,10 +1377,10 @@ if st.session_state.seite == "page7":
     st.text('Topic 5: Essential Software Tools for 3D Printing\n- Introduces necessary software solutions throughout the production process ranging from design tools, test & prep programs, slicing software, and overall workflow management systems.\n\n')
 
     tmp75 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/xr65fq9iabrjiljnf8on4/Section5_Bild6.png?rlkey=b0lqfw02slte6qxrde52198t1&dl=1",
-        "https://www.dropbox.com/scl/fi/hvxucsfpofgqvilajkdvz/Section5_Bild3.png?rlkey=obu33kimjx50vnb8gtuu1yn7v&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/9x6e0uivkp5tszbrjednh/Section5_Bild6.png?rlkey=nscg90xy6w3knu2jdczqafpkh&dl=1",
+        "https://www.dropbox.com/scl/fi/vb2unncpb00fslt1xeq76/Section5_Bild3.png?rlkey=1q51otf40n2zgitifz7qwdty7&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img75 = image_select(
         "Auswahl:",
@@ -1426,18 +1396,18 @@ if st.session_state.seite == "page7":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp75 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/9hbgzqygru8w80fq4kdxo/Section5_Bild9.png?rlkey=muiwtf5jomkonm96wrtmx71uq&dl=1",
-        "https://www.dropbox.com/scl/fi/34huttoht3jpbrj67razw/Section5_Bild5.png?rlkey=a8w9ejjqqf8ow7i0wtakb0pie&dl=1",
-        "https://www.dropbox.com/scl/fi/i2cs7bulkpl0ov2h0is26/Section5_Bild8.png?rlkey=u841myi5ih7lzbqeovtmb0cj2&dl=1",
-        "https://www.dropbox.com/scl/fi/555npfzfn3ijqvdc1qcjm/Section5_Bild0.png?rlkey=hegb91esay7x7z5a7cs2w1ecq&dl=1",
-        "https://www.dropbox.com/scl/fi/do8gapddnwiudx2zuk5w9/Section5_Bild1.png?rlkey=7feb1f6f2op3giu6lc69dhv0k&dl=1",
-        "https://www.dropbox.com/scl/fi/yvyu0wlq48pymx05tp5sd/Section5_Bild2.png?rlkey=zicweoxkmba1vcwb5kiva25a6&dl=1",
-        "https://www.dropbox.com/scl/fi/m73x6ytxsnwl1hasn2j3e/Section5_Bild7.png?rlkey=0km75d0dkq40ccfp83w6io2om&dl=1",
-        "https://www.dropbox.com/scl/fi/ybtccmn935jcfcbai8y1k/Section5_Bild4.png?rlkey=lzcu5be27g2ychkz8yfhj4xf9&dl=1",
-        "https://www.dropbox.com/scl/fi/trjgtjarad2zrhxfhz500/Section5_Bild10.png?rlkey=l1j2i2w0xioxhyyhhrlcu34ad&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/jwr4p2fz2m9xhwtvl6cv0/Section5_Bild9.png?rlkey=0s0h6kkfecbnch49h5h6z8c7o&dl=1",
+        "https://www.dropbox.com/scl/fi/5yu0m13r4gadufmxjng9a/Section5_Bild5.png?rlkey=mapvsapc58kotd0fzlc4cx5so&dl=1",
+        "https://www.dropbox.com/scl/fi/jr4fdetggvuser942ywr0/Section5_Bild8.png?rlkey=nj6dnsx18291y84ag9nw0i6a0&dl=1",
+        "https://www.dropbox.com/scl/fi/o1p5uzcbp1hvi2s6sgtz2/Section5_Bild0.png?rlkey=8l6utirjlyca62q01krhmfnzf&dl=1",
+        "https://www.dropbox.com/scl/fi/ysjnro422c6ssvgefmi6v/Section5_Bild1.png?rlkey=gdfoiri968zvth4uvtgve0okb&dl=1",
+        "https://www.dropbox.com/scl/fi/3427c7le9yk4rjwzgry6b/Section5_Bild2.png?rlkey=vmfqhullh2d7h2pqj57j2zay5&dl=1",
+        "https://www.dropbox.com/scl/fi/34lkzv56u9q1dxxgf069z/Section5_Bild7.png?rlkey=hd6oujz4ozveeykdz0tcp1w89&dl=1",
+        "https://www.dropbox.com/scl/fi/itxibkjfznvw5nc6qygvk/Section5_Bild4.png?rlkey=6z38mg5m8mrp1r444dnjko6yk&dl=1",
+        "https://www.dropbox.com/scl/fi/snqh209q8x3kfv0wuumt6/Section5_Bild10.png?rlkey=rtdy629ed8hucjdzq6lbjltp9&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg75 = image_select(
         "Auswahl:",
@@ -1474,7 +1444,7 @@ if st.session_state.seite == "page8":
     st.title("Seite 8")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/pxspouxwh962pf6yyq4zt/MuM_Band_14.pdf?rlkey=kmcf2d7sbkqutu9lshuts75ga&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/aw6ufwe4q61pnllaffliq/MuM_Band_14.pdf?rlkey=rldbcgwiix86auyasjnsxfqww&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -1486,14 +1456,14 @@ if st.session_state.seite == "page8":
     st.text('Topic 1: Coral Symbiosis and Photosynthetic Microalgae\n- Introduces the mutually beneficial relationship between corals and zooxanthellae, providing essential energy for efficient growth and reproduction.\n\n')
 
     tmp81 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/6kpcwy4903ncw2o06oauh/Section1_Bild6.png?rlkey=7x44f6zzds4ruxanvcanqsccl&dl=1",
-        "https://www.dropbox.com/scl/fi/jau4gh8nkdbe6ckshwv4a/Section1_Bild11.png?rlkey=7wlcgexr21l5xw4ho38kogq80&dl=1",
-        "https://www.dropbox.com/scl/fi/pos8q3m7poml778787lnf/Section1_Bild4.png?rlkey=ct0g04bkx4ssydfd37vglmsm0&dl=1",
-        "https://www.dropbox.com/scl/fi/f2yd1xob18we1x7hruld2/Section1_Bild8.png?rlkey=hrsieujru772e3pmicsm0i80i&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/5l2knd76fmcewzqfin9qg/Section1_Bild6.png?rlkey=0i5q3x6ozikbxu2aroi8wb0y5&dl=1",
+        "https://www.dropbox.com/scl/fi/1py870gja76sfn42r0kwr/Section1_Bild11.png?rlkey=i3qkzw5h0u3kfsj95fzgt89da&dl=1",
+        "https://www.dropbox.com/scl/fi/kh2lno7pydhr0wzbqdt1y/Section1_Bild4.png?rlkey=gtlxolakq2vu9gfq5h6s1qy6k&dl=1",
+        "https://www.dropbox.com/scl/fi/klcy54j9sn3xtxcs7wt83/Section1_Bild8.png?rlkey=648av2umywf0obnmf431lsx5c&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img81 = image_select(
         "Auswahl:",
@@ -1509,18 +1479,18 @@ if st.session_state.seite == "page8":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp81 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/vr9a5e8tb61yvlylxresd/Section1_Bild0.png?rlkey=urxc86z7utc3s7t37lel76v1w&dl=1",
-        "https://www.dropbox.com/scl/fi/07hqmc7ebiqafoso58f1w/Section1_Bild2.png?rlkey=yx3ugptfkpylqn40mqihaigl2&dl=1",
-        "https://www.dropbox.com/scl/fi/8hljyqhqz8e0590rwobx2/Section1_Bild9.png?rlkey=cpxaecoky589bxzv7220c8g0f&dl=1",
-        "https://www.dropbox.com/scl/fi/xhsggle6yohtwwavgky9h/Section1_Bild5.png?rlkey=7prfqex97opq33jlxrg5zrn7c&dl=1",
-        "https://www.dropbox.com/scl/fi/4kgyq1g43tn2j6yn31ya9/Section1_Bild7.png?rlkey=gif76nj9d7wvi1m5krpi2pxim&dl=1",
-        "https://www.dropbox.com/scl/fi/uya53rjihl7osb705au7u/Section1_Bild10.png?rlkey=i1ndh4x33b3do6ins490jt4dg&dl=1",
-        "https://www.dropbox.com/scl/fi/oz6jaapvgi0s6juov46la/Section1_Bild1.png?rlkey=4mg13vo39m4drfu824tqbnmx7&dl=1",
-        "https://www.dropbox.com/scl/fi/akrucgl6byjxj7bhtruqm/Section1_Bild3.png?rlkey=mx1kexw13d1w86yfdp5vgf30c&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/5xgdjus09g67izz5rr7yc/Section1_Bild0.png?rlkey=ethjuwzqxf59c9zt6lwsg6aa3&dl=1",
+        "https://www.dropbox.com/scl/fi/lqu2yki7x40c7tgjtnzei/Section1_Bild2.png?rlkey=sajcb6mqnm4nxcrvjyawk8t4z&dl=1",
+        "https://www.dropbox.com/scl/fi/memj33fevivascwuciels/Section1_Bild9.png?rlkey=3858hrj31hrhn7ofmep28a9bp&dl=1",
+        "https://www.dropbox.com/scl/fi/7jqin7v3iur05ug8mwnb9/Section1_Bild5.png?rlkey=3tk8z2p2oi6ft5qbsi2vbxeyr&dl=1",
+        "https://www.dropbox.com/scl/fi/d51xep710kav0vnxgwqwy/Section1_Bild7.png?rlkey=y30mfg12jms7bqf8rt0ebgxr4&dl=1",
+        "https://www.dropbox.com/scl/fi/pz6t9ak14c3gb3c040x2z/Section1_Bild10.png?rlkey=zfexlspe6sfdx5x80nyvlwn8g&dl=1",
+        "https://www.dropbox.com/scl/fi/df2ipc86qo0qu1lbz1xwx/Section1_Bild1.png?rlkey=xybe8hprlf37psq9247f46c3u&dl=1",
+        "https://www.dropbox.com/scl/fi/5osanc4qcc2sl4ql03vhx/Section1_Bild3.png?rlkey=vtaz46131rc9phiwdul7cpsru&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg81 = image_select(
         "Auswahl:",
@@ -1536,14 +1506,14 @@ if st.session_state.seite == "page8":
     st.text('Topic 2: Structure and Functionality of Weichkorallen Colonies\n- Discusses morphological features, competitive abilities, and interactions with other species in coral reef communities.')
 
     tmp82 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/1tdt8v2uq3c08xiiv78zs/Section2_Bild3.png?rlkey=kufzdvpcdkhncdu0z0zz3srj5&dl=1",
-        "https://www.dropbox.com/scl/fi/uk785xny0ksr7ajz1nuul/Section2_Bild0.png?rlkey=d23o0f9egoxvj163zonmpvs0r&dl=1",
-        "https://www.dropbox.com/scl/fi/9lzadlv1cnkbev59cq45n/Section2_Bild10.png?rlkey=nzn4ierx4ewiysgb9sscig3pw&dl=1",
-        "https://www.dropbox.com/scl/fi/zlrg4p0gmgxn85wtnf7io/Section2_Bild7.png?rlkey=klehgftbwz36yxgsk11c84lu3&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/kl4qxsuscw858sqnv1f6e/Section2_Bild3.png?rlkey=exiuwfjtut6ykl4fwvszt2m2a&dl=1",
+        "https://www.dropbox.com/scl/fi/68uhj2pvoy2q61x82nru4/Section2_Bild0.png?rlkey=qi47g4cse2wbyh0amngsws1k4&dl=1",
+        "https://www.dropbox.com/scl/fi/bd0hvvlb1wegli4en71qj/Section2_Bild10.png?rlkey=d6u6nmobgp39a591lfj8p8ot1&dl=1",
+        "https://www.dropbox.com/scl/fi/vacohs0hpfoncszhlzfoz/Section2_Bild7.png?rlkey=9otkozmf61aggvkzg4ulnx2fo&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img82 = image_select(
         "Auswahl:",
@@ -1559,14 +1529,14 @@ if st.session_state.seite == "page8":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp82 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/ev6l2m2m3r393fjyvstik/Section2_Bild1.png?rlkey=p3hdu6gpv7txkepnh1jhm5o9r&dl=1",
-        "https://www.dropbox.com/scl/fi/bcfw7r3mwm1w1evhxgfbu/Section2_Bild2.png?rlkey=cz1y3afsegxftg9g2zmkpauwc&dl=1",
-        "https://www.dropbox.com/scl/fi/33gay2fc35tivnh1r5p0d/Section2_Bild8.png?rlkey=iyehpxieoleqlcqr5e8whnmfh&dl=1",
-        "https://www.dropbox.com/scl/fi/mrq79ihvxe5yid66dhyy5/Section2_Bild6.png?rlkey=dlirss00bd7cvzj93ub25d5f4&dl=1",
-        "https://www.dropbox.com/scl/fi/bhrgz724y7rpvpvnazzso/Section2_Bild4.png?rlkey=9dw04i4jai4mwihvkcatnbww8&dl=1",
-        "https://www.dropbox.com/scl/fi/zpuck36uhckvo03cyxjoj/Section2_Bild5.png?rlkey=f48ip8jdjpxotxvmktt9mwny4&dl=1",
-        "https://www.dropbox.com/scl/fi/73dth3inow26tvrcbctt5/Section2_Bild9.png?rlkey=v1y1vkhsrsrfvit74olsev8oj&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/06e0redg8eho7t1hjlflc/Section2_Bild1.png?rlkey=s1d74s1uve8cqt4atbv2vl9gt&dl=1",
+        "https://www.dropbox.com/scl/fi/nl1d5txdsxvd0hnvth8z7/Section2_Bild2.png?rlkey=slmj134ns1cqwynd7ondjge33&dl=1",
+        "https://www.dropbox.com/scl/fi/wq8wb10ha1idis7agrzx6/Section2_Bild8.png?rlkey=6x20q7mr02h6efmzn7q6c7ywh&dl=1",
+        "https://www.dropbox.com/scl/fi/fr2a4a7dohpqs1uqvb70w/Section2_Bild6.png?rlkey=xgd1a3l5zhj9izekimske8mho&dl=1",
+        "https://www.dropbox.com/scl/fi/kzdg6x444z28dzo84j3xd/Section2_Bild4.png?rlkey=epzpg7t4ovchuws8rkzj7qlue&dl=1",
+        "https://www.dropbox.com/scl/fi/395wm7qq0vqw34so6p4wr/Section2_Bild5.png?rlkey=0tx4g2x8qgn1koaeknwcdw4k9&dl=1",
+        "https://www.dropbox.com/scl/fi/ktgcyv0bfcoqosqu9p41s/Section2_Bild9.png?rlkey=bnswtp3b9lrtv78u7y711ka2p&dl=1",
     ]
     nvimg82 = image_select(
         "Auswahl:",
@@ -1582,10 +1552,10 @@ if st.session_state.seite == "page8":
     st.text('Topic 3: Impacts of Environmental Stressors and Bioerosion\n- Addresses threats posed by climate change, pollution, and bioerosion processes on coral reef structure and diversity.')
 
     tmp83 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/58v2burk61djztfmzjlqv/Section3_Bild9.png?rlkey=n7g0zqyrsxtraeb9kr0h5p46w&dl=1",
-        "https://www.dropbox.com/scl/fi/9hq9rvspv73ftfppdhsez/Section3_Bild4.png?rlkey=7w9xpqs7cd582uwvheiwr5hpm&dl=1",
-        "https://www.dropbox.com/scl/fi/fb65uselun9gvz8fya72k/Section3_Bild3.png?rlkey=mg1ocqfbe4hm0za6rvitva2ce&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/wac57v414o8tcny4wg7z2/Section3_Bild9.png?rlkey=xv5vmpg91vg8xp1rhxo2640pl&dl=1",
+        "https://www.dropbox.com/scl/fi/3tsqwz8us6c82ks8x20z9/Section3_Bild4.png?rlkey=kqbkbdijvzsz79n2utc1eyfdf&dl=1",
+        "https://www.dropbox.com/scl/fi/ta23fips2voe1ra3mdydl/Section3_Bild3.png?rlkey=fhqmm3zvleolt83i509rmek1m&dl=1",
     ]
     img83 = image_select(
         "Auswahl:",
@@ -1601,18 +1571,18 @@ if st.session_state.seite == "page8":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp83 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/egb14t9c5ctuo9ap4rkki/Section3_Bild5.png?rlkey=2u8g30ndlic9sjuqqvtpcoz9m&dl=1",
-        "https://www.dropbox.com/scl/fi/o6vmqwijejo4552mh1edo/Section3_Bild1.png?rlkey=dce53qst48zc5vjy5bpn72wby&dl=1",
-        "https://www.dropbox.com/scl/fi/jxjxp0zrg6gubeojajexz/Section3_Bild0.png?rlkey=1x882xt5rkyzbzsfbycvckvd7&dl=1",
-        "https://www.dropbox.com/scl/fi/0468y5wvshbpqncpzv0qc/Section3_Bild6.png?rlkey=2zg9x1ieonjma5b9i8jbh877w&dl=1",
-        "https://www.dropbox.com/scl/fi/51ak0jewokf1jwoarlyyh/Section3_Bild7.png?rlkey=d1s9vm6knmngv5bnyxx5r91lf&dl=1",
-        "https://www.dropbox.com/scl/fi/3jj29mctcla97dy84aivm/Section3_Bild2.png?rlkey=ylqu6yqa6eut16pp4z6yn15yi&dl=1",
-        "https://www.dropbox.com/scl/fi/vanhjru4n63kljjihjb8f/Section3_Bild10.png?rlkey=21wue2z3kk2ygqsad27d5nrkp&dl=1",
-        "https://www.dropbox.com/scl/fi/31zaawm26jzwbi64j2ydo/Section3_Bild8.png?rlkey=cbfdagye9vdhf1cz1btbej9f8&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/bzimdqifv74meu1h8pjwh/Section3_Bild5.png?rlkey=7rxc460udv5n7ivskey3rxfzw&dl=1",
+        "https://www.dropbox.com/scl/fi/8lq5wso7oatrfm6qixnya/Section3_Bild1.png?rlkey=1arieqogcfsu9t9ezs37morfv&dl=1",
+        "https://www.dropbox.com/scl/fi/hyvjvif0wphjpem8bflur/Section3_Bild0.png?rlkey=x16lbednxvdgb0yaq62oe5txl&dl=1",
+        "https://www.dropbox.com/scl/fi/sw8ajlp2xnxutb7ll50ng/Section3_Bild6.png?rlkey=azbkkgh64p4e11pyod55njlbf&dl=1",
+        "https://www.dropbox.com/scl/fi/qrc9gbejw7u33xjszcy5m/Section3_Bild7.png?rlkey=6vajv6lw8dlhobtj1ttmvrr7b&dl=1",
+        "https://www.dropbox.com/scl/fi/5y0q2xam7eei10jq0usn9/Section3_Bild2.png?rlkey=s504yqfnf2pz9km5bwnbwqwyq&dl=1",
+        "https://www.dropbox.com/scl/fi/vfrgdli62knfcrpsyp7qd/Section3_Bild10.png?rlkey=eliif79xn37rqv3bwv4ymd33n&dl=1",
+        "https://www.dropbox.com/scl/fi/xalhsio7no3rifp5k3xcn/Section3_Bild8.png?rlkey=7y92ix3g39shf7vcyaprbea5n&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg83 = image_select(
         "Auswahl:",
@@ -1628,14 +1598,14 @@ if st.session_state.seite == "page8":
     st.text('Topic 4: Historical Research and Current Studies in the Red Sea\n- Overviews significant contributions by German scientists to our understanding of coral reef ecology in the region, alongside modern cooperative projects focused on conservation.\n\n')
 
     tmp84 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/dmsnyv3qpltgyyjz8vay8/Section4_Bild3.png?rlkey=usnbdk90ji81irct4vsqa63zd&dl=1",
-        "https://www.dropbox.com/scl/fi/bxu2x6kgugg5yrskt24rd/Section4_Bild0.png?rlkey=oofeivivr19bbqewrfj6lryvs&dl=1",
-        "https://www.dropbox.com/scl/fi/mvv0whejfns57l3tusbcv/Section4_Bild4.png?rlkey=szg5owo0rg0noavvhgij4w3jz&dl=1",
-        "https://www.dropbox.com/scl/fi/q65evtyd5qp1ywbyt8pza/Section4_Bild5.png?rlkey=rki9mvwted9poluz3o6i6gq0e&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/nkupaq62vrpisavn4tfmk/Section4_Bild3.png?rlkey=2oaxb7vvxt9xe43ut0h9yvc7l&dl=1",
+        "https://www.dropbox.com/scl/fi/dqurc7cm91vwddlvg41yx/Section4_Bild0.png?rlkey=vgcdk20yb5uld3x2bowzpitig&dl=1",
+        "https://www.dropbox.com/scl/fi/c9c0vcthpau5qvvjbil1w/Section4_Bild4.png?rlkey=dc8uzmplga6r3uykmlyodtkf0&dl=1",
+        "https://www.dropbox.com/scl/fi/gff5t8hrdtxh35jj5vfh7/Section4_Bild5.png?rlkey=7wifd435bc1zyf3ryh4x5ew2f&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img84 = image_select(
         "Auswahl:",
@@ -1651,10 +1621,10 @@ if st.session_state.seite == "page8":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp84 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/xu2lumrczbgd12mt4ix16/Section4_Bild2.png?rlkey=lpr9bejlujoq70b6odo5yw4w4&dl=1",
-        "https://www.dropbox.com/scl/fi/ftn5ikzhfiqq7pli01zq0/Section4_Bild1.png?rlkey=5h35gthv8nkf8swy9d0t1wt6h&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/txcem2a6czjttgcch7y88/Section4_Bild2.png?rlkey=fikfc4xmpmui9j22b3aey56ol&dl=1",
+        "https://www.dropbox.com/scl/fi/beud6o8ctcxh0xkv84vaz/Section4_Bild1.png?rlkey=ddjsyzry8b3orxge58xkd7ns6&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg84 = image_select(
         "Auswahl:",
@@ -1670,14 +1640,14 @@ if st.session_state.seite == "page8":
     st.text('Topic 5: Creating Successful Aquarium Environments\n- Guidelines for designing suitable habitats, ensuring optimal water quality, choosing compatible species, regular maintenance practices, and balanced diets for coral reef displays.\n\n')
 
     tmp85 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/slacwtvz2py097d0snmdn/Section5_Bild5.png?rlkey=gfxa6bnazqwig9c81w92579zg&dl=1",
-        "https://www.dropbox.com/scl/fi/fj8bw8p8r1f2l3pyywwt6/Section5_Bild8.png?rlkey=tce52z7ob0xk2k8686374umjd&dl=1",
-        "https://www.dropbox.com/scl/fi/kwotpay3t6v0alxyi7vxm/Section5_Bild0.png?rlkey=veh1uyee39ijmeyesz7j8qjk8&dl=1",
-        "https://www.dropbox.com/scl/fi/yi58k81m8wwfb8i9wzkcl/Section5_Bild7.png?rlkey=cvr9bvkl0ew7iqhks7mo3cf8q&dl=1",
-        "https://www.dropbox.com/scl/fi/y18ege7qgkmzy79ium6q8/Section5_Bild4.png?rlkey=r2vp1fneegqo1blmwzt210uvs&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/6cb67y0kdm6xx2r90vgr8/Section5_Bild5.png?rlkey=k1ae278ga4mbks37rktrzbc1t&dl=1",
+        "https://www.dropbox.com/scl/fi/4iwf0k584gxmz1vq3k3nl/Section5_Bild8.png?rlkey=pzuhn535q2oyijrppyt92jh5d&dl=1",
+        "https://www.dropbox.com/scl/fi/d3yas06wsiv98r0hxo5kr/Section5_Bild0.png?rlkey=8cnkm6q2uah4itz5fpzq0fybm&dl=1",
+        "https://www.dropbox.com/scl/fi/5oedn42qezu6vdb0r1asn/Section5_Bild7.png?rlkey=4fegkpgk2qb5awb93xxvc7nyo&dl=1",
+        "https://www.dropbox.com/scl/fi/qxoq32y1dh1pl280gvr5y/Section5_Bild4.png?rlkey=6ps7eglnngpuor0beaihkbgd5&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img85 = image_select(
         "Auswahl:",
@@ -1693,14 +1663,14 @@ if st.session_state.seite == "page8":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp85 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/0qbx0j7dbhd6u10n3ab0g/Section5_Bild9.png?rlkey=m8m332hxwb72fsa2fmsp7tuou&dl=1",
-        "https://www.dropbox.com/scl/fi/5wjoqug325c0o7xxq3f6g/Section5_Bild1.png?rlkey=cv4qc250fnna5oupijwkp2xk6&dl=1",
-        "https://www.dropbox.com/scl/fi/pa05wy9s1hnsf89yx9isw/Section5_Bild2.png?rlkey=96hskpq4o5dbu9v42e45y1m9f&dl=1",
-        "https://www.dropbox.com/scl/fi/b45s17s3ldlkenw9bviih/Section5_Bild6.png?rlkey=e2nsgvfkxnxv96nopw2z8vyvb&dl=1",
-        "https://www.dropbox.com/scl/fi/eyvmrnit637dq7ubr8rvr/Section5_Bild10.png?rlkey=tp329o4epqfuw4d02urzo64pr&dl=1",
-        "https://www.dropbox.com/scl/fi/c6jmaq00wjo2fdgwp1ni5/Section5_Bild3.png?rlkey=5jgsf8us4dqq2hgynnx4lp1i6&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/0xdygky60sb6vl3zjak5t/Section5_Bild9.png?rlkey=9s17u778etj7srkmw4kru12ld&dl=1",
+        "https://www.dropbox.com/scl/fi/ypfkhedjn39qhtay7spco/Section5_Bild1.png?rlkey=odpurbuocfc6590y8orz7haip&dl=1",
+        "https://www.dropbox.com/scl/fi/kd6mojiio7ek5m5au351n/Section5_Bild2.png?rlkey=33wsqrcos541taakbg20lk0tg&dl=1",
+        "https://www.dropbox.com/scl/fi/hr95lxd1dpnai0oy9ps4n/Section5_Bild6.png?rlkey=y70rzqebugixz62dxebbitqly&dl=1",
+        "https://www.dropbox.com/scl/fi/ha70zgrr9c1qgmkxayp9q/Section5_Bild10.png?rlkey=obhw4x4d95y26aj8kju8o8wrv&dl=1",
+        "https://www.dropbox.com/scl/fi/9zdbyln68yx1nkftr7nce/Section5_Bild3.png?rlkey=y889g4nruwfph813gmuyheiws&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg85 = image_select(
         "Auswahl:",
@@ -1737,7 +1707,7 @@ if st.session_state.seite == "page9":
     st.title("Seite 9")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/au048vay3mvxtzmnbbd3a/Probekapitel_Ernaehrungsberater_Ernaehrungslehre_ENB01-B.pdf?rlkey=0sgejv2f4ybw4u86mh3ew8xni&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/436abwselhdjaoxrgt4w9/Probekapitel_Ernaehrungsberater_Ernaehrungslehre_ENB01-B.pdf?rlkey=05ep0wrigk54tpr2l82suv2wj&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -1770,7 +1740,7 @@ if st.session_state.seite == "page10":
     st.title("Seite 10")
     st.text(text)
 
-    pdf_url = "https://www.dropbox.com/scl/fi/77k16ecyi6i1rh1hz2b4h/bdw_2022-006_96_Schwarze-Loecher-erschuettern-das-All.pdf?rlkey=7sobuajkuf6a68j5v2w8chhaf&dl=0"
+    pdf_url = "https://www.dropbox.com/scl/fi/up25uozr8ky9j0ld4pv7h/bdw_2022-006_96_Schwarze-Loecher-erschuettern-das-All.pdf?rlkey=a435ir79i3fu7jcaj6l2zez18&dl=0"
     st.text("Wenn die Bilder nicht angezeigt werden, bitte ca. 10 Sekunden warten und anschließend auf den Button „Neuladen“ klicken."
         "Wichtig: Nicht den Browser neu laden, da sonst alle bisherigen Auswahlen verloren gehen!")
     if st.button("Neuladen"):
@@ -1782,14 +1752,14 @@ if st.session_state.seite == "page10":
     st.text('Topic 1: First Direct Observation of Merged Black Holes\n- On May 21, 2019, scientists detected gravitational waves caused by two merging black holes, providing direct evidence of these cosmic phenomena.\n\n')
 
     tmp101 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/set2coktgzm7oajk1i82z/Section1_Bild0.png?rlkey=q0xmlsy8ygi9xh3kchiougtk9&dl=1",
-        "https://www.dropbox.com/scl/fi/iitjxelfa96tc0ug5n43r/Section1_Bild2.png?rlkey=0hu8nnju3neiq8yg1lnxwpjnx&dl=1",
-        "https://www.dropbox.com/scl/fi/c871u3vby1lu7z394eq61/Section1_Bild4.png?rlkey=av7tczv69tiehzafjvp2rsawx&dl=1",
-        "https://www.dropbox.com/scl/fi/lw7r60b6kzjeatpl2pztk/Section1_Bild1.png?rlkey=cdw5ngrw6cl8i96tiuh59ebhs&dl=1",
-        "https://www.dropbox.com/scl/fi/f2fg2ckgadxdwa1y70gdx/Section1_Bild3.png?rlkey=ndh3f9yowze68pre06z7vafps&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/y9um4ofe7bxxu0gexupkg/Section1_Bild0.png?rlkey=19tyhb1e42b6dm4ion2wp6x79&dl=1",
+        "https://www.dropbox.com/scl/fi/6eqnohmymb7r80q07ehpq/Section1_Bild2.png?rlkey=9sltn3pppzjsmz1yq1vbcmlzt&dl=1",
+        "https://www.dropbox.com/scl/fi/8gi4ctzx4p9jdud00fj2x/Section1_Bild4.png?rlkey=t05e0fmf0jgz4evyfkn62hibo&dl=1",
+        "https://www.dropbox.com/scl/fi/e8rt6409zlmo8yv84v71n/Section1_Bild1.png?rlkey=on2xrhmczgio4gcwz717vmwl9&dl=1",
+        "https://www.dropbox.com/scl/fi/p94k3zwhbi0h5j6x2fz4i/Section1_Bild3.png?rlkey=w45t9ylqecjk9f6x3apkn1720&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img101 = image_select(
         "Auswahl:",
@@ -1805,14 +1775,14 @@ if st.session_state.seite == "page10":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp101 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/zxgzjzoz3jmu690g2dlz1/Section1_Bild6.png?rlkey=qt7gjyllsbmfs977n0dxn5hfh&dl=1",
-        "https://www.dropbox.com/scl/fi/o9h41bijqxujgq5rwkg0y/Section1_Bild9.png?rlkey=ef4ufqz19t8aryq4or40uud9m&dl=1",
-        "https://www.dropbox.com/scl/fi/ssukwvz522sw62kjaj9iy/Section1_Bild5.png?rlkey=63riws60mgsze7herwamvo6wk&dl=1",
-        "https://www.dropbox.com/scl/fi/kbfpya01d7z5y6orbfc6q/Section1_Bild7.png?rlkey=v6j57hl7cuchtx74nc9d45huw&dl=1",
-        "https://www.dropbox.com/scl/fi/q9qkbvbctftteccmfq7b8/Section1_Bild8.png?rlkey=mcxsiswl29t1q2o0ut7qkw0ab&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/bc3ucjclhr6aronkgm5ue/Section1_Bild6.png?rlkey=4uyjd3rjsy0fga7tqydsjst75&dl=1",
+        "https://www.dropbox.com/scl/fi/8picl2eeqigne232u48m4/Section1_Bild9.png?rlkey=bd8xrz8w67w9g0e4efsmrncno&dl=1",
+        "https://www.dropbox.com/scl/fi/jhqzadj3dvfp5e6s7n2et/Section1_Bild5.png?rlkey=pgvtvc5aood4qojp0u54zc9a4&dl=1",
+        "https://www.dropbox.com/scl/fi/4hzuqpl9ebshcblv9z1e2/Section1_Bild7.png?rlkey=9nmklw7201qjekezc0skql8kw&dl=1",
+        "https://www.dropbox.com/scl/fi/38z8pxdrgtydfn6a4xdvw/Section1_Bild8.png?rlkey=li4qd6aajqya2ayejc2swwtk0&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg101 = image_select(
         "Auswahl:",
@@ -1828,14 +1798,14 @@ if st.session_state.seite == "page10":
     st.text('Topic 2: Properties of Detected Black Holes\n- The merged black hole had approximately three times the mass of our sun, while its precursors were around five and eight solar masses each.\n\n')
 
     tmp102 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/fxbgqnvhy6ocb9l9iyk43/Section2_Bild1.png?rlkey=enntk6n52zs3n7ylvvwkntl43&dl=1",
-        "https://www.dropbox.com/scl/fi/pard5x7lbt3ezekgeqhdf/Section2_Bild0.png?rlkey=0dqm2dk5ngalx4o2klecqghvy&dl=1",
-        "https://www.dropbox.com/scl/fi/m0ikj0i8k20mqf0lci3ye/Section2_Bild8.png?rlkey=cw3ri4lsw008wtjkorif6c08t&dl=1",
-        "https://www.dropbox.com/scl/fi/lurqyfwq72kav4f1gw98v/Section2_Bild9.png?rlkey=msv81jipi4xmmmionyc7jgrh8&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/8jywykmuqmhab4ie6yfzr/Section2_Bild1.png?rlkey=zdo17wpdmb6sv1jg633aoucyn&dl=1",
+        "https://www.dropbox.com/scl/fi/b1rmt4jnexx1t8u3iig7s/Section2_Bild0.png?rlkey=s7t67hm22b4ixu2qebch2vh1c&dl=1",
+        "https://www.dropbox.com/scl/fi/v4uvj28wgrcricyvjodm1/Section2_Bild8.png?rlkey=fpql3eei7zvkmfravrvg7qij8&dl=1",
+        "https://www.dropbox.com/scl/fi/a7b6r6nra274yizqc63vj/Section2_Bild9.png?rlkey=lce7jn5yjj50qmqjszzed83ub&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img102 = image_select(
         "Auswahl:",
@@ -1851,14 +1821,14 @@ if st.session_state.seite == "page10":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp102 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/x4s5crja1h9q9686ykejr/Section2_Bild3.png?rlkey=nzoarv0pqihrguaa4b4v33d0o&dl=1",
-        "https://www.dropbox.com/scl/fi/fg44cgc307zs8x9uwvhx5/Section2_Bild2.png?rlkey=e95nsxy793tu0j8q2tyxcgwy1&dl=1",
-        "https://www.dropbox.com/scl/fi/5dmjt4yqfkpj47ua2cdg2/Section2_Bild6.png?rlkey=pzlfdnbcusn1kbeqvzwjeb6mf&dl=1",
-        "https://www.dropbox.com/scl/fi/si19a84a3tphfbq3ogaam/Section2_Bild4.png?rlkey=e8cpkm1ke0bs5s1g8t5cist9o&dl=1",
-        "https://www.dropbox.com/scl/fi/tfd4u0a3pxq2t7zqhvet9/Section2_Bild5.png?rlkey=3n1v5n41p1rdiqrtcvm96nzed&dl=1",
-        "https://www.dropbox.com/scl/fi/5es3lio2za3cholb67pgn/Section2_Bild7.png?rlkey=rl7w8b0d3xkmkx98g58toiikm&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/mrcvyqicexmx2ob312bg8/Section2_Bild3.png?rlkey=pe0o5j9ggjy3z6c5usbpmrjfg&dl=1",
+        "https://www.dropbox.com/scl/fi/pxgyf62w9da1z1qggvh3e/Section2_Bild2.png?rlkey=ioxdoncgsgfbwkzp2ajpql4jk&dl=1",
+        "https://www.dropbox.com/scl/fi/y8pvnyutfbt7kxetg47e1/Section2_Bild6.png?rlkey=7v9x2bubobx35pfl10mmdrpiq&dl=1",
+        "https://www.dropbox.com/scl/fi/y0f7cehpu8maik4x6t56r/Section2_Bild4.png?rlkey=xua840dulvvywgtkt50tiiygu&dl=1",
+        "https://www.dropbox.com/scl/fi/1qax9ry3tjia7l81ocrbe/Section2_Bild5.png?rlkey=va251yug9gf50gfyfplb7b0ta&dl=1",
+        "https://www.dropbox.com/scl/fi/6fbsvly3n9vq15tc9laf1/Section2_Bild7.png?rlkey=sx2nhpbdofhooy936piyvwd5x&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg102 = image_select(
         "Auswahl:",
@@ -1874,14 +1844,14 @@ if st.session_state.seite == "page10":
     st.text('Topic 3: Energy Emission During Mergers\n- Around 3% of the total energy released during the collision was transformed into gravitational waves, making it equivalent to the combined light emission of billions of stars at the same time.\n\n')
 
     tmp103 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/hijwddbj2680lyczakptr/Section3_Bild5.png?rlkey=n990n42c9td6q275gc2vh7opg&dl=1",
-        "https://www.dropbox.com/scl/fi/wlztpjvvnqroleqjswun0/Section3_Bild0.png?rlkey=rl2jfo1c8lfmjfvgrz3lfncz7&dl=1",
-        "https://www.dropbox.com/scl/fi/ruvasgivxwdlymfpdjoa1/Section3_Bild4.png?rlkey=kcy0jk2r7wun3m180f1t177m1&dl=1",
-        "https://www.dropbox.com/scl/fi/0t7mn81kbp94bai8dlbs5/Section3_Bild2.png?rlkey=ub27ir68s64kniah0wgt33bd0&dl=1",
-        "https://www.dropbox.com/scl/fi/nnpbpxk9sq4hu8hjxwkwx/Section3_Bild3.png?rlkey=kbjqhfjppjo52bf38pyiyar67&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/snqv8b035ayv73b5fv9d6/Section3_Bild5.png?rlkey=o90ymv9hrs5e5r5vx2fz4x7cw&dl=1",
+        "https://www.dropbox.com/scl/fi/6t1onzfw1pvysspycp211/Section3_Bild0.png?rlkey=ww3kokjkpi2hy5nfnnlqmlejy&dl=1",
+        "https://www.dropbox.com/scl/fi/l5klahqadsite2e6tnumi/Section3_Bild4.png?rlkey=vvaxil6cf68qa1n66ncurfi9v&dl=1",
+        "https://www.dropbox.com/scl/fi/e0fs655me8iziakqv14fh/Section3_Bild2.png?rlkey=l0gxihcc16ouaiabfg9w0lv4v&dl=1",
+        "https://www.dropbox.com/scl/fi/1jbp9f78bf1p0gv9klqwl/Section3_Bild3.png?rlkey=ty520h2tccjqkk3d7n1gvmgea&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img103 = image_select(
         "Auswahl:",
@@ -1897,10 +1867,10 @@ if st.session_state.seite == "page10":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp103 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/ud4oteyddcq2nkbolfsgb/Section3_Bild1.png?rlkey=8y3zf2mszsubo4p7x28oeo9sb&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/lpjllop47dclaq5ivla96/Section3_Bild1.png?rlkey=mjykplsngry7npct80ouv0cx9&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg103 = image_select(
         "Auswahl:",
@@ -1916,14 +1886,14 @@ if st.session_state.seite == "page10":
     st.text('Topic 4: Importance of Gravitational Waves\n- These observations offer insights into various aspects of physics, including general relativity and the nature of dark matter. They can help astronomers understand how galaxies formed and evolve over time.\n\n')
 
     tmp104 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/xisc0tyzyy007n7hd2ti6/Section4_Bild2.png?rlkey=ukpnkr22d6mitabt5ngja4k73&dl=1",
-        "https://www.dropbox.com/scl/fi/zfg2fpn3a61v12xucktp8/Section4_Bild8.png?rlkey=vi4e0svewffba2jo47bp1kk1j&dl=1",
-        "https://www.dropbox.com/scl/fi/kdaj80yg38e4izyrren0g/Section4_Bild0.png?rlkey=p03dr5zfoaw5o5jsh5yqwc34n&dl=1",
-        "https://www.dropbox.com/scl/fi/muqt4g5vg6f1rtdmndff2/Section4_Bild1.png?rlkey=gvy887lvncy4enl3ujdarb6v5&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/0t2yy3kh11svz9z766vys/Section4_Bild2.png?rlkey=3bsoq9lw58iu2rcsr856suwpd&dl=1",
+        "https://www.dropbox.com/scl/fi/i1xxdejnq65x6q7hkvv6v/Section4_Bild8.png?rlkey=qkrqgk0s52hku5htsqyl4txpl&dl=1",
+        "https://www.dropbox.com/scl/fi/at4a2g6t7wim2xelqyo58/Section4_Bild0.png?rlkey=cfjhuq62xywc88dlyw3djrlex&dl=1",
+        "https://www.dropbox.com/scl/fi/jujumazlufnxw93hna1sr/Section4_Bild1.png?rlkey=cjim9st5nyb72y9ms8pzdz632&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img104 = image_select(
         "Auswahl:",
@@ -1939,14 +1909,14 @@ if st.session_state.seite == "page10":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp104 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/82wccpgdnumxrq39ujwah/Section4_Bild3.png?rlkey=3yhtrsdk5ij14mg9mzmarrz2n&dl=1",
-        "https://www.dropbox.com/scl/fi/kqtp6dwuuh2rzge6d4atl/Section4_Bild6.png?rlkey=gr11nvjn0j3123meo68068fwt&dl=1",
-        "https://www.dropbox.com/scl/fi/76p5iklxxyri4rgnyzv1d/Section4_Bild9.png?rlkey=mgxttxz5082uyqye266mrk1cq&dl=1",
-        "https://www.dropbox.com/scl/fi/cpco8j2jf32pljn1qiuck/Section4_Bild4.png?rlkey=34uptbebnrhc1w57epmybzcoo&dl=1",
-        "https://www.dropbox.com/scl/fi/jyyobu2u7a5q1lzwzr4qx/Section4_Bild7.png?rlkey=gnwinkbk2dfjwrd0qm74wd21a&dl=1",
-        "https://www.dropbox.com/scl/fi/frco7ctepdicpfrndas53/Section4_Bild5.png?rlkey=29xryaisyf24jisanu84lgk63&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/f65whu13m6y4lpfdcqfp3/Section4_Bild3.png?rlkey=dljtikddktsrhsq8t3cs20wx9&dl=1",
+        "https://www.dropbox.com/scl/fi/t1q8uyxv0ulrzt8bwnc47/Section4_Bild6.png?rlkey=pa5qdh7ykvjp05y17uibxk2z0&dl=1",
+        "https://www.dropbox.com/scl/fi/241j684156blb5qoh5fv9/Section4_Bild9.png?rlkey=b3pfzalpg6blof83ul1vt4g93&dl=1",
+        "https://www.dropbox.com/scl/fi/dnzqo0gz9g6uczdthzxsp/Section4_Bild4.png?rlkey=quddhs0rx5c9ub4ey7axohomj&dl=1",
+        "https://www.dropbox.com/scl/fi/vb73ul3xutrhwnzelmqbt/Section4_Bild7.png?rlkey=edu4pmoks7oxko49b0k7t6a93&dl=1",
+        "https://www.dropbox.com/scl/fi/bz719ssds2n8tmf6d9nyb/Section4_Bild5.png?rlkey=yko0f0rhz6jui8aivx1ekgr10&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg104 = image_select(
         "Auswahl:",
@@ -1962,14 +1932,14 @@ if st.session_state.seite == "page10":
     st.text('Topic 5: Future Research Plans\n- Scientists are preparing for further observation campaigns with improved sensitivity levels, aiming to detect more events and deepen understanding of this fascinating phenomenon.\n\n')
 
     tmp105 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/lwzk8a0h3h1d8kqfje3iz/Section5_Bild9.png?rlkey=kxaik7dger84g4bdo69sxdvyy&dl=1",
-        "https://www.dropbox.com/scl/fi/4yyh22gghm12xlfcwe7z5/Section5_Bild5.png?rlkey=fcm54e92h6z465ty7yktx25sy&dl=1",
-        "https://www.dropbox.com/scl/fi/vxvffp8pe3guc7ohzm9vi/Section5_Bild8.png?rlkey=ha2rwmecgpbxt24vtcauzw9xd&dl=1",
-        "https://www.dropbox.com/scl/fi/2xj7lb7qzejw5yf9dhr24/Section5_Bild7.png?rlkey=gf9fzemtzbm4jelxu9ya8yyoz&dl=1",
-        "https://www.dropbox.com/scl/fi/p2xbrs379ht39ik7ik7hv/Section5_Bild6.png?rlkey=7uriyaospj7sb7ai0jvdr1bcj&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/tlhm5u31ja9hjydfab1gy/Section5_Bild9.png?rlkey=wih1ji7v1ysvc6nastw0xscel&dl=1",
+        "https://www.dropbox.com/scl/fi/hiccj1o2l8r9y86l8jznu/Section5_Bild5.png?rlkey=7v7zrwfryxz28jsh401dlkvpl&dl=1",
+        "https://www.dropbox.com/scl/fi/nsapzxklg7ov3v033x4az/Section5_Bild8.png?rlkey=n1v320cjhxxvvhlzpb4shay4l&dl=1",
+        "https://www.dropbox.com/scl/fi/gibcjuzu5w824nxcu6dyu/Section5_Bild7.png?rlkey=vl25e2kebepz4gkn029cj8hmj&dl=1",
+        "https://www.dropbox.com/scl/fi/0xq6ly9dxavymft3twxag/Section5_Bild6.png?rlkey=c4k3z47e1osvlmkfd7zxu79wu&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     img105 = image_select(
         "Auswahl:",
@@ -1985,14 +1955,14 @@ if st.session_state.seite == "page10":
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
     nvtmp105 = [
-        "https://www.dropbox.com/scl/fi/9rhcgpm4a3lgepo42dtcp/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ic9spx70pyhf0vi6v3fsjvrlp&dl=1",
-        "https://www.dropbox.com/scl/fi/7f8mbiy3p6jm22973aszi/Section5_Bild0.png?rlkey=41slhmcfwpfw4nb5fz9mi6ffa&dl=1",
-        "https://www.dropbox.com/scl/fi/ic4fel4ea58gx48l747v7/Section5_Bild1.png?rlkey=uq34b9ymg9aozeys46xjnosx7&dl=1",
-        "https://www.dropbox.com/scl/fi/35cms9lsa3uv3jmxsh0mh/Section5_Bild2.png?rlkey=e8i7focmbfw910cyrdyg6hy66&dl=1",
-        "https://www.dropbox.com/scl/fi/9slxbs47yxgt2eud85vz4/Section5_Bild4.png?rlkey=0ils9y6wht8byqbmbj8dj5cng&dl=1",
-        "https://www.dropbox.com/scl/fi/dp8evvrqlhub5jgy7ecdf/Section5_Bild3.png?rlkey=hqf122vefkpnoaj70wt3lyash&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
-        "https://www.dropbox.com/scl/fi/583bjkljoalljqqp4vh4f/Platzhalter.png?rlkey=ylvmob8rsszsjo9tmi1bjllh2&dl=1",
+        "https://www.dropbox.com/scl/fi/mhaq9cw64rckpm3tcap8v/bad-sets-komponenten-keine-auswahl.jpg?rlkey=er4xk4dn0fyshgqw1odcn817t&dl=1",
+        "https://www.dropbox.com/scl/fi/07lfmz4ue7b1zgo18i1sk/Section5_Bild0.png?rlkey=bhs9jnbft5qao4jqbhpvjtn34&dl=1",
+        "https://www.dropbox.com/scl/fi/7s2vn8556zgta6kdwkhvx/Section5_Bild1.png?rlkey=ifjauue3f6d83jm6dsgkpyhz6&dl=1",
+        "https://www.dropbox.com/scl/fi/5nbdkqp1ky7pp858mlvck/Section5_Bild2.png?rlkey=cqjaqefv7rlnca8723ig45jxx&dl=1",
+        "https://www.dropbox.com/scl/fi/zo0xkj9dcb76eiqaf4a3l/Section5_Bild4.png?rlkey=nvilis6pi827nhmyok7zrj1pj&dl=1",
+        "https://www.dropbox.com/scl/fi/k3ps196f2jku83kiulg50/Section5_Bild3.png?rlkey=g1yw4klazflbnf93ph56kiw67&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
+        "https://www.dropbox.com/scl/fi/77lk9ww5sncuow1pd9c8u/Platzhalter.png?rlkey=nd3fl19x1wj4w6ip4pc43fidk&dl=1",
     ]
     nvimg105 = image_select(
         "Auswahl:",
