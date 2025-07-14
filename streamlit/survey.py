@@ -511,14 +511,9 @@ elif st.session_state.seite == "auswertung":
     st.write("Du hast diese Bilder gewählt:")
 
     auswertung_text = ""
-    letzte_frage = ""
 
     for key, value in sorted(st.session_state.auswahl.items()):
-        frage, thema = key.split(" Thema ")
-        if frage != letzte_frage:
-            auswertung_text += f"\n{frage}:\n"
-            letzte_frage = frage
-        auswertung_text += f"  Thema {thema} → Bild {value}\n"
+        auswertung_text += f"{key} → {value}\n"
 
     st.text(auswertung_text.strip())
 
