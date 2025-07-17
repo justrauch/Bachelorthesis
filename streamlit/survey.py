@@ -640,8 +640,6 @@ elif st.session_state.seite == "auswertung":
 
     if st.button("Submit via Web Form (Formspree)"):
         full_message = results_text.strip()
-        if additional_feedback.strip():
-            full_message += "\n\nAdditional Feedback:\n" + additional_feedback.strip()
 
         response = requests.post(
             "https://formspree.io/f/mkgzggle",
