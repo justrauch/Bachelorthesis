@@ -3,6 +3,7 @@ from streamlit_image_select import image_select
 from streamlit_scroll_to_top import scroll_to_here
 import urllib.parse
 import uuid
+import requests
 
 if "email_count" not in st.session_state:
     st.session_state.email_count = 0
@@ -631,23 +632,61 @@ elif st.session_state.seite == "auswertung":
     st.write("You have selected the following images:")
 
     auswertung_text = ""
-
     for key, value in sorted(st.session_state.auswahl.items()):
         auswertung_text += f"{key} → {value}\n"
 
     st.text(auswertung_text.strip())
 
-    encoded_body = urllib.parse.quote(auswertung_text)
+    feedback = st.text_area("Optional: Hinterlasse zusätzliches Feedback (z. B. Verbesserungsvorschläge):")
+
+    if st.button("Absenden"):
+        data = {
+            "message": auswertung_text.strip(),
+            "feedback": feedback
+        }
+
+elif st.session_state.seite == "auswertung":
+    st.title("Evaluation")
+    st.write("You have selected the following images:")
+
+    results_text = ""
+
+    for key, value in sorted(st.session_state.auswahl.items()):
+        results_text += f"{key} → {value}\n"
+
+    st.text(results_text.strip())
+
+    additional_feedback = st.text_area("Optional: Leave additional feedback or comments:")
+
+    if st.button("Submit via Web Form (Formspree)"):
+        full_message = results_text.strip()
+        if additional_feedback.strip():
+            full_message += "\n\nAdditional Feedback:\n" + additional_feedback.strip()
+
+        response = requests.post(
+            "https://formspree.io/f/mkgzggle",
+            data={"message": full_message}
+        )
+        if response.status_code == 200:
+            st.success("Thank you for your feedback!")
+        else:
+            st.error("Error while sending. Please try again later.")
+
+    st.markdown("---")
+
+    encoded_body = urllib.parse.quote(results_text)
     mailto_link = f"mailto:jstrauch@pagemachine.de?subject=Image Survey&body={encoded_body}"
 
-    if st.button("Send results via email"):
+    if st.button("Alternatively, send via Email"):
         dummy_id = uuid.uuid4()
         js_code = f"""
-        const dummy = \"{dummy_id}\";
+        const dummy = \"{dummy_id}\"; 
         window.open(\"{mailto_link}\");
         """
         st.components.v1.html(f"<script>{js_code}</script>", height=0)
 
-    st.text("If no email window opens after clicking the button, please enable pop-ups for this page in your browser. Alternatively, you can copy the results or take a screenshot and send them via email to jstrauch@pagemachine.de. Thank you!")
+    st.info("If no email window opens, please enable pop-ups in your browser. "
+            "Alternatively, copy the results manually and send them to jstrauch@pagemachine.de.")
 
-    st.button("Modify", on_click=lambda: wechsel_zu("start"))
+    st.button("Back to Start", on_click=lambda: wechsel_zu("start"))
+
