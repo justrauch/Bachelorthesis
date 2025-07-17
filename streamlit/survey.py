@@ -631,32 +631,12 @@ elif st.session_state.seite == "auswertung":
     st.title("Evaluation")
     st.write("You have selected the following images:")
 
-    auswertung_text = ""
-    for key, value in sorted(st.session_state.auswahl.items()):
-        auswertung_text += f"{key} → {value}\n"
-
-    st.text(auswertung_text.strip())
-
-    feedback = st.text_area("Optional: Hinterlasse zusätzliches Feedback (z. B. Verbesserungsvorschläge):")
-
-    if st.button("Absenden"):
-        data = {
-            "message": auswertung_text.strip(),
-            "feedback": feedback
-        }
-
-elif st.session_state.seite == "auswertung":
-    st.title("Evaluation")
-    st.write("You have selected the following images:")
-
     results_text = ""
 
     for key, value in sorted(st.session_state.auswahl.items()):
         results_text += f"{key} → {value}\n"
 
     st.text(results_text.strip())
-
-    additional_feedback = st.text_area("Optional: Leave additional feedback or comments:")
 
     if st.button("Submit via Web Form (Formspree)"):
         full_message = results_text.strip()
@@ -665,7 +645,8 @@ elif st.session_state.seite == "auswertung":
 
         response = requests.post(
             "https://formspree.io/f/mkgzggle",
-            data={"message": full_message}
+            data={"message": full_message},
+            headers={"Content-Type": "application/x-www-form-urlencoded"}
         )
         if response.status_code == 200:
             st.success("Thank you for your feedback!")
