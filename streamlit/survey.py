@@ -3,7 +3,6 @@ from streamlit_image_select import image_select
 from streamlit_scroll_to_top import scroll_to_here
 import urllib.parse
 import uuid
-import requests
 
 if "email_count" not in st.session_state:
     st.session_state.email_count = 0
@@ -85,7 +84,6 @@ if st.session_state.seite == "start":
         st.image(bsp1_arr[0 if bsp1_tmp == 0 else 1])
     else:
         st.image(bsp1_arr[0 if bsp1_tmp == 1 else 1])
-
     st.text("This is the description for the image above:")
     st.text("Four zebras stand at the edge of a watering hole, with three of them drinking while their reflections are clearly visible in the calm water. The scene is set against a backdrop of dry grass and warm sunlight, evoking the African savanna.")
 
@@ -97,8 +95,10 @@ if st.session_state.seite == "start":
     )
 
     st.button(f"Page 1", on_click=lambda s=f"page1": wechsel_zu(s))
-    st.button("Results", on_click=lambda: wechsel_zu("auswertung"))
+    st.text("After completing all questions, please submit your results.")
+    st.button("Submit Results", on_click=lambda: wechsel_zu("auswertung"))
     st.button("Scroll to top", on_click=scroll())
+
 if st.session_state.seite == "page1":
     st.title("Page 1")
     st.text(text)
@@ -169,7 +169,7 @@ if st.session_state.seite == "page1":
         'Please provide a short justification for your choice (ideally in German):',
         value=st.session_state.auswahl['Page 1 comments']
     )
-    st.text("You can now continue to the next question, view an explanation, or go to the results page.")
+    st.text("You can now continue to the next questions.")
     st.button("(Next) Page 2", on_click=lambda: wechsel_zu("page2"))
 
     with st.container():
@@ -178,8 +178,10 @@ if st.session_state.seite == "page1":
         for i, frage in enumerate(fragen):
             cols[i].button(f"Page {frage}", on_click=lambda s=f"page{frage}": wechsel_zu(s))
 
-    st.button("Results", on_click=lambda: wechsel_zu("auswertung"))
+    st.text("After completing all questions, please submit your results.")
+    st.button("Submit Results", on_click=lambda: wechsel_zu("auswertung"))
 
+    st.text("Return to the starting explanation page here.")
     st.button("Explanation", on_click=lambda: wechsel_zu("start"))
 
     st.button("Scroll to top", on_click=scroll)
@@ -258,7 +260,7 @@ if st.session_state.seite == "page2":
         'Please provide a short justification for your choice (ideally in German):',
         value=st.session_state.auswahl['Page 2 comments']
     )
-    st.text("You can now continue to the next question, view an explanation, or go to the results page.")
+    st.text("You can now continue to the next questions.")
     st.button("(Next) Page 3", on_click=lambda: wechsel_zu("page3"))
 
     with st.container():
@@ -267,8 +269,10 @@ if st.session_state.seite == "page2":
         for i, frage in enumerate(fragen):
             cols[i].button(f"Page {frage}", on_click=lambda s=f"page{frage}": wechsel_zu(s))
 
-    st.button("Results", on_click=lambda: wechsel_zu("auswertung"))
+    st.text("After completing all questions, please submit your results.")
+    st.button("Submit Results", on_click=lambda: wechsel_zu("auswertung"))
 
+    st.text("Return to the starting explanation page here.")
     st.button("Explanation", on_click=lambda: wechsel_zu("start"))
 
     st.button("Scroll to top", on_click=scroll)
@@ -351,7 +355,7 @@ if st.session_state.seite == "page3":
         'Please provide a short justification for your choice (ideally in German):',
         value=st.session_state.auswahl['Page 3 comments']
     )
-    st.text("You can now continue to the next question, view an explanation, or go to the results page.")
+    st.text("You can now continue to the next questions.")
     st.button("(Next) Page 4", on_click=lambda: wechsel_zu("page4"))
 
     with st.container():
@@ -360,8 +364,10 @@ if st.session_state.seite == "page3":
         for i, frage in enumerate(fragen):
             cols[i].button(f"Page {frage}", on_click=lambda s=f"page{frage}": wechsel_zu(s))
 
-    st.button("Results", on_click=lambda: wechsel_zu("auswertung"))
+    st.text("After completing all questions, please submit your results.")
+    st.button("Submit Results", on_click=lambda: wechsel_zu("auswertung"))
 
+    st.text("Return to the starting explanation page here.")
     st.button("Explanation", on_click=lambda: wechsel_zu("start"))
 
     st.button("Scroll to top", on_click=scroll)
@@ -436,7 +442,7 @@ if st.session_state.seite == "page4":
         'Please provide a short justification for your choice (ideally in German):',
         value=st.session_state.auswahl['Page 4 comments']
     )
-    st.text("You can now continue to the next question, view an explanation, or go to the results page.")
+    st.text("You can now continue to the next questions.")
     st.button("(Next) Page 5", on_click=lambda: wechsel_zu("page5"))
 
     with st.container():
@@ -445,8 +451,10 @@ if st.session_state.seite == "page4":
         for i, frage in enumerate(fragen):
             cols[i].button(f"Page {frage}", on_click=lambda s=f"page{frage}": wechsel_zu(s))
 
-    st.button("Results", on_click=lambda: wechsel_zu("auswertung"))
+    st.text("After completing all questions, please submit your results.")
+    st.button("Submit Results", on_click=lambda: wechsel_zu("auswertung"))
 
+    st.text("Return to the starting explanation page here.")
     st.button("Explanation", on_click=lambda: wechsel_zu("start"))
 
     st.button("Scroll to top", on_click=scroll)
@@ -525,7 +533,7 @@ if st.session_state.seite == "page5":
         'Please provide a short justification for your choice (ideally in German):',
         value=st.session_state.auswahl['Page 5 comments']
     )
-    st.text("You can now continue to the next question, view an explanation, or go to the results page.")
+    st.text("You can now continue to the next questions.")
     st.button("(Next) Page 6", on_click=lambda: wechsel_zu("page6"))
 
     with st.container():
@@ -534,8 +542,10 @@ if st.session_state.seite == "page5":
         for i, frage in enumerate(fragen):
             cols[i].button(f"Page {frage}", on_click=lambda s=f"page{frage}": wechsel_zu(s))
 
-    st.button("Results", on_click=lambda: wechsel_zu("auswertung"))
+    st.text("After completing all questions, please submit your results.")
+    st.button("Submit Results", on_click=lambda: wechsel_zu("auswertung"))
 
+    st.text("Return to the starting explanation page here.")
     st.button("Explanation", on_click=lambda: wechsel_zu("start"))
 
     st.button("Scroll to top", on_click=scroll)
@@ -614,15 +624,17 @@ if st.session_state.seite == "page6":
         'Please provide a short justification for your choice (ideally in German):',
         value=st.session_state.auswahl['Page 6 comments']
     )
-    st.text("You can now continue to the next question, view an explanation, or go to the results page.")
+    st.text("You can now continue to the next questions.")
     with st.container():
         cols = st.columns([2] * 6)
         fragen = [1, 2, 3, 4, 5]
         for i, frage in enumerate(fragen):
             cols[i].button(f"Page {frage}", on_click=lambda s=f"page{frage}": wechsel_zu(s))
 
-    st.button("Results", on_click=lambda: wechsel_zu("auswertung"))
+    st.text("After completing all questions, please submit your results.")
+    st.button("Submit Results", on_click=lambda: wechsel_zu("auswertung"))
 
+    st.text("Return to the starting explanation page here.")
     st.button("Explanation", on_click=lambda: wechsel_zu("start"))
 
     st.button("Scroll to top", on_click=scroll)
@@ -668,4 +680,3 @@ elif st.session_state.seite == "auswertung":
             "Alternatively, copy the results manually and send them to jstrauch@pagemachine.de.")
 
     st.button("Back to Start", on_click=lambda: wechsel_zu("start"))
-
