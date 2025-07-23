@@ -3,6 +3,7 @@ from streamlit_image_select import image_select
 from streamlit_scroll_to_top import scroll_to_here
 import urllib.parse
 import uuid
+import requests
 
 if "email_count" not in st.session_state:
     st.session_state.email_count = 0
