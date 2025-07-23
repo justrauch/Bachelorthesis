@@ -99,7 +99,6 @@ if st.session_state.seite == "start":
     st.text("After completing all questions, please submit your results.")
     st.button("Submit Results", on_click=lambda: wechsel_zu("auswertung"))
     st.button("Scroll to top", on_click=scroll())
-
 if st.session_state.seite == "page1":
     st.title("Page 1")
     st.text(text)
@@ -114,15 +113,7 @@ if st.session_state.seite == "page1":
 
     st.markdown("## Question 1") 
     st.text(' Buildings housing the Bundestag\n- Overviews the history and architecture of several parliamentary buildings located in Berlin, including the iconic glass dome atop the Reichstag building.\n- Describes additional facilities built recently to accommodate increased membership due to changes in voting regulations.\n\n')
-    choice14_arr = [
-        "https://www.dropbox.com/scl/fi/vuwjs4ykjb471unkmeqbt/Section4_choice.png?rlkey=8qg3vzh374evc5rqidaz05m4h&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice14_tmp = st.session_state.reload_counter % 2
-    if choice14_tmp == 0:
-        st.image(choice14_arr[0 if choice14_tmp == 0 else 1])
-    else:
-        st.image(choice14_arr[0 if choice14_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/vuwjs4ykjb471unkmeqbt/Section4_choice.png?rlkey=8qg3vzh374evc5rqidaz05m4h&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text("This is the description for the image above:")
     st.text(' An aerial view showcases a large, ornate building with a glass dome, surrounded by a park and a cityscape under a partly cloudy sky.')
     st.markdown(
@@ -157,11 +148,7 @@ if st.session_state.seite == "page1":
         key=f"frage14_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Page 1 Question 2"] = img14
-    valid14_tmp = st.session_state.reload_counter % 2
-    if valid14_tmp == 0:
-        st.image(tmp14[st.session_state.auswahl.get("Page 1 Question 2", 0)] if valid14_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp14[st.session_state.auswahl.get("Page 1 Question 2", 0)] if valid14_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp14[st.session_state.auswahl.get("Page 1 Question 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text_input("Selected image", value=st.session_state.auswahl["Page 1 Question 2"], key="wv14", disabled=True)
     st.markdown('## Comment on Page 1')
     if 'Page 1 comments' not in st.session_state.auswahl:
@@ -201,15 +188,7 @@ if st.session_state.seite == "page2":
 
     st.markdown("## Question 1") 
     st.text(' Origin and Dominance of Dinosaurs\n- Details how dinosaurs evolved around 225 million years ago during the Triassic Period; explains why they dominated land ecosystems until their extinction approximately 65 million years ago.\n\n')
-    choice21_arr = [
-        "https://www.dropbox.com/scl/fi/rrt8u8qw3ylaos4d3rehr/Section1_choice.png?rlkey=5uxlb2kquf4uczxwo8o7j2zof&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice21_tmp = st.session_state.reload_counter % 2
-    if choice21_tmp == 0:
-        st.image(choice21_arr[0 if choice21_tmp == 0 else 1])
-    else:
-        st.image(choice21_arr[0 if choice21_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/rrt8u8qw3ylaos4d3rehr/Section1_choice.png?rlkey=5uxlb2kquf4uczxwo8o7j2zof&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text("This is the description for the image above:")
     st.text(' A colorful illustration depicts a map of Earth approximately 225 million years ago, showing the arrangement of continents like Asia, Africa, South America, India, Australia, and Antartica surrounded by oceans and labeled with geological features.')
     st.markdown(
@@ -248,11 +227,7 @@ if st.session_state.seite == "page2":
         key=f"frage21_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Page 2 Question 2"] = img21
-    valid21_tmp = st.session_state.reload_counter % 2
-    if valid21_tmp == 0:
-        st.image(tmp21[st.session_state.auswahl.get("Page 2 Question 2", 0)] if valid21_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp21[st.session_state.auswahl.get("Page 2 Question 2", 0)] if valid21_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp21[st.session_state.auswahl.get("Page 2 Question 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text_input("Selected image", value=st.session_state.auswahl["Page 2 Question 2"], key="wv21", disabled=True)
     st.markdown('## Comment on Page 2')
     if 'Page 2 comments' not in st.session_state.auswahl:
@@ -292,15 +267,7 @@ if st.session_state.seite == "page3":
 
     st.markdown("## Question 1") 
     st.text(' Climate Changes and Global Catastrophe\n- Elaborates on changes in climate throughout the Mesozoic Era leading up to the End-Cretaceous Event; discusses theories suggesting a meteorite collision and volcanic activity contributed to the mass extinction of dinosaurs.\n\n')
-    choice33_arr = [
-        "https://www.dropbox.com/scl/fi/l5w6xl6ln1l8h50r25si0/Section3_choice.png?rlkey=wfr2wmqkiybxg5wyy9kj2dcj2&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice33_tmp = st.session_state.reload_counter % 2
-    if choice33_tmp == 0:
-        st.image(choice33_arr[0 if choice33_tmp == 0 else 1])
-    else:
-        st.image(choice33_arr[0 if choice33_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/l5w6xl6ln1l8h50r25si0/Section3_choice.png?rlkey=wfr2wmqkiybxg5wyy9kj2dcj2&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text("This is the description for the image above:")
     st.text(' The image shows a depiction of an asteroid impacting Earth on the left, alongside a map of the Yucatan Peninsula in Mexico and Belize highlighting the Chicxulub crater and the location of San Antonio on the right.')
     st.markdown(
@@ -343,11 +310,7 @@ if st.session_state.seite == "page3":
         key=f"frage33_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Page 3 Question 2"] = img33
-    valid33_tmp = st.session_state.reload_counter % 2
-    if valid33_tmp == 0:
-        st.image(tmp33[st.session_state.auswahl.get("Page 3 Question 2", 0)] if valid33_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp33[st.session_state.auswahl.get("Page 3 Question 2", 0)] if valid33_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp33[st.session_state.auswahl.get("Page 3 Question 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text_input("Selected image", value=st.session_state.auswahl["Page 3 Question 2"], key="wv33", disabled=True)
     st.markdown('## Comment on Page 3')
     if 'Page 3 comments' not in st.session_state.auswahl:
@@ -387,15 +350,7 @@ if st.session_state.seite == "page4":
 
     st.markdown("## Question 1") 
     st.text(' Key Findings About Inner & Outer Planets\n- Presents fundamental facts about terrestrial and gas giants, emphasizing their size, compositions, rotations, distances from the sun, and distinctive features like the Great Red Spot and Hexagon storm on Jupiter.\n\n')
-    choice41_arr = [
-        "https://www.dropbox.com/scl/fi/bxsl0059xbo6puplv4pic/Section1_choice.png?rlkey=bqdxmso4bpvzg0gl4n7hw7co1&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice41_tmp = st.session_state.reload_counter % 2
-    if choice41_tmp == 0:
-        st.image(choice41_arr[0 if choice41_tmp == 0 else 1])
-    else:
-        st.image(choice41_arr[0 if choice41_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/bxsl0059xbo6puplv4pic/Section1_choice.png?rlkey=bqdxmso4bpvzg0gl4n7hw7co1&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text("This is the description for the image above:")
     st.text(' The image depicts a vibrant illustration of the solar system with planets orbiting a bright sun, set against a backdrop of a swirling galaxy and distant stars.')
     st.markdown(
@@ -430,11 +385,7 @@ if st.session_state.seite == "page4":
         key=f"frage41_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Page 4 Question 2"] = img41
-    valid41_tmp = st.session_state.reload_counter % 2
-    if valid41_tmp == 0:
-        st.image(tmp41[st.session_state.auswahl.get("Page 4 Question 2", 0)] if valid41_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp41[st.session_state.auswahl.get("Page 4 Question 2", 0)] if valid41_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp41[st.session_state.auswahl.get("Page 4 Question 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text_input("Selected image", value=st.session_state.auswahl["Page 4 Question 2"], key="wv41", disabled=True)
     st.markdown('## Comment on Page 4')
     if 'Page 4 comments' not in st.session_state.auswahl:
@@ -474,15 +425,7 @@ if st.session_state.seite == "page5":
 
     st.markdown("## Question 1") 
     st.text(' About WWF\'s Youth Education Program "Young Panda"\n- Details the goals and objectives of the youth education initiative aimed at children aged 8-14 years old.\n\n')
-    choice52_arr = [
-        "https://www.dropbox.com/scl/fi/24c6c3q5816z4m7c2gytf/Section2_choice.png?rlkey=ksp2wbdlxhcrq1gthaqgply7r&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice52_tmp = st.session_state.reload_counter % 2
-    if choice52_tmp == 0:
-        st.image(choice52_arr[0 if choice52_tmp == 0 else 1])
-    else:
-        st.image(choice52_arr[0 if choice52_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/24c6c3q5816z4m7c2gytf/Section2_choice.png?rlkey=ksp2wbdlxhcrq1gthaqgply7r&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text("This is the description for the image above:")
     st.text(' A man in a blue jacket and black hat is pointing at a moss-covered log while a group of children wearing backpacks look on in a wooded area.')
     st.markdown(
@@ -521,11 +464,7 @@ if st.session_state.seite == "page5":
         key=f"frage52_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Page 5 Question 2"] = img52
-    valid52_tmp = st.session_state.reload_counter % 2
-    if valid52_tmp == 0:
-        st.image(tmp52[st.session_state.auswahl.get("Page 5 Question 2", 0)] if valid52_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp52[st.session_state.auswahl.get("Page 5 Question 2", 0)] if valid52_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp52[st.session_state.auswahl.get("Page 5 Question 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text_input("Selected image", value=st.session_state.auswahl["Page 5 Question 2"], key="wv52", disabled=True)
     st.markdown('## Comment on Page 5')
     if 'Page 5 comments' not in st.session_state.auswahl:
@@ -565,15 +504,7 @@ if st.session_state.seite == "page6":
 
     st.markdown("## Question 1") 
     st.text(' First Direct Observation of Merged Black Holes\n- On May 21, 2019, scientists detected gravitational waves originating from the merger of two massive black holes approximately 8 billion light years away. This marked the first direct observation of this phenomenon.\n\n')
-    choice61_arr = [
-        "https://www.dropbox.com/scl/fi/73i9its0wtcfbj2nodtlv/Section1_choice.png?rlkey=ald5l08fkx9td24a12i6ept6r&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice61_tmp = st.session_state.reload_counter % 2
-    if choice61_tmp == 0:
-        st.image(choice61_arr[0 if choice61_tmp == 0 else 1])
-    else:
-        st.image(choice61_arr[0 if choice61_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/73i9its0wtcfbj2nodtlv/Section1_choice.png?rlkey=ald5l08fkx9td24a12i6ept6r&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text("This is the description for the image above:")
     st.text(' The image depicts two black holes surrounded by swirling blue light and a grid-like pattern against a backdrop of numerous stars.')
     st.markdown(
@@ -612,11 +543,7 @@ if st.session_state.seite == "page6":
         key=f"frage61_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Page 6 Question 2"] = img61
-    valid61_tmp = st.session_state.reload_counter % 2
-    if valid61_tmp == 0:
-        st.image(tmp61[st.session_state.auswahl.get("Page 6 Question 2", 0)] if valid61_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp61[st.session_state.auswahl.get("Page 6 Question 2", 0)] if valid61_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp61[st.session_state.auswahl.get("Page 6 Question 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text_input("Selected image", value=st.session_state.auswahl["Page 6 Question 2"], key="wv61", disabled=True)
     st.markdown('## Comment on Page 6')
     if 'Page 6 comments' not in st.session_state.auswahl:
