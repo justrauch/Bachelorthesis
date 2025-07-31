@@ -1,3 +1,13 @@
 .env
 Server/images/
+Server/images_v1/
+Server/images_v2/
+Server/images_v3/
+Server/images_failed/
+Server/models/
 Server/zip_folders/
+Training/chunk/
+Training/sample/
+Training/sample_sorted/
+Training/data/
+abschlussarbeit-latex-template

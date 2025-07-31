@@ -1,18 +1,21 @@
+// Elementreferenzen
 const dropZone = document.getElementById('dropZone');
 const submitBtn1 = document.getElementById('submitBtn1');
 const submitBtn2 = document.getElementById('submitBtn2');
 const submitBtn3 = document.getElementById('submitBtn3');
 
+// Seitenumschalter (zeigt nur die gewählte Seite an, startet Job-Status-Abfrage auf Seite 2)
 function switchsite(page) {
     for (let i = 1; i <= 3; i++) {
         const tmp = document.getElementById('page' + i);
         tmp.style.display = (i === page) ? 'block' : 'none';
         if (i === 3) {
-            document.getElementById("submitBtn3").click();
+            document.getElementById("submitBtn3").click(); // Startet Statusüberwachung bei Seite 2
         }
     }
 }
 
+// Aktiviert Upload-Button nur, wenn mind. eine Datei vorhanden ist
 function enableButtonIfFilesPresent(dropZone, count) {
     const button = dropZone.parentElement.querySelector('button');
     if (button) {
@@ -20,6 +23,7 @@ function enableButtonIfFilesPresent(dropZone, count) {
     }
 }
 
+// Zeigt ausgewählte Datei in der Drop-Zone an
 function showFilePreview(dropZone, files) {
     dropZone.innerHTML = '';
     const filePreview = document.createElement("div");
@@ -39,6 +43,7 @@ function showFilePreview(dropZone, files) {
     dropZone.appendChild(filePreview);
 }
 
+// Drag-and-Drop- und Klick-Handling für Drop-Zonen
 document.querySelectorAll('.drop-zone').forEach((dropZone) => {
     dropZone.addEventListener('dragover', (e) => {
         e.preventDefault();
@@ -57,6 +62,7 @@ document.querySelectorAll('.drop-zone').forEach((dropZone) => {
         showFilePreview(dropZone, files);
     });
 
+    // Klick öffnet Dateiauswahl-Dialog
     dropZone.addEventListener('click', () => {
         const fileInput = document.createElement('input');
         fileInput.type = 'file';
@@ -69,6 +75,7 @@ document.querySelectorAll('.drop-zone').forEach((dropZone) => {
     });
 });
 
+// Submit ZIP: Hochladen und Verarbeitung starten
 submitBtn1.addEventListener('click', () => {
     const file = document.querySelector("#page1 .drop-zone").file;
 
@@ -82,9 +89,7 @@ submitBtn1.addEventListener('click', () => {
 
         fetch("http://localhost:8000/api/process-zip", {
             method: "POST",
-            headers: {
-                "Accept": "application/zip"
-            },
+            headers: { "Accept": "application/zip" },
             body: formData
         })
         .then(response => {
@@ -95,7 +100,7 @@ submitBtn1.addEventListener('click', () => {
             if (!response.ok) {
                 throw new Error("Unbekannter Fehler beim Hochladen.");
             }
-            switchsite(3);
+            switchsite(3); // Wechsle zur Statusseite
         })
         .catch(error => console.error("Status-Abfrage fehlgeschlagen:", error));
     } else {
@@ -103,6 +108,7 @@ submitBtn1.addEventListener('click', () => {
     }
 });
 
+// Statusseite: wiederholt Status jedes Jobs abfragen und Fortschritt anzeigen
 submitBtn3.addEventListener('click', () => {
     submitBtn3.style.display = "none";
 
@@ -113,11 +119,9 @@ submitBtn3.addEventListener('click', () => {
             .then(data => {
                 if (!Array.isArray(data)) return;
 
-                let last = false
-                let tmp = data.find(job => job.status === "in_bearbeitung" || job.status === "abgebrochen")
-                if(tmp === undefined){
-                  last = true
-                }
+                let last = false;
+                let tmp = data.find(job => job.status === "in_bearbeitung" || job.status === "abgebrochen");
+                if (!tmp) last = true;
 
                 data.forEach(job => {
                     let row = document.getElementById(`row${job.id}`);
@@ -149,6 +153,7 @@ submitBtn3.addEventListener('click', () => {
                         table.style.display = "block";
                     }
 
+                    // Fortschrittsbalken aktualisieren
                     const prozent = Math.round((job.verarbeitet / job.gesamt) * 100);
                     const element = document.querySelector(`#myBar${job.id}`);
                     const bar = document.querySelector(`#myProgress${job.id}`);
@@ -158,8 +163,7 @@ submitBtn3.addEventListener('click', () => {
                     if (element && job.status != "fehlgeschlagen") {
                         element.style.width = prozent + "%";
                         element.textContent = prozent + "%";
-                    }
-                    else{
+                    } else {
                         element.style.width = "100%";
                         element.textContent = `Bearbeitung fehlgeschlagen bei ${prozent} %`;
                     }
@@ -168,34 +172,34 @@ submitBtn3.addEventListener('click', () => {
                         bar.style.display = "block";
                     }
 
+                    // Job stoppen (nur wenn aktiv)
                     if (sbtn && job.status === "in_bearbeitung") {
                         sbtn.onclick = () => stopJob(job.id, sbtn);
                         dbtn.disabled = false;
                     }
 
+                    // Download-Link aktivieren, wenn Job fertig oder fehlgeschlagen
                     if (dbtn && (job.status === "bereit" || job.status === "fehlgeschlagen")) {
                         dbtn.onclick = () => downloadFile(job, dbtn);
-                        dbtn.style.display = "block"
-                        sbtn.style.display = "none"
+                        dbtn.style.display = "block";
+                        sbtn.style.display = "none";
                         dbtn.disabled = false;
                     }
                 });
-                if(last){
-                  clearInterval(interval);
-                }
+
+                if (last) clearInterval(interval); // Beende Statusabfrage, wenn keine aktiven Jobs mehr
             })
             .catch(error => console.error("Status-Abfrage fehlgeschlagen:", error));
     }, 3000);
 });
 
+// Datei herunterladen
 function downloadFile(job, buttonElement) {
     const jobid = job.id;
     const bar = document.querySelector(`#row${jobid}`);
     fetch(`http://localhost:8000/api/download/${jobid}`)
         .then(response => {
-            if (!response.ok) {
-                throw new Error("Download fehlgeschlagen.");
-            }
+            if (!response.ok) throw new Error("Download fehlgeschlagen.");
             return response.blob();
         })
         .then(blob => {
@@ -220,7 +224,8 @@ function downloadFile(job, buttonElement) {
         });
 }
 
-function remove_bar(bar){
+// Fortschrittszeile entfernen
+function remove_bar(bar) {
     if (bar) bar.remove();
 
     const table = document.getElementById("page3table");
@@ -230,19 +235,21 @@ function remove_bar(bar){
     }
 }
 
+// Verarbeitung eines Jobs abbrechen
 function stopJob(jobid, buttonElement) {
-  const bar = document.querySelector(`#row${jobid}`);
-  fetch(`http://localhost:8000/api/stop/${jobid}`)
-      .then(response => response.json())
-      .then(() => {
-        buttonElement.disabled = true;
-      })
-      .catch(error => {
-        console.error("Fehler beim Stoppen des Jobs:", error);
-        alert("Verarbeitung konnte nicht gestoppt werden.");
-    });
+    const bar = document.querySelector(`#row${jobid}`);
+    fetch(`http://localhost:8000/api/stop/${jobid}`)
+        .then(response => response.json())
+        .then(() => {
+            buttonElement.disabled = true;
+        })
+        .catch(error => {
+            console.error("Fehler beim Stoppen des Jobs:", error);
+            alert("Verarbeitung konnte nicht gestoppt werden.");
+        });
 }
 
+// PDF-Datei hochladen zur Extraktion von Metadaten (Seite 3)
 submitBtn2.addEventListener('click', () => {
     const file = document.querySelector("#page2 .drop-zone").file;
 
@@ -252,9 +259,7 @@ submitBtn2.addEventListener('click', () => {
 
         fetch("http://localhost:8000/api/metadata", {
             method: "POST",
-            headers: {
-                "Accept": "application/json"
-            },
+            headers: { "Accept": "application/json" },
             body: formData
         })
         .then(response => {

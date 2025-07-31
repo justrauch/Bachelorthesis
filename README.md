@@ -54,7 +54,7 @@
 > `google/gemma-3-1.1b-it`, `4b`, `12b`, or `24b`  
 > *(Only Gemma-3 models are supported)*
 
-📖 More info:  
+More info:  
 [Automated Image Captioning on RunPod](https://blog.runpod.io/automated-image-captioning-with-gemma-3-on-runpod-serverless/)
 
 ---
@@ -94,18 +94,14 @@
 
 ### `main.py` Configuration
 
-In `bachelorthesis/Bachelorthesis/Server/main.py`, add:
+First, create a file named .env in the bachelorthesis/Bachelorthesis directory if it doesn't already exist.
+
+Then, add the following variables to the .env file (bachelorthesis/Bachelorthesis/.env):
 
 ```python
-API_KEY = "<your RunPod API Key>"
 API_URL_IMAGE_SELECTOR = "<RunPod URL for gemma-3>"
 API_URL_DESCRIPTION = "<RunPod URL for mistralai>"
 API_URL_EMBEDDINGS = "<RunPod URL for intfloat>"
-```
-
-Also in `.env` file (`bachelorthesis/Bachelorthesis/.env`):
-
-```
 API_KEY=<your RunPod API Key>
 ```
 
@@ -117,8 +113,19 @@ API_KEY=<your RunPod API Key>
 
 ```bash
 cd bachelorthesis/Bachelorthesis/Server/
-sudo service docker start      # or start Docker Desktop manually
-docker compose up --build      # Stop with Ctrl + C
+
+# Start the Docker service (if not already running)
+sudo service docker start     # or start Docker Desktop manually
+
+# Build and start the containers (only needed the first time) Ctrl + C to stop
+docker compose up --build
+
+# Start the containers (after they've been built) Ctrl + C to stop
+docker compose up # -d to run in the background
+
+# Stop and remove the running containers
+docker compose down
+
 ```
 
 To remove all local data:
@@ -137,7 +144,7 @@ Open the following file in your browser:
 bachelorthesis/Bachelorthesis/Client/index.html
 ```
 
-> 🛡️ Disable built-in browser antivirus temporarily if there are issues with newline characters or metadata in downloads.
+> Disable built-in browser antivirus temporarily if there are issues with newline characters or metadata in downloads.
 
 ---
 
@@ -186,48 +193,3 @@ sudo rm -rf zip_folders/
 > These commands will irreversibly delete the contents. Backup first.
 
 ---
-
-## Streamlit App Instructions
-
-### Dropbox Setup
-
-1. **Create a Dropbox App**  
-   - Go to: [Dropbox Developer Apps](https://www.dropbox.com/developers/apps)  
-   - Click **"Create app"**
-   - Choose:
-     - Scoped Access  
-     - Full Dropbox  
-     - App Name: `pdf-image-app` (or similar)
-
-2. **Configure Permissions**  
-   Enable:
-   - `files.content.write`
-   - `files.content.read`
-   - `sharing.write`
-
-3. **Generate an Access Token**  
-   - Go to **OAuth 2**  
-   - Click **Generate access token**  
-   - Copy the token
-
-4. **Add to `.env` File**  
-   Edit `.env` in `bachelorthesis/Bachelorthesis/`:
-
-   ```
-   ACCESS_TOKEN=<your Dropbox access token>
-   ```
-
-> Note: Dropbox tokens may be temporary. Re-generate if expired.
-
----
-
-### Start the App
-
-```bash
-cd /bachelorthesis/Bachelorthesis/streamlit
-pip install -r requirements.txt  # or install manually
-python3 help.py                  # Generates the final app
-streamlit run app.py            # Launches the app
-```
-
-> Use `Ctrl + C` to stop the Streamlit server

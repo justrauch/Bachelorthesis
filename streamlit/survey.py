@@ -1,3 +1,6 @@
+# Automatisch generierte App zur Erstellung einer Umfrage anhand des Image-Volumes des Docker-Containers
+# Diese Datei wird automatisch mit dem Skript `help_survy.py` erstellt.
+
 import streamlit as st
 from streamlit_image_select import image_select
 from streamlit_scroll_to_top import scroll_to_here
@@ -7,13 +10,10 @@ import requests
 
 if "email_count" not in st.session_state:
     st.session_state.email_count = 0
-
 if "seite" not in st.session_state:
     st.session_state.seite = "start"
-
 if "auswahl" not in st.session_state:
    st.session_state.auswahl = {}
-
 def wechsel_zu(seite):
     st.session_state.scroll_to_top = True
     st.session_state.seite = seite
@@ -43,7 +43,6 @@ text = (
 
 if st.session_state.seite == "start":
     st.title("Explanation")
-
     st.text("If the images are not displayed, please wait about 10 seconds and then click the “Reload” button. "
         "Important: Do not reload the browser, otherwise all previous selections will be lost!")
     if st.button("Reload"):
@@ -133,7 +132,7 @@ if st.session_state.seite == "page1":
     st.session_state.auswahl["Page 1 Question 1"] = antwort14
 
     st.markdown("## Question 2") 
-    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.") 
+    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.")
     tmp14 = [
         "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
         "https://www.dropbox.com/scl/fi/by8bhno9vrpw4muuhnldq/Section4_Bild2.png?rlkey=vgofwjggqzaunkwhe1f8oohrx&dl=1",
@@ -208,7 +207,7 @@ if st.session_state.seite == "page2":
     st.session_state.auswahl["Page 2 Question 1"] = antwort21
 
     st.markdown("## Question 2") 
-    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.") 
+    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.")
     tmp21 = [
         "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
         "https://www.dropbox.com/scl/fi/kouvvc8o0wpikpmag5hsa/Section1_Bild0.png?rlkey=f8sc7vrcnjo5m3pbhilbwnpvi&dl=1",
@@ -287,7 +286,7 @@ if st.session_state.seite == "page3":
     st.session_state.auswahl["Page 3 Question 1"] = antwort33
 
     st.markdown("## Question 2") 
-    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.") 
+    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.")
     tmp33 = [
         "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
         "https://www.dropbox.com/scl/fi/u16x688q6y09khzbyi7yl/Section3_Bild5.png?rlkey=as5y0wufq1erx2z68tccpr35p&dl=1",
@@ -370,7 +369,7 @@ if st.session_state.seite == "page4":
     st.session_state.auswahl["Page 4 Question 1"] = antwort41
 
     st.markdown("## Question 2") 
-    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.") 
+    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.")
     tmp41 = [
         "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
         "https://www.dropbox.com/scl/fi/r1s9w46sc84fd7xcdxqbx/Section1_Bild0.png?rlkey=u0fikgjx2zp1fuhysg7gom9mi&dl=1",
@@ -445,7 +444,7 @@ if st.session_state.seite == "page5":
     st.session_state.auswahl["Page 5 Question 1"] = antwort52
 
     st.markdown("## Question 2") 
-    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.") 
+    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.")
     tmp52 = [
         "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
         "https://www.dropbox.com/scl/fi/xiaky9xm71j0ykzsfi6ej/Section2_Bild3.png?rlkey=il35b5uk54wgu5egmcutz7rbe&dl=1",
@@ -524,7 +523,7 @@ if st.session_state.seite == "page6":
     st.session_state.auswahl["Page 6 Question 1"] = antwort61
 
     st.markdown("## Question 2") 
-    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.") 
+    st.text("Think of each image as a one- or two-sentence visual description. Just like in Question 1, imagine adding the description to the end of the text from Question 1. Which one fits best? If none fit, select the first image (index 0). You can also select the same image as in Question 1 if you think it's the best fit.")
     tmp61 = [
         "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
         "https://www.dropbox.com/scl/fi/ivnnerv0b665kjym04zoc/Section1_Bild0.png?rlkey=etow49rztsgo0b4n0o8w6nbwn&dl=1",

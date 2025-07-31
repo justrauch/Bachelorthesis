@@ -16,3 +16,11 @@ opencv-python-headless
 typing-extensions
 psycopg2-binary
 python-dotenv
+transformers
+torch
+pytesseract
+torchvision
+transformers
+huggingface_hub
+sentencepiece
+protobuf

@@ -37,13 +37,34 @@
 
 ---
 
-### Start the App
+"""
+### Start the App for Visualization
 
-```bash
+Navigate to the Streamlit folder and install the requirements:
+
 cd /bachelorthesis/Bachelorthesis/streamlit
 pip install -r requirements.txt  # or install manually
-python3 help.py                  # Generates the app.py file using the data from bachelorthesis/Bachelorthesis/Server/images
-streamlit run app.py            # Launches the app
-```
 
-> Use `Ctrl + C` to stop the Streamlit server
+Then generate the app and launch it:
+
+python3 help.py                  # Generates app.py using data from Bachelorthesis/Server/images
+streamlit run app.py             # Starts the Streamlit app
+
+Use Ctrl + C to stop the Streamlit server.
+
+---
+
+### Start the App for the Survey
+
+Navigate to the same folder and run the following:
+
+cd /bachelorthesis/Bachelorthesis/streamlit
+pip install -r requirements.txt  # or install manually
+
+Generate and launch the survey app:
+
+python3 help_survey.py           # Generates survey.py using data from Bachelorthesis/Server/images
+streamlit run survey.py          # Starts the survey app
+
+Use Ctrl + C to stop the Streamlit server.
+"""

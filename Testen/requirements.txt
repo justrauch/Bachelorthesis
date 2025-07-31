@@ -1,0 +1,14 @@
+torch
+torchvision
+transformers
+Pillow
+numpy
+matplotlib
+opencv-python
+tqdm
+pytesseract
+langdetect
+PyMuPDF
+PyPDF2
+requests
+warcio

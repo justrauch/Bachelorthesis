@@ -44,15 +44,7 @@ if st.session_state.seite == "page1":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 1: Functions of the Bundestag\n- Outlines the legislative role of the Bundestag in making federal laws binding throughout Germany.\n- Details how the Bundestag elects the chancellor, exercises control over the government, and participates in appointing key officials like judges and data privacy commissioners.\n\n')
-    choice11_arr = [
-        "https://www.dropbox.com/scl/fi/s7yb6h5xf5ez5cz9qm1l0/Section1_choice.png?rlkey=ykin1zsegnusw0h4jzyif229i&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice11_tmp = st.session_state.reload_counter % 2
-    if choice11_tmp == 0:
-        st.image(choice11_arr[0 if choice11_tmp == 0 else 1])
-    else:
-        st.image(choice11_arr[0 if choice11_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/s7yb6h5xf5ez5cz9qm1l0/Section1_choice.png?rlkey=ykin1zsegnusw0h4jzyif229i&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A high-angle view of a large, circular parliamentary chamber with rows of blue seats facing a central podium, featuring a large eagle emblem visible through the glass ceiling.')
 
     tmp11 = [
@@ -68,22 +60,10 @@ if st.session_state.seite == "page1":
         key=f"frage11_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 1 Thema 1"] = img11
-    valid11_tmp = st.session_state.reload_counter % 2
-    if valid11_tmp == 0:
-        st.image(tmp11[st.session_state.auswahl.get("Seite 1 Thema 1", 0)] if valid11_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp11[st.session_state.auswahl.get("Seite 1 Thema 1", 0)] if valid11_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp11[st.session_state.auswahl.get("Seite 1 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: Composition of the Bundestag\n- States that the Bundestag consists of 734 representatives directly elected every four years.\n- Describes the distribution of seats among parties based on proportional representation and explains the concept of "overhang" and "compensatory mandates."\n\n')
-    choice12_arr = [
-        "https://www.dropbox.com/scl/fi/ebyxq4pmh0gb79z4clxz1/Section2_choice.png?rlkey=2irgs9mkk490bximru2pbpm2n&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice12_tmp = st.session_state.reload_counter % 2
-    if choice12_tmp == 0:
-        st.image(choice12_arr[0 if choice12_tmp == 0 else 1])
-    else:
-        st.image(choice12_arr[0 if choice12_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/ebyxq4pmh0gb79z4clxz1/Section2_choice.png?rlkey=2irgs9mkk490bximru2pbpm2n&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A large, modern building with rows of blue seats arranged in a circular pattern, filled with people, and featuring a large eagle emblem hanging from the ceiling.')
 
     tmp12 = [
@@ -100,22 +80,10 @@ if st.session_state.seite == "page1":
         key=f"frage12_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 1 Thema 2"] = img12
-    valid12_tmp = st.session_state.reload_counter % 2
-    if valid12_tmp == 0:
-        st.image(tmp12[st.session_state.auswahl.get("Seite 1 Thema 2", 0)] if valid12_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp12[st.session_state.auswahl.get("Seite 1 Thema 2", 0)] if valid12_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp12[st.session_state.auswahl.get("Seite 1 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Important Institutions within the Bundestag\n- Introduces various committees, commissions, and offices responsible for specific tasks related to legislation, oversight, and administration.\n- Names important figures such as the president, vice presidents, and committee chairs who lead these institutions.\n\n')
-    choice13_arr = [
-        "https://www.dropbox.com/scl/fi/xr0hign05qg3uzuw4ratx/Section3_choice.png?rlkey=plmu80oxfiootonj1i47x5ql8&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice13_tmp = st.session_state.reload_counter % 2
-    if choice13_tmp == 0:
-        st.image(choice13_arr[0 if choice13_tmp == 0 else 1])
-    else:
-        st.image(choice13_arr[0 if choice13_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/xr0hign05qg3uzuw4ratx/Section3_choice.png?rlkey=plmu80oxfiootonj1i47x5ql8&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A high-angle view of a large, circular parliamentary chamber with rows of blue seats facing a central podium, featuring a large eagle emblem visible through the glass ceiling.')
 
     tmp13 = [
@@ -132,22 +100,10 @@ if st.session_state.seite == "page1":
         key=f"frage13_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 1 Thema 3"] = img13
-    valid13_tmp = st.session_state.reload_counter % 2
-    if valid13_tmp == 0:
-        st.image(tmp13[st.session_state.auswahl.get("Seite 1 Thema 3", 0)] if valid13_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp13[st.session_state.auswahl.get("Seite 1 Thema 3", 0)] if valid13_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp13[st.session_state.auswahl.get("Seite 1 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Buildings housing the Bundestag\n- Overviews the history and architecture of several parliamentary buildings located in Berlin, including the iconic glass dome atop the Reichstag building.\n- Describes additional facilities built recently to accommodate increased membership due to changes in voting regulations.\n\n')
-    choice14_arr = [
-        "https://www.dropbox.com/scl/fi/vuwjs4ykjb471unkmeqbt/Section4_choice.png?rlkey=8qg3vzh374evc5rqidaz05m4h&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice14_tmp = st.session_state.reload_counter % 2
-    if choice14_tmp == 0:
-        st.image(choice14_arr[0 if choice14_tmp == 0 else 1])
-    else:
-        st.image(choice14_arr[0 if choice14_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/vuwjs4ykjb471unkmeqbt/Section4_choice.png?rlkey=8qg3vzh374evc5rqidaz05m4h&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' An aerial view showcases a large, ornate building with a glass dome, surrounded by a park and a cityscape under a partly cloudy sky.')
 
     tmp14 = [
@@ -163,11 +119,7 @@ if st.session_state.seite == "page1":
         key=f"frage14_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 1 Thema 4"] = img14
-    valid14_tmp = st.session_state.reload_counter % 2
-    if valid14_tmp == 0:
-        st.image(tmp14[st.session_state.auswahl.get("Seite 1 Thema 4", 0)] if valid14_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp14[st.session_state.auswahl.get("Seite 1 Thema 4", 0)] if valid14_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp14[st.session_state.auswahl.get("Seite 1 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 5: Process of Electing Members to the Bundestag\n- Breaks down the two votes cast by citizens—direct vote for district candidates and party lists—required to determine which individuals represent them in the Bundestag.\n- Addresses qualifications needed for candidacy, campaign financing restrictions, and the five percent threshold required for smaller political parties to gain representation.')
 
@@ -184,11 +136,7 @@ if st.session_state.seite == "page1":
         key=f"frage15_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 1 Thema 5"] = img15
-    valid15_tmp = st.session_state.reload_counter % 2
-    if valid15_tmp == 0:
-        st.image(tmp15[st.session_state.auswahl.get("Seite 1 Thema 5", 0)] if valid15_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp15[st.session_state.auswahl.get("Seite 1 Thema 5", 0)] if valid15_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp15[st.session_state.auswahl.get("Seite 1 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.button("(Nachfolgende) Seite 2", on_click=lambda: wechsel_zu("page2"))
 
     with st.container():
@@ -231,15 +179,7 @@ if st.session_state.seite == "page2":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 5: Implications and Future Steps\n- Emphasizes the need for addressing practical hurdles and making informed societal choices at diverse decision-making levels to fully capitalize on Germany’s onshore wind energy prospects.\n\n')
-    choice25_arr = [
-        "https://www.dropbox.com/scl/fi/wsuemxxeku6puszj6gpcg/Section5_choice.png?rlkey=h8wimis03z2j1v5xiugnkw59i&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice25_tmp = st.session_state.reload_counter % 2
-    if choice25_tmp == 0:
-        st.image(choice25_arr[0 if choice25_tmp == 0 else 1])
-    else:
-        st.image(choice25_arr[0 if choice25_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/wsuemxxeku6puszj6gpcg/Section5_choice.png?rlkey=h8wimis03z2j1v5xiugnkw59i&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A row of white wind turbines stands against a backdrop of rolling green hills and a cloudy sky.')
 
     tmp25 = [
@@ -253,11 +193,7 @@ if st.session_state.seite == "page2":
         key=f"frage25_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 2 Thema 5"] = img25
-    valid25_tmp = st.session_state.reload_counter % 2
-    if valid25_tmp == 0:
-        st.image(tmp25[st.session_state.auswahl.get("Seite 2 Thema 5", 0)] if valid25_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp25[st.session_state.auswahl.get("Seite 2 Thema 5", 0)] if valid25_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp25[st.session_state.auswahl.get("Seite 2 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.button("(Nachfolgende) Seite 3", on_click=lambda: wechsel_zu("page3"))
 
     with st.container():
@@ -288,15 +224,7 @@ if st.session_state.seite == "page3":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 1: Origin and Dominance of Dinosaurs\n- Details how dinosaurs evolved around 225 million years ago during the Triassic Period; explains why they dominated land ecosystems until their extinction approximately 65 million years ago.\n\n')
-    choice31_arr = [
-        "https://www.dropbox.com/scl/fi/rrt8u8qw3ylaos4d3rehr/Section1_choice.png?rlkey=5uxlb2kquf4uczxwo8o7j2zof&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice31_tmp = st.session_state.reload_counter % 2
-    if choice31_tmp == 0:
-        st.image(choice31_arr[0 if choice31_tmp == 0 else 1])
-    else:
-        st.image(choice31_arr[0 if choice31_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/rrt8u8qw3ylaos4d3rehr/Section1_choice.png?rlkey=5uxlb2kquf4uczxwo8o7j2zof&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A colorful illustration depicts a map of Earth approximately 225 million years ago, showing the arrangement of continents like Asia, Africa, South America, India, Australia, and Antartica surrounded by oceans and labeled with geological features.')
 
     tmp31 = [
@@ -316,22 +244,10 @@ if st.session_state.seite == "page3":
         key=f"frage31_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 3 Thema 1"] = img31
-    valid31_tmp = st.session_state.reload_counter % 2
-    if valid31_tmp == 0:
-        st.image(tmp31[st.session_state.auswahl.get("Seite 3 Thema 1", 0)] if valid31_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp31[st.session_state.auswahl.get("Seite 3 Thema 1", 0)] if valid31_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp31[st.session_state.auswahl.get("Seite 3 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: Physical Features and Classifications\n- Outlines various types of dinosaurs based on their body structure, locomotive abilities, and food sources; describes differences between saurischians and ornithischians.\n\n')
-    choice32_arr = [
-        "https://www.dropbox.com/scl/fi/9ngqcl7t89yl5flmtgekh/Section2_choice.png?rlkey=xwikbtbgrb8koevwcyvdyfajr&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice32_tmp = st.session_state.reload_counter % 2
-    if choice32_tmp == 0:
-        st.image(choice32_arr[0 if choice32_tmp == 0 else 1])
-    else:
-        st.image(choice32_arr[0 if choice32_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/9ngqcl7t89yl5flmtgekh/Section2_choice.png?rlkey=xwikbtbgrb8koevwcyvdyfajr&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(" The image shows a phylogenetic tree of dinosaurs labeled with various classifications and illustrations of Plateosaurus, Diplodocus, and Brachiosaurus, alongside a skeletal diagram of a dinosaur's skull and spine.")
 
     tmp32 = [
@@ -351,11 +267,7 @@ if st.session_state.seite == "page3":
         key=f"frage32_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 3 Thema 2"] = img32
-    valid32_tmp = st.session_state.reload_counter % 2
-    if valid32_tmp == 0:
-        st.image(tmp32[st.session_state.auswahl.get("Seite 3 Thema 2", 0)] if valid32_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp32[st.session_state.auswahl.get("Seite 3 Thema 2", 0)] if valid32_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp32[st.session_state.auswahl.get("Seite 3 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -372,23 +284,11 @@ if st.session_state.seite == "page3":
     )
     st.write(f"Du hast Bild Nr. {nvimg32} ausgewählt.")
     st.session_state.auswahl["nv Seite 3 Thema 2"] = nvimg32
-    nvalid32_tmp = st.session_state.reload_counter % 2
-    if nvalid32_tmp == 0:
-        st.image(nvtmp32[st.session_state.auswahl.get("nv Seite 3 Thema 2", 0)] if nvalid32_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp32[st.session_state.auswahl.get("nv Seite 3 Thema 2", 0)] if nvalid32_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp32[st.session_state.auswahl.get("nv Seite 3 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Climate Changes and Global Catastrophe\n- Elaborates on changes in climate throughout the Mesozoic Era leading up to the End-Cretaceous Event; discusses theories suggesting a meteorite collision and volcanic activity contributed to the mass extinction of dinosaurs.\n\n')
-    choice33_arr = [
-        "https://www.dropbox.com/scl/fi/l5w6xl6ln1l8h50r25si0/Section3_choice.png?rlkey=wfr2wmqkiybxg5wyy9kj2dcj2&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice33_tmp = st.session_state.reload_counter % 2
-    if choice33_tmp == 0:
-        st.image(choice33_arr[0 if choice33_tmp == 0 else 1])
-    else:
-        st.image(choice33_arr[0 if choice33_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/l5w6xl6ln1l8h50r25si0/Section3_choice.png?rlkey=wfr2wmqkiybxg5wyy9kj2dcj2&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image shows a depiction of an asteroid impacting Earth on the left, alongside a map of the Yucatan Peninsula in Mexico and Belize highlighting the Chicxulub crater and the location of San Antonio on the right.')
 
     tmp33 = [
@@ -411,22 +311,10 @@ if st.session_state.seite == "page3":
         key=f"frage33_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 3 Thema 3"] = img33
-    valid33_tmp = st.session_state.reload_counter % 2
-    if valid33_tmp == 0:
-        st.image(tmp33[st.session_state.auswahl.get("Seite 3 Thema 3", 0)] if valid33_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp33[st.session_state.auswahl.get("Seite 3 Thema 3", 0)] if valid33_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp33[st.session_state.auswahl.get("Seite 3 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Remaining Mysteries and Debated Issues\n- Addresses ongoing questions surrounding dinosaur behavior, intelligence, and potential warmth-bloodedness due to discoveries of fossilized remains showing evidence of feathers.\n\n')
-    choice34_arr = [
-        "https://www.dropbox.com/scl/fi/sl5pju0ne4cp9sbf6bge0/Section4_choice.png?rlkey=ejo58ng2kx3623vupsxb2mejo&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice34_tmp = st.session_state.reload_counter % 2
-    if choice34_tmp == 0:
-        st.image(choice34_arr[0 if choice34_tmp == 0 else 1])
-    else:
-        st.image(choice34_arr[0 if choice34_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/sl5pju0ne4cp9sbf6bge0/Section4_choice.png?rlkey=ejo58ng2kx3623vupsxb2mejo&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image shows a close-up of a dinosaur skull and partial neck vertebrae, with a bluish-purple hue and sharp teeth.')
 
     tmp34 = [
@@ -445,11 +333,7 @@ if st.session_state.seite == "page3":
         key=f"frage34_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 3 Thema 4"] = img34
-    valid34_tmp = st.session_state.reload_counter % 2
-    if valid34_tmp == 0:
-        st.image(tmp34[st.session_state.auswahl.get("Seite 3 Thema 4", 0)] if valid34_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp34[st.session_state.auswahl.get("Seite 3 Thema 4", 0)] if valid34_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp34[st.session_state.auswahl.get("Seite 3 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text("Topic 5: Legacy and Impact of Dinosaurs Today\n- Emphasizes the importance of studying dinosaurs for understanding Earth's past environments and biological diversity; highlights popular culture references depicting dinosaurs in movies, books, and toys.")
 
@@ -467,11 +351,7 @@ if st.session_state.seite == "page3":
         key=f"frage35_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 3 Thema 5"] = img35
-    valid35_tmp = st.session_state.reload_counter % 2
-    if valid35_tmp == 0:
-        st.image(tmp35[st.session_state.auswahl.get("Seite 3 Thema 5", 0)] if valid35_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp35[st.session_state.auswahl.get("Seite 3 Thema 5", 0)] if valid35_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp35[st.session_state.auswahl.get("Seite 3 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.button("(Nachfolgende) Seite 4", on_click=lambda: wechsel_zu("page4"))
 
     with st.container():
@@ -502,15 +382,7 @@ if st.session_state.seite == "page4":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text("Topic 1: Leadup to World War II\n- Details the dissolution of Austria-Hungary at the end of World War I, Treaties of Versailles and Saint Germain assigning blame for World War I to Germany and Austria, economic struggles faced by both countries during the 1920's due to these treaties, rise of authoritarian rule under Chancellor Engelbert Dollfüss in Austria, Nazi takeover in Germany led by Adolf Hitler, and his subsequent consolidation of power through various means including propaganda and violence against opponents.\n\n")
-    choice41_arr = [
-        "https://www.dropbox.com/scl/fi/l5npvyrwi3nwqdnt14mfw/Section1_choice.png?rlkey=iv08z0lzh9thc6c2jf6d04ccz&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice41_tmp = st.session_state.reload_counter % 2
-    if choice41_tmp == 0:
-        st.image(choice41_arr[0 if choice41_tmp == 0 else 1])
-    else:
-        st.image(choice41_arr[0 if choice41_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/l5npvyrwi3nwqdnt14mfw/Section1_choice.png?rlkey=iv08z0lzh9thc6c2jf6d04ccz&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A black and white photograph shows a procession of open-top cars driving down a cobblestone street lined with a large crowd of people raising their arms in salute.')
 
     tmp41 = [
@@ -529,22 +401,10 @@ if st.session_state.seite == "page4":
         key=f"frage41_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 4 Thema 1"] = img41
-    valid41_tmp = st.session_state.reload_counter % 2
-    if valid41_tmp == 0:
-        st.image(tmp41[st.session_state.auswahl.get("Seite 4 Thema 1", 0)] if valid41_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp41[st.session_state.auswahl.get("Seite 4 Thema 1", 0)] if valid41_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp41[st.session_state.auswahl.get("Seite 4 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: Start of World War II\n- Outlines how Hitler declared himself German Fuhrer and President upon Hindenburg’s death, persecution of Jews and minorities escalating, invasion of Poland initiating World War II, Britain and France declaring war on Germany two days later, beginning of "Blitzkrieg" strategy used by Germany resulting in quick victories over several European nations within months.\n\n')
-    choice42_arr = [
-        "https://www.dropbox.com/scl/fi/6yw2ipxt9emiieqc3vju9/Section2_choice.png?rlkey=aqbb2p6e3auvw26up2366ylfn&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice42_tmp = st.session_state.reload_counter % 2
-    if choice42_tmp == 0:
-        st.image(choice42_arr[0 if choice42_tmp == 0 else 1])
-    else:
-        st.image(choice42_arr[0 if choice42_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/6yw2ipxt9emiieqc3vju9/Section2_choice.png?rlkey=aqbb2p6e3auvw26up2366ylfn&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' Two figures stand amidst debris and rubble next to a fire truck in front of a damaged building with smoke rising in the background.')
 
     tmp42 = [
@@ -558,22 +418,10 @@ if st.session_state.seite == "page4":
         key=f"frage42_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 4 Thema 2"] = img42
-    valid42_tmp = st.session_state.reload_counter % 2
-    if valid42_tmp == 0:
-        st.image(tmp42[st.session_state.auswahl.get("Seite 4 Thema 2", 0)] if valid42_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp42[st.session_state.auswahl.get("Seite 4 Thema 2", 0)] if valid42_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp42[st.session_state.auswahl.get("Seite 4 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Course of World War II\n- Provides overview of key battles, invasions, and turning points throughout the six year conflict, including Battle of Britain, Operation Barbarossa (invasion of Soviet Union), D-Day landing in Normandy, Yalta Conference, atomic bomb attacks on Hiroshima and Nagasaki, and eventual surrender of Germany and Japan.\n\n')
-    choice43_arr = [
-        "https://www.dropbox.com/scl/fi/8vqgz92q25da9nnbc3bce/Section3_choice.png?rlkey=5l89hihpjman25xf1zf8uuntw&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice43_tmp = st.session_state.reload_counter % 2
-    if choice43_tmp == 0:
-        st.image(choice43_arr[0 if choice43_tmp == 0 else 1])
-    else:
-        st.image(choice43_arr[0 if choice43_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/8vqgz92q25da9nnbc3bce/Section3_choice.png?rlkey=5l89hihpjman25xf1zf8uuntw&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A black and white photograph shows a car with flags of Finland, the Soviet Union, the United Kingdom, and the United States waving from its roof against a blurred background of a building and a statue.')
 
     tmp43 = [
@@ -589,22 +437,10 @@ if st.session_state.seite == "page4":
         key=f"frage43_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 4 Thema 3"] = img43
-    valid43_tmp = st.session_state.reload_counter % 2
-    if valid43_tmp == 0:
-        st.image(tmp43[st.session_state.auswahl.get("Seite 4 Thema 3", 0)] if valid43_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp43[st.session_state.auswahl.get("Seite 4 Thema 3", 0)] if valid43_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp43[st.session_state.auswahl.get("Seite 4 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Life During World War II Outside Battlegrounds\n- Describes impact of war on civilian populations across Europe, North Africa, Asia, and Pacific regions; details food scarcity, evacuation efforts, air raids, resistance movements, and experiences of women, children, and forced laborers during this time period.\n\n')
-    choice44_arr = [
-        "https://www.dropbox.com/scl/fi/geguukoiw7i3psrjgk64k/Section4_choice.png?rlkey=xxz4phblmedhxdo4qsskuhkff&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice44_tmp = st.session_state.reload_counter % 2
-    if choice44_tmp == 0:
-        st.image(choice44_arr[0 if choice44_tmp == 0 else 1])
-    else:
-        st.image(choice44_arr[0 if choice44_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/geguukoiw7i3psrjgk64k/Section4_choice.png?rlkey=xxz4phblmedhxdo4qsskuhkff&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A black and white image shows a group of thin, distressed children huddled together in a trench or tunnel, looking upwards with expressions of fear and desperation.')
 
     tmp44 = [
@@ -619,22 +455,10 @@ if st.session_state.seite == "page4":
         key=f"frage44_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 4 Thema 4"] = img44
-    valid44_tmp = st.session_state.reload_counter % 2
-    if valid44_tmp == 0:
-        st.image(tmp44[st.session_state.auswahl.get("Seite 4 Thema 4", 0)] if valid44_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp44[st.session_state.auswahl.get("Seite 4 Thema 4", 0)] if valid44_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp44[st.session_state.auswahl.get("Seite 4 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 5: Aftermath of World War II\n- Addresses changes in global politics caused by the war, establishment of United Nations, start of Cold War, division of Germany into four occupation zones controlled by Allied powers, reconstruction process in defeated nations, ongoing debate regarding responsibility for war crimes committed during the conflict, and lasting impacts on societies worldwide.\n\n')
-    choice45_arr = [
-        "https://www.dropbox.com/scl/fi/tsj4jn2mrlzvzb557tgv7/Section5_choice.png?rlkey=fkpwkbbht3kpohu8xqq4g0et4&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice45_tmp = st.session_state.reload_counter % 2
-    if choice45_tmp == 0:
-        st.image(choice45_arr[0 if choice45_tmp == 0 else 1])
-    else:
-        st.image(choice45_arr[0 if choice45_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/tsj4jn2mrlzvzb557tgv7/Section5_choice.png?rlkey=fkpwkbbht3kpohu8xqq4g0et4&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image is a map of Berlin divided into four sectors: French (blue), British (green), American (yellow), and Soviet (red), all surrounded by a Soviet zone.')
 
     tmp45 = [
@@ -651,11 +475,7 @@ if st.session_state.seite == "page4":
         key=f"frage45_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 4 Thema 5"] = img45
-    valid45_tmp = st.session_state.reload_counter % 2
-    if valid45_tmp == 0:
-        st.image(tmp45[st.session_state.auswahl.get("Seite 4 Thema 5", 0)] if valid45_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp45[st.session_state.auswahl.get("Seite 4 Thema 5", 0)] if valid45_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp45[st.session_state.auswahl.get("Seite 4 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.button("(Nachfolgende) Seite 5", on_click=lambda: wechsel_zu("page5"))
 
     with st.container():
@@ -686,15 +506,7 @@ if st.session_state.seite == "page5":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 1: Key Findings About Inner & Outer Planets\n- Presents fundamental facts about terrestrial and gas giants, emphasizing their size, compositions, rotations, distances from the sun, and distinctive features like the Great Red Spot and Hexagon storm on Jupiter.\n\n')
-    choice51_arr = [
-        "https://www.dropbox.com/scl/fi/bxsl0059xbo6puplv4pic/Section1_choice.png?rlkey=bqdxmso4bpvzg0gl4n7hw7co1&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice51_tmp = st.session_state.reload_counter % 2
-    if choice51_tmp == 0:
-        st.image(choice51_arr[0 if choice51_tmp == 0 else 1])
-    else:
-        st.image(choice51_arr[0 if choice51_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/bxsl0059xbo6puplv4pic/Section1_choice.png?rlkey=bqdxmso4bpvzg0gl4n7hw7co1&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image depicts a vibrant illustration of the solar system with planets orbiting a bright sun, set against a backdrop of a swirling galaxy and distant stars.')
 
     tmp51 = [
@@ -710,22 +522,10 @@ if st.session_state.seite == "page5":
         key=f"frage51_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 5 Thema 1"] = img51
-    valid51_tmp = st.session_state.reload_counter % 2
-    if valid51_tmp == 0:
-        st.image(tmp51[st.session_state.auswahl.get("Seite 5 Thema 1", 0)] if valid51_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp51[st.session_state.auswahl.get("Seite 5 Thema 1", 0)] if valid51_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp51[st.session_state.auswahl.get("Seite 5 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: Celestial Bodies Beyond Planets\n- Outlines various types of smaller celestial bodies found in the solar system, including asteroids, comets, dwarf planets, and natural satellites (moons).\n\n')
-    choice52_arr = [
-        "https://www.dropbox.com/scl/fi/scesvva3lqde8ezbx8i6x/Section2_choice.png?rlkey=hjr9qchan7cd7q18renjalzdw&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice52_tmp = st.session_state.reload_counter % 2
-    if choice52_tmp == 0:
-        st.image(choice52_arr[0 if choice52_tmp == 0 else 1])
-    else:
-        st.image(choice52_arr[0 if choice52_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/scesvva3lqde8ezbx8i6x/Section2_choice.png?rlkey=hjr9qchan7cd7q18renjalzdw&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A series of planets, varying in size and color, are arranged in a line against a dark, starry background.')
 
     tmp52 = [
@@ -741,22 +541,10 @@ if st.session_state.seite == "page5":
         key=f"frage52_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 5 Thema 2"] = img52
-    valid52_tmp = st.session_state.reload_counter % 2
-    if valid52_tmp == 0:
-        st.image(tmp52[st.session_state.auswahl.get("Seite 5 Thema 2", 0)] if valid52_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp52[st.session_state.auswahl.get("Seite 5 Thema 2", 0)] if valid52_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp52[st.session_state.auswahl.get("Seite 5 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Milestones in Space Exploration History\n- Recounts important events in the journey of human knowledge acquisition concerning the solar system, starting with Sputnik 1 in 1957 until present day, showcasing accomplishments achieved by numerous international space agencies.\n\n')
-    choice53_arr = [
-        "https://www.dropbox.com/scl/fi/neq4gtsra02f7iorypej8/Section3_choice.png?rlkey=t9wwyg4ziraj4lg9mwbfh8knv&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice53_tmp = st.session_state.reload_counter % 2
-    if choice53_tmp == 0:
-        st.image(choice53_arr[0 if choice53_tmp == 0 else 1])
-    else:
-        st.image(choice53_arr[0 if choice53_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/neq4gtsra02f7iorypej8/Section3_choice.png?rlkey=t9wwyg4ziraj4lg9mwbfh8knv&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image depicts a vibrant illustration of the solar system with planets orbiting a bright sun, set against a backdrop of a swirling galaxy and distant stars.')
 
     tmp53 = [
@@ -770,11 +558,7 @@ if st.session_state.seite == "page5":
         key=f"frage53_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 5 Thema 3"] = img53
-    valid53_tmp = st.session_state.reload_counter % 2
-    if valid53_tmp == 0:
-        st.image(tmp53[st.session_state.auswahl.get("Seite 5 Thema 3", 0)] if valid53_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp53[st.session_state.auswahl.get("Seite 5 Thema 3", 0)] if valid53_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp53[st.session_state.auswahl.get("Seite 5 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -790,23 +574,11 @@ if st.session_state.seite == "page5":
     )
     st.write(f"Du hast Bild Nr. {nvimg53} ausgewählt.")
     st.session_state.auswahl["nv Seite 5 Thema 3"] = nvimg53
-    nvalid53_tmp = st.session_state.reload_counter % 2
-    if nvalid53_tmp == 0:
-        st.image(nvtmp53[st.session_state.auswahl.get("nv Seite 5 Thema 3", 0)] if nvalid53_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp53[st.session_state.auswahl.get("nv Seite 5 Thema 3", 0)] if nvalid53_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp53[st.session_state.auswahl.get("nv Seite 5 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Asteroid Belts, Belt-Inhabitants, and Near Earth Objects\n- Investigates the origin, distribution, and threat levels associated with asteroids located in the asteroid belts and those approaching Earth (Near Earth Objects - NEOs).\n\n')
-    choice54_arr = [
-        "https://www.dropbox.com/scl/fi/c75ympeo766k3wr4pud27/Section4_choice.png?rlkey=hhfwx57tq7i6ukiz88thw4o38&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice54_tmp = st.session_state.reload_counter % 2
-    if choice54_tmp == 0:
-        st.image(choice54_arr[0 if choice54_tmp == 0 else 1])
-    else:
-        st.image(choice54_arr[0 if choice54_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/c75ympeo766k3wr4pud27/Section4_choice.png?rlkey=hhfwx57tq7i6ukiz88thw4o38&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image depicts a vibrant illustration of the solar system with planets orbiting a bright sun, set against a backdrop of a swirling galaxy and distant stars.')
 
     tmp54 = [
@@ -823,22 +595,10 @@ if st.session_state.seite == "page5":
         key=f"frage54_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 5 Thema 4"] = img54
-    valid54_tmp = st.session_state.reload_counter % 2
-    if valid54_tmp == 0:
-        st.image(tmp54[st.session_state.auswahl.get("Seite 5 Thema 4", 0)] if valid54_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp54[st.session_state.auswahl.get("Seite 5 Thema 4", 0)] if valid54_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp54[st.session_state.auswahl.get("Seite 5 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text("Topic 5: Significance of Comets in Early Planet Formation and Life Development\n- Elucidates the roles played by comets during the formation of our solar system, particularly their contribution towards creating Earth's atmosphere and potentially influencing the rise of biology.\n\n")
-    choice55_arr = [
-        "https://www.dropbox.com/scl/fi/guvyjf8fywg4qj1oztes2/Section5_choice.png?rlkey=ft4sk0hl1jlka69q9350a3g2j&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice55_tmp = st.session_state.reload_counter % 2
-    if choice55_tmp == 0:
-        st.image(choice55_arr[0 if choice55_tmp == 0 else 1])
-    else:
-        st.image(choice55_arr[0 if choice55_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/guvyjf8fywg4qj1oztes2/Section5_choice.png?rlkey=ft4sk0hl1jlka69q9350a3g2j&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image depicts a vibrant illustration of the solar system with planets orbiting a bright sun, set against a backdrop of a swirling galaxy and distant stars.')
 
     tmp55 = [
@@ -855,11 +615,7 @@ if st.session_state.seite == "page5":
         key=f"frage55_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 5 Thema 5"] = img55
-    valid55_tmp = st.session_state.reload_counter % 2
-    if valid55_tmp == 0:
-        st.image(tmp55[st.session_state.auswahl.get("Seite 5 Thema 5", 0)] if valid55_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp55[st.session_state.auswahl.get("Seite 5 Thema 5", 0)] if valid55_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp55[st.session_state.auswahl.get("Seite 5 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -875,11 +631,7 @@ if st.session_state.seite == "page5":
     )
     st.write(f"Du hast Bild Nr. {nvimg55} ausgewählt.")
     st.session_state.auswahl["nv Seite 5 Thema 5"] = nvimg55
-    nvalid55_tmp = st.session_state.reload_counter % 2
-    if nvalid55_tmp == 0:
-        st.image(nvtmp55[st.session_state.auswahl.get("nv Seite 5 Thema 5", 0)] if nvalid55_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp55[st.session_state.auswahl.get("nv Seite 5 Thema 5", 0)] if nvalid55_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp55[st.session_state.auswahl.get("nv Seite 5 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.button("(Nachfolgende) Seite 6", on_click=lambda: wechsel_zu("page6"))
 
@@ -911,15 +663,7 @@ if st.session_state.seite == "page6":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 1: Introduction\n- Presents background information about the World Wide Fund for Nature (WWF) and its focus on protecting endangered animals.\n\n')
-    choice61_arr = [
-        "https://www.dropbox.com/scl/fi/t5ecgbjl7a6oh3hexsxjq/Section1_choice.png?rlkey=d8gzmuq68isaqfbw7w71tvnwd&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice61_tmp = st.session_state.reload_counter % 2
-    if choice61_tmp == 0:
-        st.image(choice61_arr[0 if choice61_tmp == 0 else 1])
-    else:
-        st.image(choice61_arr[0 if choice61_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/t5ecgbjl7a6oh3hexsxjq/Section1_choice.png?rlkey=d8gzmuq68isaqfbw7w71tvnwd&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' An orangutan with long reddish-brown fur is clinging to a tree branch surrounded by lush green foliage.')
 
     tmp61 = [
@@ -935,11 +679,7 @@ if st.session_state.seite == "page6":
         key=f"frage61_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 6 Thema 1"] = img61
-    valid61_tmp = st.session_state.reload_counter % 2
-    if valid61_tmp == 0:
-        st.image(tmp61[st.session_state.auswahl.get("Seite 6 Thema 1", 0)] if valid61_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp61[st.session_state.auswahl.get("Seite 6 Thema 1", 0)] if valid61_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp61[st.session_state.auswahl.get("Seite 6 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -960,23 +700,11 @@ if st.session_state.seite == "page6":
     )
     st.write(f"Du hast Bild Nr. {nvimg61} ausgewählt.")
     st.session_state.auswahl["nv Seite 6 Thema 1"] = nvimg61
-    nvalid61_tmp = st.session_state.reload_counter % 2
-    if nvalid61_tmp == 0:
-        st.image(nvtmp61[st.session_state.auswahl.get("nv Seite 6 Thema 1", 0)] if nvalid61_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp61[st.session_state.auswahl.get("nv Seite 6 Thema 1", 0)] if nvalid61_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp61[st.session_state.auswahl.get("nv Seite 6 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: About WWF\'s Youth Education Program "Young Panda"\n- Details the goals and objectives of the youth education initiative aimed at children aged 8-14 years old.\n\n')
-    choice62_arr = [
-        "https://www.dropbox.com/scl/fi/24c6c3q5816z4m7c2gytf/Section2_choice.png?rlkey=ksp2wbdlxhcrq1gthaqgply7r&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice62_tmp = st.session_state.reload_counter % 2
-    if choice62_tmp == 0:
-        st.image(choice62_arr[0 if choice62_tmp == 0 else 1])
-    else:
-        st.image(choice62_arr[0 if choice62_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/24c6c3q5816z4m7c2gytf/Section2_choice.png?rlkey=ksp2wbdlxhcrq1gthaqgply7r&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A man in a blue jacket and black hat is pointing at a moss-covered log while a group of children wearing backpacks look on in a wooded area.')
 
     tmp62 = [
@@ -994,11 +722,7 @@ if st.session_state.seite == "page6":
         key=f"frage62_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 6 Thema 2"] = img62
-    valid62_tmp = st.session_state.reload_counter % 2
-    if valid62_tmp == 0:
-        st.image(tmp62[st.session_state.auswahl.get("Seite 6 Thema 2", 0)] if valid62_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp62[st.session_state.auswahl.get("Seite 6 Thema 2", 0)] if valid62_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp62[st.session_state.auswahl.get("Seite 6 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1015,11 +739,7 @@ if st.session_state.seite == "page6":
     )
     st.write(f"Du hast Bild Nr. {nvimg62} ausgewählt.")
     st.session_state.auswahl["nv Seite 6 Thema 2"] = nvimg62
-    nvalid62_tmp = st.session_state.reload_counter % 2
-    if nvalid62_tmp == 0:
-        st.image(nvtmp62[st.session_state.auswahl.get("nv Seite 6 Thema 2", 0)] if nvalid62_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp62[st.session_state.auswahl.get("nv Seite 6 Thema 2", 0)] if nvalid62_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp62[st.session_state.auswahl.get("nv Seite 6 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Overview of Great Apes\n- Discusses four types of great apes: Orangutans, Gorillas, Chimpanzees, and Bonobos, including evolutionary history, characteristics, and unique features.')
@@ -1046,23 +766,11 @@ if st.session_state.seite == "page6":
     )
     st.write(f"Du hast Bild Nr. {nvimg63} ausgewählt.")
     st.session_state.auswahl["nv Seite 6 Thema 3"] = nvimg63
-    nvalid63_tmp = st.session_state.reload_counter % 2
-    if nvalid63_tmp == 0:
-        st.image(nvtmp63[st.session_state.auswahl.get("nv Seite 6 Thema 3", 0)] if nvalid63_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp63[st.session_state.auswahl.get("nv Seite 6 Thema 3", 0)] if nvalid63_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp63[st.session_state.auswahl.get("nv Seite 6 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Living Conditions of Great Apes\n- Addresses how and where these primates reside across continents, specifically focusing on tropical rainforests and savanna regions.\n\n')
-    choice64_arr = [
-        "https://www.dropbox.com/scl/fi/iaztgpeyfexx8efduob32/Section4_choice.png?rlkey=z9tv5nvmjrp01hj44l5mffs37&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice64_tmp = st.session_state.reload_counter % 2
-    if choice64_tmp == 0:
-        st.image(choice64_arr[0 if choice64_tmp == 0 else 1])
-    else:
-        st.image(choice64_arr[0 if choice64_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/iaztgpeyfexx8efduob32/Section4_choice.png?rlkey=z9tv5nvmjrp01hj44l5mffs37&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' An orange-haired orangutan is centered in the image, peering over a lush green jungle backdrop with German text and logos at the bottom.')
 
     tmp64 = [
@@ -1076,11 +784,7 @@ if st.session_state.seite == "page6":
         key=f"frage64_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 6 Thema 4"] = img64
-    valid64_tmp = st.session_state.reload_counter % 2
-    if valid64_tmp == 0:
-        st.image(tmp64[st.session_state.auswahl.get("Seite 6 Thema 4", 0)] if valid64_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp64[st.session_state.auswahl.get("Seite 6 Thema 4", 0)] if valid64_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp64[st.session_state.auswahl.get("Seite 6 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1103,23 +807,11 @@ if st.session_state.seite == "page6":
     )
     st.write(f"Du hast Bild Nr. {nvimg64} ausgewählt.")
     st.session_state.auswahl["nv Seite 6 Thema 4"] = nvimg64
-    nvalid64_tmp = st.session_state.reload_counter % 2
-    if nvalid64_tmp == 0:
-        st.image(nvtmp64[st.session_state.auswahl.get("nv Seite 6 Thema 4", 0)] if nvalid64_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp64[st.session_state.auswahl.get("nv Seite 6 Thema 4", 0)] if nvalid64_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp64[st.session_state.auswahl.get("nv Seite 6 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 5: Threats to Great Apes\n- Identifies factors contributing to the decline of great ape populations, such as hunting, deforestation, and human encroachment into habitats.\n\n')
-    choice65_arr = [
-        "https://www.dropbox.com/scl/fi/h1q8azmybyldxik76nrvr/Section5_choice.png?rlkey=t06941zvusncj5a9hrv1dlzb7&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice65_tmp = st.session_state.reload_counter % 2
-    if choice65_tmp == 0:
-        st.image(choice65_arr[0 if choice65_tmp == 0 else 1])
-    else:
-        st.image(choice65_arr[0 if choice65_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/h1q8azmybyldxik76nrvr/Section5_choice.png?rlkey=t06941zvusncj5a9hrv1dlzb7&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' An orange-haired orangutan is centered in the image, peering over a lush green jungle backdrop with German text and logos at the bottom.')
 
     tmp65 = [
@@ -1133,11 +825,7 @@ if st.session_state.seite == "page6":
         key=f"frage65_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 6 Thema 5"] = img65
-    valid65_tmp = st.session_state.reload_counter % 2
-    if valid65_tmp == 0:
-        st.image(tmp65[st.session_state.auswahl.get("Seite 6 Thema 5", 0)] if valid65_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp65[st.session_state.auswahl.get("Seite 6 Thema 5", 0)] if valid65_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp65[st.session_state.auswahl.get("Seite 6 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1160,23 +848,11 @@ if st.session_state.seite == "page6":
     )
     st.write(f"Du hast Bild Nr. {nvimg65} ausgewählt.")
     st.session_state.auswahl["nv Seite 6 Thema 5"] = nvimg65
-    nvalid65_tmp = st.session_state.reload_counter % 2
-    if nvalid65_tmp == 0:
-        st.image(nvtmp65[st.session_state.auswahl.get("nv Seite 6 Thema 5", 0)] if nvalid65_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp65[st.session_state.auswahl.get("nv Seite 6 Thema 5", 0)] if nvalid65_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp65[st.session_state.auswahl.get("nv Seite 6 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 6: Solutions and Protection Efforts\n- Outlines conservation strategies employed by WWF and others to preserve great ape habitats, combat wildlife trafficking, and promote sustainable development.\n\n')
-    choice66_arr = [
-        "https://www.dropbox.com/scl/fi/7liib7mxjj9q2yjwaem2o/Section6_choice.png?rlkey=cfuqovpisc97x7z0aiyi4rjd5&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice66_tmp = st.session_state.reload_counter % 2
-    if choice66_tmp == 0:
-        st.image(choice66_arr[0 if choice66_tmp == 0 else 1])
-    else:
-        st.image(choice66_arr[0 if choice66_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/7liib7mxjj9q2yjwaem2o/Section6_choice.png?rlkey=cfuqovpisc97x7z0aiyi4rjd5&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' An orange-haired orangutan is centered in the image, peering over a lush green jungle backdrop with German text and logos at the bottom.')
 
     tmp66 = [
@@ -1193,11 +869,7 @@ if st.session_state.seite == "page6":
         key=f"frage66_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 6 Thema 6"] = img66
-    valid66_tmp = st.session_state.reload_counter % 2
-    if valid66_tmp == 0:
-        st.image(tmp66[st.session_state.auswahl.get("Seite 6 Thema 6", 0)] if valid66_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp66[st.session_state.auswahl.get("Seite 6 Thema 6", 0)] if valid66_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp66[st.session_state.auswahl.get("Seite 6 Thema 6", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1220,11 +892,7 @@ if st.session_state.seite == "page6":
     )
     st.write(f"Du hast Bild Nr. {nvimg66} ausgewählt.")
     st.session_state.auswahl["nv Seite 6 Thema 6"] = nvimg66
-    nvalid66_tmp = st.session_state.reload_counter % 2
-    if nvalid66_tmp == 0:
-        st.image(nvtmp66[st.session_state.auswahl.get("nv Seite 6 Thema 6", 0)] if nvalid66_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp66[st.session_state.auswahl.get("nv Seite 6 Thema 6", 0)] if nvalid66_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp66[st.session_state.auswahl.get("nv Seite 6 Thema 6", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 7: Human-Apes Relationships\n- Investigates interactions between humans and great apes, discussing both conflicts and instances of cooperation.')
@@ -1244,11 +912,7 @@ if st.session_state.seite == "page6":
         key=f"frage67_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 6 Thema 7"] = img67
-    valid67_tmp = st.session_state.reload_counter % 2
-    if valid67_tmp == 0:
-        st.image(tmp67[st.session_state.auswahl.get("Seite 6 Thema 7", 0)] if valid67_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp67[st.session_state.auswahl.get("Seite 6 Thema 7", 0)] if valid67_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp67[st.session_state.auswahl.get("Seite 6 Thema 7", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1269,23 +933,11 @@ if st.session_state.seite == "page6":
     )
     st.write(f"Du hast Bild Nr. {nvimg67} ausgewählt.")
     st.session_state.auswahl["nv Seite 6 Thema 7"] = nvimg67
-    nvalid67_tmp = st.session_state.reload_counter % 2
-    if nvalid67_tmp == 0:
-        st.image(nvtmp67[st.session_state.auswahl.get("nv Seite 6 Thema 7", 0)] if nvalid67_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp67[st.session_state.auswahl.get("nv Seite 6 Thema 7", 0)] if nvalid67_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp67[st.session_state.auswahl.get("nv Seite 6 Thema 7", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 8: Activities for Students\n- Offers suggestions for classroom activities related to each theme covered throughout the guidebook, encouraging active engagement among students.\n\n')
-    choice68_arr = [
-        "https://www.dropbox.com/scl/fi/34co5uecuxyf4dovosxc3/Section8_choice.png?rlkey=eemcweex3pendj5fvbyjebtn0&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice68_tmp = st.session_state.reload_counter % 2
-    if choice68_tmp == 0:
-        st.image(choice68_arr[0 if choice68_tmp == 0 else 1])
-    else:
-        st.image(choice68_arr[0 if choice68_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/34co5uecuxyf4dovosxc3/Section8_choice.png?rlkey=eemcweex3pendj5fvbyjebtn0&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' An orange-haired orangutan is centered in the image, peering over a lush green jungle backdrop with German text and logos at the bottom.')
 
     tmp68 = [
@@ -1300,11 +952,7 @@ if st.session_state.seite == "page6":
         key=f"frage68_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 6 Thema 8"] = img68
-    valid68_tmp = st.session_state.reload_counter % 2
-    if valid68_tmp == 0:
-        st.image(tmp68[st.session_state.auswahl.get("Seite 6 Thema 8", 0)] if valid68_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp68[st.session_state.auswahl.get("Seite 6 Thema 8", 0)] if valid68_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp68[st.session_state.auswahl.get("Seite 6 Thema 8", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1322,11 +970,7 @@ if st.session_state.seite == "page6":
     )
     st.write(f"Du hast Bild Nr. {nvimg68} ausgewählt.")
     st.session_state.auswahl["nv Seite 6 Thema 8"] = nvimg68
-    nvalid68_tmp = st.session_state.reload_counter % 2
-    if nvalid68_tmp == 0:
-        st.image(nvtmp68[st.session_state.auswahl.get("nv Seite 6 Thema 8", 0)] if nvalid68_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp68[st.session_state.auswahl.get("nv Seite 6 Thema 8", 0)] if nvalid68_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp68[st.session_state.auswahl.get("nv Seite 6 Thema 8", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.button("(Nachfolgende) Seite 7", on_click=lambda: wechsel_zu("page7"))
 
@@ -1375,11 +1019,7 @@ if st.session_state.seite == "page7":
         key=f"frage71_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 7 Thema 1"] = img71
-    valid71_tmp = st.session_state.reload_counter % 2
-    if valid71_tmp == 0:
-        st.image(tmp71[st.session_state.auswahl.get("Seite 7 Thema 1", 0)] if valid71_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp71[st.session_state.auswahl.get("Seite 7 Thema 1", 0)] if valid71_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp71[st.session_state.auswahl.get("Seite 7 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1400,23 +1040,11 @@ if st.session_state.seite == "page7":
     )
     st.write(f"Du hast Bild Nr. {nvimg71} ausgewählt.")
     st.session_state.auswahl["nv Seite 7 Thema 1"] = nvimg71
-    nvalid71_tmp = st.session_state.reload_counter % 2
-    if nvalid71_tmp == 0:
-        st.image(nvtmp71[st.session_state.auswahl.get("nv Seite 7 Thema 1", 0)] if nvalid71_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp71[st.session_state.auswahl.get("nv Seite 7 Thema 1", 0)] if nvalid71_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp71[st.session_state.auswahl.get("nv Seite 7 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: Comparative Analysis of Popular 3D Print Technologies\n- Evaluates seven frequently utilized 3D print technologies across factors like speed, cost, material choices, accuracy, intricacy, support structure requirements, and post-production necessities.\n\n')
-    choice72_arr = [
-        "https://www.dropbox.com/scl/fi/6eofwfjh1ny68oxljp7uw/Section2_choice.png?rlkey=6nicmj04ocqm4cysltf5votbd&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice72_tmp = st.session_state.reload_counter % 2
-    if choice72_tmp == 0:
-        st.image(choice72_arr[0 if choice72_tmp == 0 else 1])
-    else:
-        st.image(choice72_arr[0 if choice72_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/6eofwfjh1ny68oxljp7uw/Section2_choice.png?rlkey=6nicmj04ocqm4cysltf5votbd&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image is a table comparing various 3D printing technologies, detailing their process, materials, complexity, speed, size, accuracy, surface finish, strengths, weaknesses, pricing, and application examples.')
 
     tmp72 = [
@@ -1431,11 +1059,7 @@ if st.session_state.seite == "page7":
         key=f"frage72_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 7 Thema 2"] = img72
-    valid72_tmp = st.session_state.reload_counter % 2
-    if valid72_tmp == 0:
-        st.image(tmp72[st.session_state.auswahl.get("Seite 7 Thema 2", 0)] if valid72_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp72[st.session_state.auswahl.get("Seite 7 Thema 2", 0)] if valid72_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp72[st.session_state.auswahl.get("Seite 7 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1460,23 +1084,11 @@ if st.session_state.seite == "page7":
     )
     st.write(f"Du hast Bild Nr. {nvimg72} ausgewählt.")
     st.session_state.auswahl["nv Seite 7 Thema 2"] = nvimg72
-    nvalid72_tmp = st.session_state.reload_counter % 2
-    if nvalid72_tmp == 0:
-        st.image(nvtmp72[st.session_state.auswahl.get("nv Seite 7 Thema 2", 0)] if nvalid72_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp72[st.session_state.auswahl.get("nv Seite 7 Thema 2", 0)] if nvalid72_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp72[st.session_state.auswahl.get("nv Seite 7 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Fundamentals of Fused Deposition Modeling (FDM) Technology\n- Details the operating principles, materials, applications, merits, demerits, and practicality of FDM technology, renowned for its accessibility and user-friendliness.\n\n')
-    choice73_arr = [
-        "https://www.dropbox.com/scl/fi/5m70p0z2el0fj8hiwcrwp/Section3_choice.png?rlkey=q5jca3hdf2v6ruiuci7zrkdc1&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice73_tmp = st.session_state.reload_counter % 2
-    if choice73_tmp == 0:
-        st.image(choice73_arr[0 if choice73_tmp == 0 else 1])
-    else:
-        st.image(choice73_arr[0 if choice73_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/5m70p0z2el0fj8hiwcrwp/Section3_choice.png?rlkey=q5jca3hdf2v6ruiuci7zrkdc1&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image is a diagram illustrating a 3D printing process, showing a feed mechanism, filament, print head with a nozzle, a partially printed object in the shape of a capital "H" with support structures, and a lowerable print table.')
 
     tmp73 = [
@@ -1491,11 +1103,7 @@ if st.session_state.seite == "page7":
         key=f"frage73_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 7 Thema 3"] = img73
-    valid73_tmp = st.session_state.reload_counter % 2
-    if valid73_tmp == 0:
-        st.image(tmp73[st.session_state.auswahl.get("Seite 7 Thema 3", 0)] if valid73_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp73[st.session_state.auswahl.get("Seite 7 Thema 3", 0)] if valid73_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp73[st.session_state.auswahl.get("Seite 7 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1520,23 +1128,11 @@ if st.session_state.seite == "page7":
     )
     st.write(f"Du hast Bild Nr. {nvimg73} ausgewählt.")
     st.session_state.auswahl["nv Seite 7 Thema 3"] = nvimg73
-    nvalid73_tmp = st.session_state.reload_counter % 2
-    if nvalid73_tmp == 0:
-        st.image(nvtmp73[st.session_state.auswahl.get("nv Seite 7 Thema 3", 0)] if nvalid73_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp73[st.session_state.auswahl.get("nv Seite 7 Thema 3", 0)] if nvalid73_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp73[st.session_state.auswahl.get("nv Seite 7 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Enhancing Quality & Minimizing Challenges in FDM 3D Printing\n- Addresses typical difficulties like warping effects, layer separation, vertical pin failures, and solutions for reducing these issues through strategic design modifications.\n\n')
-    choice74_arr = [
-        "https://www.dropbox.com/scl/fi/9rfzi8s7qgsvyy0hk1xqr/Section4_choice.png?rlkey=0pdametj4ngz8pd60ndaxufzf&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice74_tmp = st.session_state.reload_counter % 2
-    if choice74_tmp == 0:
-        st.image(choice74_arr[0 if choice74_tmp == 0 else 1])
-    else:
-        st.image(choice74_arr[0 if choice74_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/9rfzi8s7qgsvyy0hk1xqr/Section4_choice.png?rlkey=0pdametj4ngz8pd60ndaxufzf&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' A small, white, 3D-printed model of a seashell with a spiraled top sits on a white surface.')
 
     tmp74 = [
@@ -1551,11 +1147,7 @@ if st.session_state.seite == "page7":
         key=f"frage74_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 7 Thema 4"] = img74
-    valid74_tmp = st.session_state.reload_counter % 2
-    if valid74_tmp == 0:
-        st.image(tmp74[st.session_state.auswahl.get("Seite 7 Thema 4", 0)] if valid74_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp74[st.session_state.auswahl.get("Seite 7 Thema 4", 0)] if valid74_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp74[st.session_state.auswahl.get("Seite 7 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1578,23 +1170,11 @@ if st.session_state.seite == "page7":
     )
     st.write(f"Du hast Bild Nr. {nvimg74} ausgewählt.")
     st.session_state.auswahl["nv Seite 7 Thema 4"] = nvimg74
-    nvalid74_tmp = st.session_state.reload_counter % 2
-    if nvalid74_tmp == 0:
-        st.image(nvtmp74[st.session_state.auswahl.get("nv Seite 7 Thema 4", 0)] if nvalid74_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp74[st.session_state.auswahl.get("nv Seite 7 Thema 4", 0)] if nvalid74_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp74[st.session_state.auswahl.get("nv Seite 7 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 5: Optimized Design Approaches for FDM Production\n- Proposes advanced methodologies such as splitting models, altering orientations, defining manufacturing directions, and implementing specific design elements to streamline processes, boost efficiency, strengthen prints, and maintain superior quality.\n\n')
-    choice75_arr = [
-        "https://www.dropbox.com/scl/fi/86gtwyjc3z7knvjyvclv9/Section5_choice.png?rlkey=qo0s2jtnniybv03xe6rpp5qcj&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice75_tmp = st.session_state.reload_counter % 2
-    if choice75_tmp == 0:
-        st.image(choice75_arr[0 if choice75_tmp == 0 else 1])
-    else:
-        st.image(choice75_arr[0 if choice75_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/86gtwyjc3z7knvjyvclv9/Section5_choice.png?rlkey=qo0s2jtnniybv03xe6rpp5qcj&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image shows a diagram of multiple parallel, curved layers stacked on top of each other, with rounded edges and notches at the layer boundaries.')
 
     tmp75 = [
@@ -1611,11 +1191,7 @@ if st.session_state.seite == "page7":
         key=f"frage75_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 7 Thema 5"] = img75
-    valid75_tmp = st.session_state.reload_counter % 2
-    if valid75_tmp == 0:
-        st.image(tmp75[st.session_state.auswahl.get("Seite 7 Thema 5", 0)] if valid75_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp75[st.session_state.auswahl.get("Seite 7 Thema 5", 0)] if valid75_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp75[st.session_state.auswahl.get("Seite 7 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1638,11 +1214,7 @@ if st.session_state.seite == "page7":
     )
     st.write(f"Du hast Bild Nr. {nvimg75} ausgewählt.")
     st.session_state.auswahl["nv Seite 7 Thema 5"] = nvimg75
-    nvalid75_tmp = st.session_state.reload_counter % 2
-    if nvalid75_tmp == 0:
-        st.image(nvtmp75[st.session_state.auswahl.get("nv Seite 7 Thema 5", 0)] if nvalid75_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp75[st.session_state.auswahl.get("nv Seite 7 Thema 5", 0)] if nvalid75_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp75[st.session_state.auswahl.get("nv Seite 7 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.button("(Nachfolgende) Seite 8", on_click=lambda: wechsel_zu("page8"))
 
@@ -1674,15 +1246,7 @@ if st.session_state.seite == "page8":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 1: Symbiosis Between Corals and Zooxanthellae\n- Overview of the beneficial partnership between certain corals and microscopic algae known as zooxanthellae.\n\n')
-    choice81_arr = [
-        "https://www.dropbox.com/scl/fi/yaxsx67yyr5hcxxqmbos8/Section1_choice.png?rlkey=trgp57skw58p7sv3qo97wp79x&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice81_tmp = st.session_state.reload_counter % 2
-    if choice81_tmp == 0:
-        st.image(choice81_arr[0 if choice81_tmp == 0 else 1])
-    else:
-        st.image(choice81_arr[0 if choice81_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/yaxsx67yyr5hcxxqmbos8/Section1_choice.png?rlkey=trgp57skw58p7sv3qo97wp79x&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image is a black and white diagram showing a scale from 0 to 1200 on the left and a scale from 0 to 40cm on the right, with various fungal names listed vertically along the right side.')
 
     tmp81 = [
@@ -1701,11 +1265,7 @@ if st.session_state.seite == "page8":
         key=f"frage81_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 8 Thema 1"] = img81
-    valid81_tmp = st.session_state.reload_counter % 2
-    if valid81_tmp == 0:
-        st.image(tmp81[st.session_state.auswahl.get("Seite 8 Thema 1", 0)] if valid81_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp81[st.session_state.auswahl.get("Seite 8 Thema 1", 0)] if valid81_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp81[st.session_state.auswahl.get("Seite 8 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1726,23 +1286,11 @@ if st.session_state.seite == "page8":
     )
     st.write(f"Du hast Bild Nr. {nvimg81} ausgewählt.")
     st.session_state.auswahl["nv Seite 8 Thema 1"] = nvimg81
-    nvalid81_tmp = st.session_state.reload_counter % 2
-    if nvalid81_tmp == 0:
-        st.image(nvtmp81[st.session_state.auswahl.get("nv Seite 8 Thema 1", 0)] if nvalid81_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp81[st.session_state.auswahl.get("nv Seite 8 Thema 1", 0)] if nvalid81_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp81[st.session_state.auswahl.get("nv Seite 8 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: Functions and Niches of Weichkorallen Within Tropical Coral Communities\n- Description of diverse shapes, capabilities, light requirements, and locations occupied by Weichkorallen.\n\n')
-    choice82_arr = [
-        "https://www.dropbox.com/scl/fi/e16wya6cbzz0vrbhqigol/Section2_choice.png?rlkey=fo70mvsn1eu8eivxjm5bg0dmo&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice82_tmp = st.session_state.reload_counter % 2
-    if choice82_tmp == 0:
-        st.image(choice82_arr[0 if choice82_tmp == 0 else 1])
-    else:
-        st.image(choice82_arr[0 if choice82_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/e16wya6cbzz0vrbhqigol/Section2_choice.png?rlkey=fo70mvsn1eu8eivxjm5bg0dmo&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image shows three separate photographs: a close-up of a vibrant red coral structure, a black and white microscopic image of several elongated, textured objects, a grayscale image of a rounded cell-like structure, and a detailed illustration of a cross-section with red accents.')
 
     tmp82 = [
@@ -1762,11 +1310,7 @@ if st.session_state.seite == "page8":
         key=f"frage82_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 8 Thema 2"] = img82
-    valid82_tmp = st.session_state.reload_counter % 2
-    if valid82_tmp == 0:
-        st.image(tmp82[st.session_state.auswahl.get("Seite 8 Thema 2", 0)] if valid82_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp82[st.session_state.auswahl.get("Seite 8 Thema 2", 0)] if valid82_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp82[st.session_state.auswahl.get("Seite 8 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1785,23 +1329,11 @@ if st.session_state.seite == "page8":
     )
     st.write(f"Du hast Bild Nr. {nvimg82} ausgewählt.")
     st.session_state.auswahl["nv Seite 8 Thema 2"] = nvimg82
-    nvalid82_tmp = st.session_state.reload_counter % 2
-    if nvalid82_tmp == 0:
-        st.image(nvtmp82[st.session_state.auswahl.get("nv Seite 8 Thema 2", 0)] if nvalid82_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp82[st.session_state.auswahl.get("nv Seite 8 Thema 2", 0)] if nvalid82_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp82[st.session_state.auswahl.get("nv Seite 8 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Influences on Relationships Amongst Corals, Zooxanthellae, and Other Organisms\n- Analysis of competition, predation, mutualism, and interdependencies amongst various inhabitants of coral reef systems.\n\n')
-    choice83_arr = [
-        "https://www.dropbox.com/scl/fi/gawb9gqyjuw2vwirvb8vw/Section3_choice.png?rlkey=86cn9p451nr2dpcp8h3n241vc&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice83_tmp = st.session_state.reload_counter % 2
-    if choice83_tmp == 0:
-        st.image(choice83_arr[0 if choice83_tmp == 0 else 1])
-    else:
-        st.image(choice83_arr[0 if choice83_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/gawb9gqyjuw2vwirvb8vw/Section3_choice.png?rlkey=86cn9p451nr2dpcp8h3n241vc&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image shows two black and white electron micrographs labeled "a" and "b," depicting cellular structures with internal components and surrounding membranes.')
 
     tmp83 = [
@@ -1817,11 +1349,7 @@ if st.session_state.seite == "page8":
         key=f"frage83_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 8 Thema 3"] = img83
-    valid83_tmp = st.session_state.reload_counter % 2
-    if valid83_tmp == 0:
-        st.image(tmp83[st.session_state.auswahl.get("Seite 8 Thema 3", 0)] if valid83_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp83[st.session_state.auswahl.get("Seite 8 Thema 3", 0)] if valid83_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp83[st.session_state.auswahl.get("Seite 8 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1843,11 +1371,7 @@ if st.session_state.seite == "page8":
     )
     st.write(f"Du hast Bild Nr. {nvimg83} ausgewählt.")
     st.session_state.auswahl["nv Seite 8 Thema 3"] = nvimg83
-    nvalid83_tmp = st.session_state.reload_counter % 2
-    if nvalid83_tmp == 0:
-        st.image(nvtmp83[st.session_state.auswahl.get("nv Seite 8 Thema 3", 0)] if nvalid83_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp83[st.session_state.auswahl.get("nv Seite 8 Thema 3", 0)] if nvalid83_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp83[st.session_state.auswahl.get("nv Seite 8 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Factors Affecting Health and Stability of Coral Reef Structures\n- Identifies key drivers behind changes in coral coverage, such as anthropogenic pressures and climactic shifts.')
@@ -1866,11 +1390,7 @@ if st.session_state.seite == "page8":
         key=f"frage84_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 8 Thema 4"] = img84
-    valid84_tmp = st.session_state.reload_counter % 2
-    if valid84_tmp == 0:
-        st.image(tmp84[st.session_state.auswahl.get("Seite 8 Thema 4", 0)] if valid84_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp84[st.session_state.auswahl.get("Seite 8 Thema 4", 0)] if valid84_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp84[st.session_state.auswahl.get("Seite 8 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1892,11 +1412,7 @@ if st.session_state.seite == "page8":
     )
     st.write(f"Du hast Bild Nr. {nvimg84} ausgewählt.")
     st.session_state.auswahl["nv Seite 8 Thema 4"] = nvimg84
-    nvalid84_tmp = st.session_state.reload_counter % 2
-    if nvalid84_tmp == 0:
-        st.image(nvtmp84[st.session_state.auswahl.get("nv Seite 8 Thema 4", 0)] if nvalid84_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp84[st.session_state.auswahl.get("nv Seite 8 Thema 4", 0)] if nvalid84_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp84[st.session_state.auswahl.get("nv Seite 8 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 5: Strategies for Sustaining Coral Reef Ecosystems\n- Review of approaches aimed at mitigating damage caused by human activities and restoring degraded reefs using innovative techniques.')
@@ -1914,11 +1430,7 @@ if st.session_state.seite == "page8":
         key=f"frage85_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 8 Thema 5"] = img85
-    valid85_tmp = st.session_state.reload_counter % 2
-    if valid85_tmp == 0:
-        st.image(tmp85[st.session_state.auswahl.get("Seite 8 Thema 5", 0)] if valid85_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp85[st.session_state.auswahl.get("Seite 8 Thema 5", 0)] if valid85_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp85[st.session_state.auswahl.get("Seite 8 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -1941,11 +1453,7 @@ if st.session_state.seite == "page8":
     )
     st.write(f"Du hast Bild Nr. {nvimg85} ausgewählt.")
     st.session_state.auswahl["nv Seite 8 Thema 5"] = nvimg85
-    nvalid85_tmp = st.session_state.reload_counter % 2
-    if nvalid85_tmp == 0:
-        st.image(nvtmp85[st.session_state.auswahl.get("nv Seite 8 Thema 5", 0)] if nvalid85_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp85[st.session_state.auswahl.get("nv Seite 8 Thema 5", 0)] if nvalid85_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp85[st.session_state.auswahl.get("nv Seite 8 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.button("(Nachfolgende) Seite 9", on_click=lambda: wechsel_zu("page9"))
 
@@ -1977,15 +1485,7 @@ if st.session_state.seite == "page9":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 1: General Concepts of Nutrition Science\n- Defines key terms related to nutrition and explains the role of various substances in human body functions.\n\n')
-    choice91_arr = [
-        "https://www.dropbox.com/scl/fi/ueo4006ph1tn716x1581h/Section1_choice.png?rlkey=a292lkrv5x0obyf1o39xxmcxu&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice91_tmp = st.session_state.reload_counter % 2
-    if choice91_tmp == 0:
-        st.image(choice91_arr[0 if choice91_tmp == 0 else 1])
-    else:
-        st.image(choice91_arr[0 if choice91_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/ueo4006ph1tn716x1581h/Section1_choice.png?rlkey=a292lkrv5x0obyf1o39xxmcxu&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(" A close-up shot shows a person's hands holding a pen and writing on a white surface.")
 
     tmp91 = [
@@ -2000,11 +1500,7 @@ if st.session_state.seite == "page9":
         key=f"frage91_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 9 Thema 1"] = img91
-    valid91_tmp = st.session_state.reload_counter % 2
-    if valid91_tmp == 0:
-        st.image(tmp91[st.session_state.auswahl.get("Seite 9 Thema 1", 0)] if valid91_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp91[st.session_state.auswahl.get("Seite 9 Thema 1", 0)] if valid91_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp91[st.session_state.auswahl.get("Seite 9 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -2021,11 +1517,7 @@ if st.session_state.seite == "page9":
     )
     st.write(f"Du hast Bild Nr. {nvimg91} ausgewählt.")
     st.session_state.auswahl["nv Seite 9 Thema 1"] = nvimg91
-    nvalid91_tmp = st.session_state.reload_counter % 2
-    if nvalid91_tmp == 0:
-        st.image(nvtmp91[st.session_state.auswahl.get("nv Seite 9 Thema 1", 0)] if nvalid91_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp91[st.session_state.auswahl.get("nv Seite 9 Thema 1", 0)] if nvalid91_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp91[st.session_state.auswahl.get("nv Seite 9 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: Energy Requirement and Calculations\n- Details how energy is produced within cells through biological oxidation process and introduces two units used to measure energy intake (kilocalories and kilojules).')
@@ -2042,11 +1534,7 @@ if st.session_state.seite == "page9":
         key=f"frage92_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 9 Thema 2"] = img92
-    valid92_tmp = st.session_state.reload_counter % 2
-    if valid92_tmp == 0:
-        st.image(tmp92[st.session_state.auswahl.get("Seite 9 Thema 2", 0)] if valid92_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp92[st.session_state.auswahl.get("Seite 9 Thema 2", 0)] if valid92_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp92[st.session_state.auswahl.get("Seite 9 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -2063,11 +1551,7 @@ if st.session_state.seite == "page9":
     )
     st.write(f"Du hast Bild Nr. {nvimg92} ausgewählt.")
     st.session_state.auswahl["nv Seite 9 Thema 2"] = nvimg92
-    nvalid92_tmp = st.session_state.reload_counter % 2
-    if nvalid92_tmp == 0:
-        st.image(nvtmp92[st.session_state.auswahl.get("nv Seite 9 Thema 2", 0)] if nvalid92_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp92[st.session_state.auswahl.get("nv Seite 9 Thema 2", 0)] if nvalid92_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp92[st.session_state.auswahl.get("nv Seite 9 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Basic Composition of Foods\n- Outlines the three primary sources of dietary energy—carbohydrates, proteins, and lipids—with corresponding caloric values per gram.')
@@ -2084,11 +1568,7 @@ if st.session_state.seite == "page9":
         key=f"frage93_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 9 Thema 3"] = img93
-    valid93_tmp = st.session_state.reload_counter % 2
-    if valid93_tmp == 0:
-        st.image(tmp93[st.session_state.auswahl.get("Seite 9 Thema 3", 0)] if valid93_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp93[st.session_state.auswahl.get("Seite 9 Thema 3", 0)] if valid93_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp93[st.session_state.auswahl.get("Seite 9 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -2105,26 +1585,14 @@ if st.session_state.seite == "page9":
     )
     st.write(f"Du hast Bild Nr. {nvimg93} ausgewählt.")
     st.session_state.auswahl["nv Seite 9 Thema 3"] = nvimg93
-    nvalid93_tmp = st.session_state.reload_counter % 2
-    if nvalid93_tmp == 0:
-        st.image(nvtmp93[st.session_state.auswahl.get("nv Seite 9 Thema 3", 0)] if nvalid93_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp93[st.session_state.auswahl.get("nv Seite 9 Thema 3", 0)] if nvalid93_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp93[st.session_state.auswahl.get("nv Seite 9 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Determining Daily Energy and Nutrient Needs\n- Presents calculations for estimating daily energy needs based on basal metabolism rate and activity level, along with recommended percentages of calories derived from carbohydrates, protein, and fat.')
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 5: Methodology for Assessing Food Content\n- Demonstrates techniques for determining the amount of essential nutrients present in foods via simple calculations utilizing known caloric and nutrient contents per unit weight.\n\n')
-    choice95_arr = [
-        "https://www.dropbox.com/scl/fi/xlyv8xo44rz9tda9l9yrs/Section5_choice.png?rlkey=b0wrysd651onio4buwdfjp3nx&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice95_tmp = st.session_state.reload_counter % 2
-    if choice95_tmp == 0:
-        st.image(choice95_arr[0 if choice95_tmp == 0 else 1])
-    else:
-        st.image(choice95_arr[0 if choice95_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/xlyv8xo44rz9tda9l9yrs/Section5_choice.png?rlkey=b0wrysd651onio4buwdfjp3nx&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(" A close-up shot shows a person's hands holding a pen and writing on a white surface.")
 
     tmp95 = [
@@ -2139,11 +1607,7 @@ if st.session_state.seite == "page9":
         key=f"frage95_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 9 Thema 5"] = img95
-    valid95_tmp = st.session_state.reload_counter % 2
-    if valid95_tmp == 0:
-        st.image(tmp95[st.session_state.auswahl.get("Seite 9 Thema 5", 0)] if valid95_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp95[st.session_state.auswahl.get("Seite 9 Thema 5", 0)] if valid95_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp95[st.session_state.auswahl.get("Seite 9 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -2160,11 +1624,7 @@ if st.session_state.seite == "page9":
     )
     st.write(f"Du hast Bild Nr. {nvimg95} ausgewählt.")
     st.session_state.auswahl["nv Seite 9 Thema 5"] = nvimg95
-    nvalid95_tmp = st.session_state.reload_counter % 2
-    if nvalid95_tmp == 0:
-        st.image(nvtmp95[st.session_state.auswahl.get("nv Seite 9 Thema 5", 0)] if nvalid95_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp95[st.session_state.auswahl.get("nv Seite 9 Thema 5", 0)] if nvalid95_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp95[st.session_state.auswahl.get("nv Seite 9 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.button("(Nachfolgende) Seite 10", on_click=lambda: wechsel_zu("page10"))
 
@@ -2196,15 +1656,7 @@ if st.session_state.seite == "page10":
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 1: First Direct Observation of Merged Black Holes\n- On May 21, 2019, scientists detected gravitational waves originating from the merger of two massive black holes approximately 8 billion light years away. This marked the first direct observation of this phenomenon.\n\n')
-    choice101_arr = [
-        "https://www.dropbox.com/scl/fi/73i9its0wtcfbj2nodtlv/Section1_choice.png?rlkey=ald5l08fkx9td24a12i6ept6r&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice101_tmp = st.session_state.reload_counter % 2
-    if choice101_tmp == 0:
-        st.image(choice101_arr[0 if choice101_tmp == 0 else 1])
-    else:
-        st.image(choice101_arr[0 if choice101_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/73i9its0wtcfbj2nodtlv/Section1_choice.png?rlkey=ald5l08fkx9td24a12i6ept6r&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image depicts two black holes surrounded by swirling blue light and a grid-like pattern against a backdrop of numerous stars.')
 
     tmp101 = [
@@ -2223,22 +1675,10 @@ if st.session_state.seite == "page10":
         key=f"frage101_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 10 Thema 1"] = img101
-    valid101_tmp = st.session_state.reload_counter % 2
-    if valid101_tmp == 0:
-        st.image(tmp101[st.session_state.auswahl.get("Seite 10 Thema 1", 0)] if valid101_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp101[st.session_state.auswahl.get("Seite 10 Thema 1", 0)] if valid101_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp101[st.session_state.auswahl.get("Seite 10 Thema 1", 0)] + f"&nocache={st.session_state.reload_counter}")
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 2: Properties of Detected Black Holes\n- The merged black hole had a combined mass equivalent to around three times that of our sun. One of its components was slightly more massive than the other. Both were spinning rapidly along the same axis as their orbital motion.\n\n')
-    choice102_arr = [
-        "https://www.dropbox.com/scl/fi/s3xodamwlgdctbh42b5k5/Section2_choice.png?rlkey=geit2i2apbkrfox31ulvh49wo&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice102_tmp = st.session_state.reload_counter % 2
-    if choice102_tmp == 0:
-        st.image(choice102_arr[0 if choice102_tmp == 0 else 1])
-    else:
-        st.image(choice102_arr[0 if choice102_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/s3xodamwlgdctbh42b5k5/Section2_choice.png?rlkey=geit2i2apbkrfox31ulvh49wo&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image depicts two black holes surrounded by swirling blue light and a grid-like pattern against a backdrop of numerous stars.')
 
     tmp102 = [
@@ -2255,11 +1695,7 @@ if st.session_state.seite == "page10":
         key=f"frage102_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 10 Thema 2"] = img102
-    valid102_tmp = st.session_state.reload_counter % 2
-    if valid102_tmp == 0:
-        st.image(tmp102[st.session_state.auswahl.get("Seite 10 Thema 2", 0)] if valid102_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp102[st.session_state.auswahl.get("Seite 10 Thema 2", 0)] if valid102_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp102[st.session_state.auswahl.get("Seite 10 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -2280,11 +1716,7 @@ if st.session_state.seite == "page10":
     )
     st.write(f"Du hast Bild Nr. {nvimg102} ausgewählt.")
     st.session_state.auswahl["nv Seite 10 Thema 2"] = nvimg102
-    nvalid102_tmp = st.session_state.reload_counter % 2
-    if nvalid102_tmp == 0:
-        st.image(nvtmp102[st.session_state.auswahl.get("nv Seite 10 Thema 2", 0)] if nvalid102_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp102[st.session_state.auswahl.get("nv Seite 10 Thema 2", 0)] if nvalid102_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp102[st.session_state.auswahl.get("nv Seite 10 Thema 2", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 3: Energy Emitted During Mergers\n- When these black holes merge, they emit energy primarily in the form of gravitational waves but also some electromagnetic radiation. Approximately four solar masses worth of energy was emitted during this event.')
@@ -2303,11 +1735,7 @@ if st.session_state.seite == "page10":
         key=f"frage103_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 10 Thema 3"] = img103
-    valid103_tmp = st.session_state.reload_counter % 2
-    if valid103_tmp == 0:
-        st.image(tmp103[st.session_state.auswahl.get("Seite 10 Thema 3", 0)] if valid103_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp103[st.session_state.auswahl.get("Seite 10 Thema 3", 0)] if valid103_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp103[st.session_state.auswahl.get("Seite 10 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -2328,23 +1756,11 @@ if st.session_state.seite == "page10":
     )
     st.write(f"Du hast Bild Nr. {nvimg103} ausgewählt.")
     st.session_state.auswahl["nv Seite 10 Thema 3"] = nvimg103
-    nvalid103_tmp = st.session_state.reload_counter % 2
-    if nvalid103_tmp == 0:
-        st.image(nvtmp103[st.session_state.auswahl.get("nv Seite 10 Thema 3", 0)] if nvalid103_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp103[st.session_state.auswahl.get("nv Seite 10 Thema 3", 0)] if nvalid103_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp103[st.session_state.auswahl.get("nv Seite 10 Thema 3", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 4: Impact on Understanding Black Hole Mergers\n- These observations provide valuable insights into how binary black hole systems evolve over time before coalescing and help refine theories regarding the formation of heavy elements like gold and platinum within stars.\n\n')
-    choice104_arr = [
-        "https://www.dropbox.com/scl/fi/0qn6ckb3ch1tqsh2tfy1d/Section4_choice.png?rlkey=x3qb4fw2nssj7esftnu5jsfby&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice104_tmp = st.session_state.reload_counter % 2
-    if choice104_tmp == 0:
-        st.image(choice104_arr[0 if choice104_tmp == 0 else 1])
-    else:
-        st.image(choice104_arr[0 if choice104_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/0qn6ckb3ch1tqsh2tfy1d/Section4_choice.png?rlkey=x3qb4fw2nssj7esftnu5jsfby&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image shows a scatter plot with orange dots plotted on a grid, labeled "weight alongside in 00s" and "bodyweight in kilograms."')
 
     tmp104 = [
@@ -2361,11 +1777,7 @@ if st.session_state.seite == "page10":
         key=f"frage104_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 10 Thema 4"] = img104
-    valid104_tmp = st.session_state.reload_counter % 2
-    if valid104_tmp == 0:
-        st.image(tmp104[st.session_state.auswahl.get("Seite 10 Thema 4", 0)] if valid104_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp104[st.session_state.auswahl.get("Seite 10 Thema 4", 0)] if valid104_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp104[st.session_state.auswahl.get("Seite 10 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -2386,23 +1798,11 @@ if st.session_state.seite == "page10":
     )
     st.write(f"Du hast Bild Nr. {nvimg104} ausgewählt.")
     st.session_state.auswahl["nv Seite 10 Thema 4"] = nvimg104
-    nvalid104_tmp = st.session_state.reload_counter % 2
-    if nvalid104_tmp == 0:
-        st.image(nvtmp104[st.session_state.auswahl.get("nv Seite 10 Thema 4", 0)] if nvalid104_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp104[st.session_state.auswahl.get("nv Seite 10 Thema 4", 0)] if nvalid104_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp104[st.session_state.auswahl.get("nv Seite 10 Thema 4", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("--------------------------------------------------------------------------------------------------------")
     st.text('Topic 5: Future Research Plans\n- Scientists are preparing for future observing runs with improved sensitivity levels which could lead to detecting even more black hole mergers at higher rates.\n\n')
-    choice105_arr = [
-        "https://www.dropbox.com/scl/fi/js7cqj0xhty72iy7fvexg/Section5_choice.png?rlkey=n77qiw3sz3s4r9rdply4769lg&dl=1",
-        "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1",
-    ]
-    choice105_tmp = st.session_state.reload_counter % 2
-    if choice105_tmp == 0:
-        st.image(choice105_arr[0 if choice105_tmp == 0 else 1])
-    else:
-        st.image(choice105_arr[0 if choice105_tmp == 1 else 1])
+    st.image("https://www.dropbox.com/scl/fi/js7cqj0xhty72iy7fvexg/Section5_choice.png?rlkey=n77qiw3sz3s4r9rdply4769lg&dl=1" + f"&nocache={st.session_state.reload_counter}")
     st.text(' The image is a scatter plot graph with data points clustered in three distinct regions labeled "Weakening," "Steady," and "Increasing," and with axes labeled "Weightloss in pounds" and "Weeks."')
 
     tmp105 = [
@@ -2420,11 +1820,7 @@ if st.session_state.seite == "page10":
         key=f"frage105_{st.session_state.reload_counter}"
     )
     st.session_state.auswahl["Seite 10 Thema 5"] = img105
-    valid105_tmp = st.session_state.reload_counter % 2
-    if valid105_tmp == 0:
-        st.image(tmp105[st.session_state.auswahl.get("Seite 10 Thema 5", 0)] if valid105_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(tmp105[st.session_state.auswahl.get("Seite 10 Thema 5", 0)] if valid105_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(tmp105[st.session_state.auswahl.get("Seite 10 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     st.text("Die folgenden Bilder wurden aussortiert. Falls du der Meinung bist, dass eines davon thematisch relevant ist, wähle es bitte aus.")
 
@@ -2444,11 +1840,7 @@ if st.session_state.seite == "page10":
     )
     st.write(f"Du hast Bild Nr. {nvimg105} ausgewählt.")
     st.session_state.auswahl["nv Seite 10 Thema 5"] = nvimg105
-    nvalid105_tmp = st.session_state.reload_counter % 2
-    if nvalid105_tmp == 0:
-        st.image(nvtmp105[st.session_state.auswahl.get("nv Seite 10 Thema 5", 0)] if nvalid105_tmp == 0 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
-    else:
-        st.image(nvtmp105[st.session_state.auswahl.get("nv Seite 10 Thema 5", 0)] if nvalid105_tmp == 1 else "https://www.dropbox.com/scl/fi/8zxrgtciju3a5s6g6re94/bad-sets-komponenten-keine-auswahl.jpg?rlkey=ij0j741l44g5o6p4wz2y8gy0l&dl=1")
+    st.image(nvtmp105[st.session_state.auswahl.get("nv Seite 10 Thema 5", 0)] + f"&nocache={st.session_state.reload_counter}")
 
     with st.container():
         cols = st.columns([2] * 6)

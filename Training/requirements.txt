@@ -1,0 +1,12 @@
+kagglehub
+PyMuPDF
+Pillow
+transformers
+torch
+pytesseract
+torchvision
+tqdm
+requests
+openimages
+wandb
+huggingface_hub

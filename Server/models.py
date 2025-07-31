@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from database import Base
 
+# Definiert die Datenbanktabelle "job" als SQLAlchemy ORM-Modell
 class Job(Base):
     __tablename__ = "job"
 
