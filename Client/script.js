@@ -120,8 +120,7 @@ submitBtn3.addEventListener('click', () => {
                 if (!Array.isArray(data)) return;
 
                 let last = false;
-                let tmp = data.find(job => job.status === "in_bearbeitung" || job.status === "abgebrochen");
-                if (!tmp) last = true;
+                if (data.length <= 0) last = true;
 
                 data.forEach(job => {
                     let row = document.getElementById(`row${job.id}`);
@@ -195,33 +194,41 @@ submitBtn3.addEventListener('click', () => {
 
 // Datei herunterladen
 function downloadFile(job, buttonElement) {
-    const jobid = job.id;
-    const bar = document.querySelector(`#row${jobid}`);
-    fetch(`http://localhost:8000/api/download/${jobid}`)
-        .then(response => {
-            if (!response.ok) throw new Error("Download fehlgeschlagen.");
-            return response.blob();
-        })
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `ergebnis_${job.response_file}`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            window.URL.revokeObjectURL(url);
-            buttonElement.disabled = true;
-            remove_bar(bar);
-        })
-        .catch(error => {
-            if (error.status === 404) {
-                alert("Die Datei ist nicht mehr vorhanden.");
-            } else {
-                alert("Datei konnte nicht heruntergeladen werden.");
-            }
-            remove_bar(bar);
-        });
+  const jobid = job.id;
+  const bar = document.querySelector(`#row${jobid}`);
+  if (buttonElement) buttonElement.disabled = true;
+
+  fetch(`http://localhost:8000/api/download/${jobid}`)
+    .then(response => {
+      if (!response.ok) {
+        const err = new Error("Download fehlgeschlagen.");
+        err.status = response.status;
+        throw err;
+      }
+      let filename = `ergebnis_${job.response_file}`;
+      if (!filename.toLowerCase().endsWith(".zip")) filename += ".zip";
+      return response.blob().then(blob => ({ blob, filename }));
+    })
+    .then(({ blob, filename }) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      if (buttonElement) buttonElement.disabled = true;
+    })
+    .catch(error => {
+      console.error("Download-Fehler:", error);
+      if (buttonElement) buttonElement.disabled = false;
+      alert(error.status === 404
+        ? "Die Datei ist nicht mehr vorhanden."
+        : error.status === 403
+          ? "Die Datei wird noch bearbeitet. Bitte später erneut versuchen."
+          : "Datei konnte nicht heruntergeladen werden.");
+    });
 }
 
 // Fortschrittszeile entfernen

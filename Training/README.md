@@ -1,14 +1,14 @@
 # Start
 
-First, install all required libraries:
+Zuerst alle benötigten Bibliotheken installieren:
 ```bash
 cd /bachelorthesis/Bachelorthesis/Training
 pip install -r requirements.txt
 ```
 
-# To download the datasets used for training the model, follow the instructions below:
+# Zum Herunterladen der Datensätze für das Training des Modells, folge den untenstehenden Anweisungen:
 
-To get the TableBank dataset in a WSL or Linux environment, use the following commands. These will download the dataset in multiple parts, merge them, and unzip the final archive:
+Um das TableBank-Dataset in einer WSL- oder Linux-Umgebung zu laden, nutze folgende Befehle. Diese laden den Datensatz in mehreren Teilen herunter, fügen sie zusammen und entpacken das Archiv:
 
 ```bash
 wget https://huggingface.co/datasets/liminghao1630/TableBank/resolve/main/TableBank.zip.001
@@ -21,111 +21,113 @@ cat TableBank.zip.001 TableBank.zip.002 TableBank.zip.003 TableBank.zip.004 Tabl
 unzip TableBank.zip -d TableBank
 ```
 
-# For the charts, logos, unrealistic images, and QR code datasets, run the following script:
+# Für die Datensätze Charts, Logos, Unrealistic Images und QR-Codes, führe folgendes Skript aus:
 
-``` python
+```python
 cd bachelorthesis/Bachelorthesis/Datasets/
 python3 download.py
 ```
 
-# To download the infographics dataset, visit the official website of the competition:
+# Um das Infographics-Dataset herunterzuladen, besuche die offizielle Wettbewerbsseite:
 
-Go to https://rrc.cvc.uab.es/?ch=17&com=downloads
+Gehe zu https://rrc.cvc.uab.es/?ch=17&com=downloads
 
-Sign up or log in
+Registriere dich oder logge dich ein
 
-Scroll down to “Task 3 – Infographics VQA”
+Scrolle zu “Task 3 – Infographics VQA”
 
-Click the hyperlink labeled “images” to start the download
+Klicke auf den Hyperlink „images“, um den Download zu starten
 
-then
+danach:
 
 ```bash
 cd /path/to/the/folder/where/the/file/is
 tar -xzf infographicsvqa_images.tar.gz -C /path/to/target/folder
 ```
 
-# Finally, to download the realistic images dataset (from OpenImages), run the following script:
+# Um den Datensatz mit realistischen Bildern (von OpenImages) herunterzuladen, führe folgendes Skript aus:
 
 ```python
 cd bachelorthesis/Bachelorthesis/Datasets/
 python3 openimages.py
 ```
-These datasets are required for training and evaluating the model on visual content classification tasks.
+Diese Datensätze sind erforderlich, um das Modell für visuelle Inhaltsklassifikationsaufgaben zu trainieren und zu evaluieren.
 
-# Bachelor Thesis – Vision Transformer Workflow
+# Bachelorarbeit – Vision Transformer Workflow
 
-## Assemble the Dataset
+## Datensätze zusammenstellen
 
-To assemble the final dataset, use the script `split.py`:
+Um den finalen Datensatz zu erstellen, nutze das Skript `split.py`:
 
-Run it with: 
-```bash 
-python3 split.py <preferred_label_name> <target_folder_name> 
-``` 
+Ausführung:
+```bash
+python3 split.py <bevorzugter_label_name> <zielordner_name>
+```
 
-This script will split the images into `train`, `val`, and `test` sets. 
+Dieses Skript teilt die Bilder in `train`, `val` und `test` Sets auf.
 
-Run the training process for all downloaded folders or for any specific labels you want to include.
---- 
+Starte den Trainingsprozess für alle heruntergeladenen Ordner oder spezifische Labels, die du einbeziehen möchtest.
 
-## Train the Model 
+---
 
-To train the model, use: 
-``` 
-\\bachelorthesis\\Bachelorthesis\\Training\\train.py 
-``` 
+## Modell trainieren
 
-It uses the data created by `split.py`. After training, a folder named `vit_output` will be created containing all model checkpoints. 
+Zum Trainieren des Modells nutze:
+```
+\bachelorthesis\Bachelorthesis\Training\train.py
+```
 
-To upload the model to Hugging Face, use the script: 
-``` 
-\\bachelorthesis\\Bachelorthesis\\Training\\upload.py 
-``` 
+Es verwendet die Daten, die von `split.py` erstellt wurden. Nach dem Training wird ein Ordner `vit_output` mit allen Modell-Checkpoints erstellt.
 
-Make sure to: 
+Zum Hochladen des Modells auf Hugging Face, nutze:
+```
+\bachelorthesis\Bachelorthesis\Training\upload.py
+```
 
-1. Adjust the folder name. 
-2. Add your Hugging Face token to the `.env` file: 
-```env 
-HUGGING_FACE_TOKEN=<Your Token> 
-``` 
+Achte darauf:
 
-Or use the \bachelorthesis\Bachelorthesis\Training\Jupiter_Notebook.ipynb and enter your hugging_face und wandsandbiases tokens
---- 
+1. Den Ordnernamen anzupassen.  
+2. Deinen Hugging Face Token in die `.env` Datei einzutragen:
+```env
+HUGGING_FACE_TOKEN=<Dein Token>
+```
 
-## Test the Model 
+Oder nutze das `\bachelorthesis\Bachelorthesis\Training\Jupiter_Notebook.ipynb` und trage dort deine Hugging Face- und Weights & Biases-Tokens ein.
 
-To test the model, run: 
+---
 
-``` 
-\\bachelorthesis\\Bachelorthesis\\Training\\test.py
-``` 
+## Modell testen
 
-It will use the test data located in: 
-``` 
-\\bachelorthesis\\Bachelorthesis\\Training\\data\\test 
-``` 
+Um das Modell zu testen, führe aus:
+```
+\bachelorthesis\Bachelorthesis\Training\test.py
+```
 
-Make sure the model name matches the folder or your Hugging Face repo. 
---- 
+Es verwendet die Testdaten aus:
+```
+\bachelorthesis\Bachelorthesis\Training\data\test
+```
 
-## Optional Image Testing 
+Achte darauf, dass der Modellname mit dem Ordner oder deinem Hugging Face Repo übereinstimmt.
 
-If you want to test the model with your own images: 
+---
 
-1. Use the script: 
-``` 
-\\bachelorthesis\\Bachelorthesis\\Training\\get_images.py 
-``` 
+## Optional: Eigene Bilder testen
 
-Set the zip_path parameter to the location of your ZIP folder.
-The ZIP folder should contain only PDF files.
-The script will extract all images from all PDFs in the folder.
+Wenn du das Modell mit eigenen Bildern testen möchtest:
 
-2. Then run: 
-``` 
-\\bachelorthesis\\Bachelorthesis\\Training\\model_sort.py 
-``` 
-This will create a `sample` folder and automatically sort the images into subfolders based on the model's predictions. 
+1. Nutze das Skript:
+```
+\bachelorthesis\Bachelorthesis\Training\get_images.py
+```
 
+Setze den Parameter `zip_path` auf den Speicherort deines ZIP-Ordners.  
+Der ZIP-Ordner sollte nur PDF-Dateien enthalten.  
+Das Skript extrahiert alle Bilder aus allen PDFs im Ordner.
+
+2. Danach führe aus:
+```
+\bachelorthesis\Bachelorthesis\Training\model_sort.py
+```
+
+Dies erstellt einen `sample`-Ordner und sortiert die Bilder automatisch in Unterordner basierend auf den Vorhersagen des Modells.

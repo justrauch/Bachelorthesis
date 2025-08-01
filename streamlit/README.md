@@ -1,70 +1,76 @@
-## Streamlit App Instructions
+# Streamlit App Anleitung
 
-### Dropbox Setup
+## Dropbox Einrichtung
 
-1. **Create a Dropbox App**  
-   - Go to: [Dropbox Developer Apps](https://www.dropbox.com/developers/apps)  
-   - Click **"Create app"**
-   - Choose:
+1. **Dropbox App erstellen**  
+   - Gehe zu: [Dropbox Developer Apps](https://www.dropbox.com/developers/apps)  
+   - Klicke auf **"Create app"**  
+   - Wähle:
      - Scoped Access  
      - Full Dropbox  
-     - App Name: `pdf-image-app` (or similar)
+     - App-Name: `pdf-image-app` (oder ähnlich)
 
-2. **Configure Permissions**  
-   Enable:
+2. **Berechtigungen konfigurieren**  
+   Aktiviere:
    - `files.content.write`
    - `files.content.read`
    - `sharing.write`
 
-3. **Generate an Access Token**  
-   - Go to **OAuth 2**  
-   - Click **Generate access token**  
-   - Copy the token
+3. **Access Token generieren**  
+   - Gehe zu **OAuth 2**  
+   - Klicke **Generate access token**  
+   - Kopiere das Token
 
-4. **Add to `.env` File**  
-   If the .env file does not already exist, create one in the bachelorthesis/Bachelorthesis directory.
+4. **In `.env` Datei einfügen**  
+   Falls die `.env` Datei noch nicht existiert, erstelle sie im Verzeichnis `bachelorthesis/Bachelorthesis`.
 
-   Then, add the following to bachelorthesis/Bachelorthesis/.env:
+   Füge dann Folgendes in `bachelorthesis/Bachelorthesis/.env` ein:
 
-   ``` python
-   ACCESS_TOKEN=<your Dropbox access token>
-   # Set to True if you want to upload to Dropbox.  
-   # Set to False if you’ve already uploaded the folders or are just testing changes in the code.
+   ```python
+   ACCESS_TOKEN=<dein Dropbox Access Token>
+   # Auf True setzen, wenn du Uploads zu Dropbox durchführen möchtest.  
+   # Auf False setzen, wenn du die Ordner bereits hochgeladen hast oder nur Änderungen im Code testen möchtest.
    DROPBOX_UPLOAD=True
    ```
 
-> Note: Dropbox tokens may be temporary. Re-generate if expired.
+> Hinweis: Dropbox Tokens können zeitlich begrenzt sein. Erstelle bei Ablauf ein neues.
 
 ---
 
-"""
-### Start the App for Visualization
+## App für Visualisierung starten
 
-Navigate to the Streamlit folder and install the requirements:
+Navigiere in den Streamlit-Ordner und installiere die Abhängigkeiten:
 
+```bash
 cd /bachelorthesis/Bachelorthesis/streamlit
-pip install -r requirements.txt  # or install manually
+pip install -r requirements.txt  # oder manuell installieren
+```
 
-Then generate the app and launch it:
+Dann die App generieren und starten:
 
-python3 help.py                  # Generates app.py using data from Bachelorthesis/Server/images
-streamlit run app.py             # Starts the Streamlit app
+```bash
+python3 help.py                  # Generiert app.py basierend auf Daten aus Bachelorthesis/Server/images
+streamlit run app.py             # Startet die Streamlit-App
+```
 
-Use Ctrl + C to stop the Streamlit server.
+Mit `Ctrl + C` kannst du den Streamlit-Server beenden.
 
 ---
 
-### Start the App for the Survey
+## App für Umfrage starten
 
-Navigate to the same folder and run the following:
+Navigiere in denselben Ordner und führe Folgendes aus:
 
+```bash
 cd /bachelorthesis/Bachelorthesis/streamlit
-pip install -r requirements.txt  # or install manually
+pip install -r requirements.txt  # oder manuell installieren
+```
 
-Generate and launch the survey app:
+Generiere und starte die Umfrage-App:
 
-python3 help_survey.py           # Generates survey.py using data from Bachelorthesis/Server/images
-streamlit run survey.py          # Starts the survey app
+```bash
+python3 help_survey.py           # Generiert survey.py basierend auf Daten aus Bachelorthesis/Server/images
+streamlit run survey.py          # Startet die Umfrage-App
+```
 
-Use Ctrl + C to stop the Streamlit server.
-"""
+Mit `Ctrl + C` kannst du den Streamlit-Server beenden.

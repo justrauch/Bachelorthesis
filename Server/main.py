@@ -131,7 +131,7 @@ def request_image_selection_and_caption(image_paths, text):
                 encoded_images.append(image_data_uri)
 
         if not encoded_images:
-            return None
+            return ""
 
         caption_prompt = (
             "You will receive a list of images. For each image, answer with 'True' or 'False' according to the following rules:\n"
@@ -161,7 +161,7 @@ def request_image_selection_and_caption(image_paths, text):
 
     except Exception as e:
         print(f"Fehler in request_image_selection_and_caption: {e}")
-        return None
+        return ""
 
 # --- Hilfsfunktionen zur Textextraktion und -strukturierung ---
 
@@ -198,7 +198,7 @@ def extract_text_pages_from_pdf(pdf_bytes):
 def runpod_post_with_polling(api_url, payload, retries=2):
     try:
         headers = {
-            "Authorization": f"Bearer {API_KEY}",          # Authentifizierung über API-Key
+            "Authorization": f"Bearer {API_KEY}",   # Authentifizierung über API-Key
             "Content-Type": "application/json"
         }
 
@@ -219,9 +219,9 @@ def runpod_post_with_polling(api_url, payload, retries=2):
                     break  # Erfolgreich abgeschlossen
 
                 if response_json["status"] in ["FAILED", "CANCELLED"]:
-                    print(f"Job status: {response_json['status']}. Retry in 10 seconds...")
+                    print(f"Job status: {response_json['status']}. Retry in 30 seconds...")
                     if retries > 0:
-                        time.sleep(10)  # Warten vor Retry
+                        time.sleep(35)  # Warten vor Retry
                         return runpod_post_with_polling(api_url, payload, retries=retries - 1)
                     else:
                         print("Maximale Anzahl an Wiederholungen erreicht. Rückgabe: [].")
@@ -352,7 +352,7 @@ def encode_image_to_data_uri(image_bytes):
         return f"data:image/jpeg;base64,{base64.b64encode(buffer.getvalue()).decode('utf-8')}"
     except Exception as e:
         print(f"Fehler in encode_image_to_data_uri: {e}")
-        return None
+        return ""
 
 # Teilt eine Liste in Dreiergruppen auf.
 def split_in_three(liste):
@@ -389,7 +389,7 @@ def send_batch_request(encoded_images, section_text):
         return output
     except Exception as e:
         print(f"Fehler in send_batch_request: {e}")
-        return None
+        return 0
 
 # Bildauswahlprozess + Beschreibung:
 # - Führt Auswahlprozess in mehreren Runden durch
@@ -466,7 +466,7 @@ def request_image_selection_and_caption(images, section_text, path, section_inde
 
     except Exception as e:
         print(f"Fehler in request_image_selection_and_caption: {e}")
-        return None
+        return ""
 
 
 # --- Text Beschreibung ---
@@ -548,8 +548,8 @@ def get_pdf_description(pdf_bytes):
                 summary = runpod_post_with_polling(API_URL_DESCRIPTION, payload)[0]["choices"][0]["tokens"][0]
                 summaries.append(summary)
             except (IndexError, KeyError, TypeError) as e:
-                print(f"Fehler beim Extrahieren des Tokens: {e}")
-                return None
+                print(f"Fehler beim Extrahieren des Tokens(single): {e}")
+                return ""
 
         # Alle Einzel-Summaries zusammenfügen für weitere Verarbeitung
         summary_block = "\n\n".join([f"Summary {i+1}:\n{txt}" for i, txt in enumerate(summaries)])
@@ -587,8 +587,8 @@ def get_pdf_description(pdf_bytes):
             try:
                 final_summary = runpod_post_with_polling(API_URL_DESCRIPTION, merge_payload)[0]["choices"][0]["tokens"][0]
             except (IndexError, KeyError, TypeError) as e:
-                print(f"Fehler beim Extrahieren des Tokens: {e}")
-                return None
+                print(f"Fehler beim Extrahieren des Tokens(final): {e}")
+                return ""
 
         # Nur ein Chunk – kein Merging notwendig
         elif len(summaries) == 1:
@@ -599,7 +599,7 @@ def get_pdf_description(pdf_bytes):
         return final_summary
     except Exception as e:
         print(f"Fehler in get_pdf_description: {e}")
-        return None
+        return ""
 
 # Hilfsfunktion zur Erstellung eindeutiger Verzeichnisse
 def make_unique_directory(base_path):
@@ -622,23 +622,9 @@ def write_metadata(pdf_bytes, name, output_io):
     try:
         print("Start with description")
         description = get_pdf_description(pdf_bytes)
-        sections = extract_text_sections(description)
 
         output_text = ""
 
-        print("Start with Embeddings")
-        docs = extract_text_pages_from_pdf(pdf_bytes)
-        doc_inputs = [f"passage: {doc}" for doc in docs]  # Formatierung für Embedding-Modell
-
-        # KI-Modell zur Berechnung der Embeddings
-        try:
-            response = runpod_post_with_polling(API_URL_EMBEDDINGS, {"input": {"input": doc_inputs}})["data"]
-            doc_embeddings = [item["embedding"] for item in response]
-        except Exception as e:
-            print(f"Fehler beim Abrufen der Dokument-Embeddings: {e}")
-            doc_embeddings = []
-
-        print("Start with images")
         # Ordner vorbereiten für Bildspeicherung
         pfad = "./images"
         os.makedirs("./images/valid", exist_ok=True)
@@ -646,33 +632,52 @@ def write_metadata(pdf_bytes, name, output_io):
         verzeichnis_valid = make_unique_directory(f"./images/valid/{name}")
         verzeichnis_not_valid = make_unique_directory(f"./images/not_valid/{name}")
 
-        # Durchlaufen aller Abschnittsbeschreibungen
-        for section_index, section in enumerate(sections, 1):
-            output_text += f"\n{section}\n"
-            if section_index == 1:
-                continue  # erster Block ist nur das "Goal"
+        # Wenn die Beschreibung fehlschlägt nicht weitermachen
+        if description:
+            sections = extract_text_sections(description)
 
-            # Seiten mit höchster Relevanz zur Sektion finden
-            top_pages = find_most_relevant_pages_with_embeddings(docs, section, doc_embeddings, top_k=5)
-            relevant_page_indices = [(page_num, score) for page_num, score, _ in top_pages]
+            print("Start with Embeddings")
+            docs = extract_text_pages_from_pdf(pdf_bytes)
+            doc_inputs = [f"passage: {doc}" for doc in docs]  # Formatierung für Embedding-Modell
 
-            # Bilder dieser Seiten extrahieren und filtern
-            images = extract_valid_images(pdf_bytes, relevant_page_indices)
+            # KI-Modell zur Berechnung der Embeddings
+            try:
+                response = runpod_post_with_polling(API_URL_EMBEDDINGS, {"input": {"input": doc_inputs}})["data"]
+                doc_embeddings = [item["embedding"] for item in response]
+            except Exception as e:
+                print(f"Fehler beim Abrufen der Dokument-Embeddings: {e}")
+                doc_embeddings = []
 
-            # Bilder abspeichern in valid / not_valid
-            if os.path.exists(pfad) and os.path.isdir(pfad):
-                for index, (img, valid) in enumerate(images):
-                    image_path = f"{verzeichnis_valid if valid else verzeichnis_not_valid}/Section{section_index - 1}_Bild{index}.png"
-                    if img:
-                        with open(image_path, "wb") as f:
-                            f.write(img)
-                    else:
-                        print(f"Kein Bild für Section {section_index - 1}, Bild {index}")
+            if doc_embeddings:
+                print("Start with images")
 
-            # Bildauswahl und Bild Beschreibung
-            image_result = request_image_selection_and_caption([img for (img, valid) in images if valid], section, verzeichnis_valid, section_index)
-            print(image_result)
-            output_text += image_result or ""
+                # Durchlaufen aller Abschnittsbeschreibungen
+                for section_index, section in enumerate(sections, 1):
+                    output_text += f"\n{section}\n"
+                    if section_index == 1:
+                        continue  # erster Block ist nur das "Goal"
+
+                    # Seiten mit höchster Relevanz zur Sektion finden
+                    top_pages = find_most_relevant_pages_with_embeddings(docs, section, doc_embeddings, top_k=5)
+                    relevant_page_indices = [(page_num, score) for page_num, score, _ in top_pages]
+
+                    # Bilder dieser Seiten extrahieren und filtern
+                    images = extract_valid_images(pdf_bytes, relevant_page_indices)
+
+                    # Bilder abspeichern in valid / not_valid wenn das volume exestiert
+                    if os.path.exists(pfad) and os.path.isdir(pfad):
+                        for index, (img, valid) in enumerate(images):
+                            image_path = f"{verzeichnis_valid if valid else verzeichnis_not_valid}/Section{section_index - 1}_Bild{index}.png"
+                            if img:
+                                with open(image_path, "wb") as f:
+                                    f.write(img)
+                            else:
+                                print(f"Kein Bild für Section {section_index - 1}, Bild {index}")
+
+                    # Bildauswahl und Bild Beschreibung
+                    image_result = request_image_selection_and_caption([img for (img, valid) in images if valid], section, verzeichnis_valid, section_index)
+                    print(image_result)
+                    output_text += image_result or ""
 
         print(f"response: {output_text}")
 
@@ -692,7 +697,7 @@ def write_metadata(pdf_bytes, name, output_io):
             f.write(pdf_with_metadata_bytes)
     except Exception as e:
         print(f"Fehler in write_metadata: {e}")
-        return None
+        return
 
 # === API-Endpunkt zum Hochladen einer ZIP-Datei ===
 @app.post("/api/process-zip")
@@ -773,18 +778,50 @@ def get_all_statuses(db: Session = Depends(get_db)):
 @app.get("/api/download/{job_id}")
 def download_zip(job_id: int, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     job = db.query(Job).get(job_id)
-    if not job or not job.result_path or not os.path.exists(job.result_path):
+
+    if not job:
+        raise HTTPException(status_code=404, detail="Job nicht gefunden")
+
+    if not job.result_path or not os.path.exists(job.result_path):
         db.delete(job)
         db.commit()
-        background_tasks.add_task(os.remove, job.result_path)
         raise HTTPException(status_code=404, detail="Keine Datei gefunden")
+
     if job.job_status not in ["bereit", "fehlgeschlagen"]:
-        raise HTTPException(status_code=403, detail="Die Datei wird derzeit noch bearbeitet. Bitte stoppen Sie den Prozess oder warten Sie, bis die Bearbeitung abgeschlossen ist.")
+        raise HTTPException(
+            status_code=403,
+            detail="Die Datei wird derzeit noch bearbeitet. Bitte stoppen Sie den Prozess oder warten Sie, bis die Bearbeitung abgeschlossen ist."
+        )
+
+    filename = f"ergebnis_{job.response_file}"
+    if not filename.lower().endswith(".zip"):
+        filename += ".zip"
+
+    headers = {
+        # Sagt dem Browser: Datei herunterladen (attachment) und mit dem angegebenen Namen speichern(Falls die Url direkt geöffnet wird)
+        "Content-Disposition": f'attachment; filename="{filename}"',
+
+        # MIME-Typ der Antwort → hier ZIP-Archiv
+        "Content-Type": "application/zip",
+
+        # Keine zusätzliche Transferkompression (z. B. gzip) anwenden → Datei unverändert senden
+        "Content-Encoding": "identity",
+
+        # Cache-Verhalten:
+        # - no-transform: Proxy/Browser dürfen Inhalt nicht verändern
+        # - private: nur für einen Benutzer, nicht in Shared-Caches speichern
+        # - max-age=0, must-revalidate: Die Antwort darf nur einmal verwendet werden, oder sie muss vom Client beim Server revalidiert werden, bevor sie erneut verwendet wird.
+        "Cache-Control": "no-transform, private, max-age=0, must-revalidate",
+
+        # Ermöglicht Teil-Downloads, nützlich bei großen Dateien
+        "Accept-Ranges": "bytes",
+    }
     return FileResponse(
-        path=job.result_path, 
-        media_type="application/zip", 
-        filename=f"ergebnis_{job.response_file}", 
-        background=background_tasks)
+        path=job.result_path,
+        media_type="application/zip",
+        filename=filename,
+        headers=headers,
+    )
 
 # === Abbrechen eines Jobs ===
 @app.get("/api/stop/{job_id}")
